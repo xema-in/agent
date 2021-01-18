@@ -1,0 +1,34 @@
+<ul class="list-unstyled">
+  <li>
+    <div *ngFor="let call of ongoingCallsList">
+      <button *ngIf="call.cli !== unknown" mat-raised-button color="primary" (click)="park(call)">
+        {{call.cli}} &nbsp;
+        <i class="material-icons pull-right" style="margin-top:6px">play_arrow</i>
+        <!-- {{call.localChannel}} {{call.remoteChannel}} {{call.status}} -->
+        <!-- <span *ngIf="call.status === 'Parked'">II</span> -->
+        <!-- <span *ngIf="call.status === 'Bridged'">></span> -->
+      </button>
+    </div>
+  </li>
+  <li>
+    <div>
+      <button mat-raised-button color="primary">
+      <span  *ngIf="conferenceCall?.members.length > 0">
+          {{conferenceCall?.members.length}} &nbsp;
+          <i class="material-icons pull-right" style="margin-top:6px">call_split</i>
+      </span>  
+      </button>
+    </div>
+
+
+  </li>
+  <li>
+
+    <div *ngFor="let call of parkedChannelsList" style="position:relative;top:-24px;">
+      <button mat-raised-button color="primary" (click)="resume(call)">
+        {{call.cli}} &nbsp;
+        <i class="material-icons pull-right" style="margin-top:6px">pause</i>
+      </button>
+    </div>
+  </li>
+</ul>

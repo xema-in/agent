@@ -1,0 +1,43 @@
+<div class="row mt-5">
+  <!-- Space for Top Bar -->
+</div>
+
+<app-agent-status></app-agent-status>
+
+<div *ngIf="teamLead">
+
+  <div class="row mt-5">
+    <!-- Space -->
+  </div>
+
+  <!-- <app-queue-status></app-queue-status> -->
+
+  <xe-queue-monitor-panel></xe-queue-monitor-panel>
+
+  <div class="row mt-5">
+    <!-- Space -->
+  </div>
+
+  <app-team-status></app-team-status>
+
+</div>
+
+<div class="row mt-5">
+  <!-- Space -->
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <br />
+
+    <app-recent-calls></app-recent-calls>
+
+  </div>
+
+  <div class="col-sm-3">
+    <br>
+
+    <app-messenger></app-messenger>
+
+  </div>
+</div>

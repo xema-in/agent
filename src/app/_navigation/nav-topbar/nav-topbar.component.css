@@ -1,0 +1,16 @@
+.signout{
+    right: 15px;
+    top: 18px;
+    /* color: #6d5ed7 !important; */
+}
+.break{right: 100px;}
+
+    nav{   
+         height: 60px !important;
+        }
+
+        .ullist{
+            position: absolute;
+z-index: 999999;
+top: -6px !important;
+        }

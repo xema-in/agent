@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card border-info">
+      <div class="card-header bg-info text-white">Agent Info
+        <i class="material-icons pull-right" style="font-size:28px;">perm_identity</i>
+      </div>
+      <div class="card-body">
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Name :</p>
+          <p class="text-right float-right"> {{info?.agentName}}</p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">EmpId :</p>
+          <p class="text-right float-right"> {{info?.empCode}}</p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> First LogIn : </p>
+          <p class="text-right float-right">{{info?.firstLogin | date :'mediumTime'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-danger">
+      <div class="card-header bg-danger text-white">Live Call Info
+        <i class="material-icons pull-right" style="font-size:28px;">hourglass_empty</i>
+      </div>
+      <div class="card-body">
+
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Start Time :</p>
+          <p class="text-right float-right"> {{task?.call.dateReceived | date :'mediumTime'}} </p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">Call Duration :</p>
+          <p class="text-right float-right"><span *ngIf="taskAssigned">{{GetDuration(callduration)}}</span></p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> WrapUp Duration : </p>
+          <p class="text-right float-right"><span *ngIf="taskAssigned"> {{GetDuration(wrapupduration)}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-success">
+      <div class="card-header bg-success text-white">Call Details
+        <i class="material-icons pull-right" style="font-size:28px;">phone</i>
+      </div>
+      <div class="card-body">
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Campaign :</p>
+          <p class="text-right float-right"> {{task?.call.queue}} </p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Cli :</p>
+          <p class="text-right float-right"> {{task?.call.attributes.destconnectedlinenum}} </p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">Call Number :</p>
+          <p class="text-right float-right">{{task?.call.attributes.linkedid}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-secondary">
+      <div class="card-header bg-secondary text-white">Total Calls
+        <i class="material-icons pull-right" style="font-size:28px;">list</i>
+      </div>
+      <div class="card-body">
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Total Calls :</p>
+          <p class="text-right float-right">{{recentCall.calllog?.call}} </p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">Incall Duration :</p>
+          <p class="text-right float-right"> {{GetDuration(recentCall.calllog?.callDuration)}}</p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> WrapUp Duration : </p>
+          <p class="text-right float-right">{{GetDuration(recentCall.calllog?.callWrapupDuration)}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
