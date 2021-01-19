@@ -1,108 +1,113 @@
+.chat_container {
+  width: 300px;
+  position: fixed;
+  right: 15px;
+  bottom: 10px;
+}
 
-    .chat_container {
-        width: 300px;
-        position: fixed;
-        right: 15px;
-        bottom: 10px;
-    }
+.chat_container .card-body {
+  height: 350px;
+  overflow: auto;
+}
 
-    .chat_container .card-body {
-        height: 350px;
-        overflow: auto;
-    }
+.close_btn {
+  cursor: pointer;
+}
 
-    .close_btn {
-        cursor: pointer;
-    }
+.card-body span {
+  font-size: 16px;
+  font-weight: normal;
+  /* color: #455a64; */
+  white-space: normal !important;
+}
 
-    .card-body span {
-        font-size: 16px;
-        font-weight: normal;
-        /* color: #455a64; */
-        white-space: normal !important;
-    }
+.type {
+  width: 88% !important;
+}
 
-    .type {
-        width: 88% !important;
-    }
+.type:focus {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  font-size: 16px;
+}
 
-    .type:focus {
-        border: none !important;
-        box-shadow: none !important;
-        outline: none !important;
-        font-size: 16px;
-    }
+.msg_icon {
+  background: #060473 !important
+}
 
-    .msg_icon {
-        background: #060473 !important
-    }
+.card-footer i {
+  font-size: 22px;
+  color: #ccc;
+}
 
-    .card-footer i {
-        font-size: 22px;
-        color: #ccc;
-    }
+.time {
+  font-size: 12px !important;
+  position: relative;
+  color: #b0bec5 !important;
+}
 
-    .time {
-        font-size: 12px !important;
-        position: relative;
-        color: #b0bec5 !important;
-    }
+.time_left {
+  left: 36px;
+}
 
-    .time_left {
-        left: 36px;
-    }
+.time_right {
+  top: -15px;
+  right: 10px;
+}
 
-    .time_right {
-        top: -15px;
-        right: 10px;
-    }
+.chat {
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
+}
 
-    .chat {
-        position: fixed;
-        bottom: 0px;
-        right: 15px;
-    }
+.close_btn {
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
 
-    .close_btn {
-        cursor: pointer;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-    }
+.user_info mat-icon {
+  /* font-size: 32px; */
+  position: relative;
+  top: 8px;
+  color: #17a2b8;
+}
 
-    .user_info mat-icon {
-        /* font-size: 32px; */
-        position: relative;
-        top: 8px;
-        color: #17a2b8;
-    }
+.pill-bg {
+  background: #563d7c !important
+}
 
-    .pill-bg {
-        background: #563d7c !important
-    }
+.pill-bg:hover {
+  background: #360a79 !important
+}
 
-    .pill-bg:hover {
-        background: #360a79 !important
-    }
+.card-header {
+  background-color: #fff !important
+}
 
-    .card-header {
-        background-color: #fff !important
-    }
+textarea {
+  height: 48px;
+}
 
-    textarea {
-        height: 48px;
-    }
-    .day-label{position: relative; top:2px}
-    .badge-pill {
-        position: relative;
-       top: -13px;
-       left: 10px;
-        padding-right: .4em;
-        padding-left: .4em;
-        border-radius: 10rem;
-    }
-    .user{
-        position: relative;
-         top:-6px; 
-         left:5px
-        }
+.day-label {
+  position: relative;
+  top: 2px
+}
+
+.badge-pill {
+  position: relative;
+  top: -13px;
+  left: 10px;
+  padding-right: .4em;
+  padding-left: .4em;
+  border-radius: 10rem;
+}
+
+.user {
+  position: relative;
+  top: -6px;
+  left: 5px
+}

@@ -11,16 +11,15 @@ import { NetworkTester } from 'jema';
 })
 export class ServerSelectionComponent implements OnInit {
 
-  public serverSelectionForm: FormGroup;
+  public serverSelectionForm: FormGroup = new FormGroup({
+    serverIp: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+  });
+
   tester = new NetworkTester();
 
   constructor(private service: BackendService) { }
 
   ngOnInit() {
-    this.serverSelectionForm = new FormGroup({
-      serverIp: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    });
-
     if (ManagerEnvironment.getBackendUrl() !== null &&
       ManagerEnvironment.getBackendUrl() !== undefined &&
       ManagerEnvironment.getBackendUrl() !== '') {

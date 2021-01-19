@@ -55,7 +55,7 @@ export class PhoneStatusComponent implements OnInit {
     Swal.fire({
       title: 'Are you sure?',
       text: 'This will change the phone you are currently using!',
-      type: 'warning',
+      icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',

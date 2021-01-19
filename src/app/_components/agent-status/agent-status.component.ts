@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { countUpTimerConfigModel, CountupTimerService } from 'ngx-timer';
 import { QueueUpdate } from 'src/app/_interfaces/queue-update';
 import { BackendService } from 'src/app/_shared/backend.service';
 import { SharedDataService } from 'src/app/_shared/shared-data.service';
@@ -14,7 +13,6 @@ export class AgentStatusComponent implements OnInit {
 
   bus: ServerConnection;
   info: any;
-  testConfig: countUpTimerConfigModel;
   time: any;
   duration: any;
   cdate = new Date();
@@ -28,7 +26,7 @@ export class AgentStatusComponent implements OnInit {
   hangupcalled = true;
   queueUpdates: Array<QueueUpdate> = [];
 
-  constructor(private service: BackendService, private countupTimerService: CountupTimerService, public recentCall: SharedDataService) {
+  constructor(private service: BackendService, public recentCall: SharedDataService) {
     this.bus = service.getServerConnection();
   }
 

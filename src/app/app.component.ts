@@ -8,6 +8,7 @@ import { BackendService } from './_shared/backend.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title = 'Agent';
 
   constructor(private service: BackendService, private router: Router) {
 

@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, ErrorStateMatcher } from '@angular/material';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { BackendService } from '../_shared/backend.service';
 import { SharedDataService } from '../_shared/shared-data.service';
 import { ServerConnection } from 'jema';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {

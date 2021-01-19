@@ -1,29 +1,31 @@
 .bg-danger {
-    background-color: #dc6a74!important;
+  background-color: #dc6a74!important;
 }
 
 .border-danger {
-    border-color: #c5858a!important;
+  border-color: #c5858a!important;
 }
 
 .bg-success {
-    background-color: #62af73!important;
+  background-color: #62af73!important;
 }
 
 .border-success {
-    border-color: #78b185!important;
+  border-color: #78b185!important;
 }
 
 .bg-secondary {
-    background-color: #8594a0!important;
+  background-color: #8594a0!important;
 }
+
 .border-secondary {
-    border-color: #8594a0!important;
+  border-color: #8594a0!important;
 }
 
 .bg-info {
-    background-color: #3198a9!important;
+  background-color: #3198a9!important;
 }
+
 .border-info {
-    border-color: #3198a9!important;
+  border-color: #3198a9!important;
 }

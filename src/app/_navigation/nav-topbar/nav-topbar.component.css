@@ -1,16 +1,19 @@
-.signout{
-    right: 15px;
-    top: 18px;
-    /* color: #6d5ed7 !important; */
+.signout {
+  right: 15px;
+  top: 18px;
+  /* color: #6d5ed7 !important; */
 }
-.break{right: 100px;}
 
-    nav{   
-         height: 60px !important;
-        }
+.break {
+  right: 100px;
+}
 
-        .ullist{
-            position: absolute;
-z-index: 999999;
-top: -6px !important;
-        }
+nav {
+  height: 60px !important;
+}
+
+.ullist {
+  position: absolute;
+  z-index: 999999;
+  top: -6px !important;
+}
