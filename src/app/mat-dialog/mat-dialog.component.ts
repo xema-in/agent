@@ -1,18 +1,10 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  ErrorStateMatcher,
-} from "@angular/material";
-import {
-  FormControl,
-  FormGroupDirective,
-  NgForm,
-  Validators,
-} from "@angular/forms";
 import { BackendService } from "../_shared/backend.service";
 import { SharedDataService } from "../_shared/shared-data.service";
 import { ServerConnection } from "jema";
+import { ErrorStateMatcher } from "@angular/material/core";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { FormControl, FormGroupDirective, NgForm, Validators } from "@angular/forms";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -53,7 +45,7 @@ export class MatDialogComponent implements OnInit {
     this.dialogRef.close(true);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   onChangeType(event): void {
     const breaktype = event;

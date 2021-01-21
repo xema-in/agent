@@ -76,7 +76,7 @@ export class PhoneSelectionComponent implements OnInit {
         if (err.status === 400) {
 
           Swal.fire({
-            type: 'error',
+            icon: 'error',
             title: 'Error Activating Phone',
             text: err.data
           });
@@ -84,7 +84,7 @@ export class PhoneSelectionComponent implements OnInit {
         } else {
 
           Swal.fire({
-            type: 'error',
+            icon: 'error',
             title: 'Oops...',
             text: err.message
           });

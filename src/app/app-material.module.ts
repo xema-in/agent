@@ -19,21 +19,16 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
 
-  imports: [
-    MatButtonModule, MatCardModule, MatDialogModule, MatTableModule, MatPaginatorModule,
-    MatSortModule, MatInputModule, MatDatepickerModule, MatNativeDateModule,
-    MatAutocompleteModule, MatTabsModule, MatSidenavModule,
-    MatFormFieldModule, MatIconModule, MatBadgeModule, MatSelectModule, MatProgressBarModule
-  ],
-
   exports: [
-    MatButtonModule, MatCardModule, MatDialogModule, MatTableModule, MatPaginatorModule,
-    MatSortModule, MatInputModule, MatDatepickerModule, MatNativeDateModule,
-    MatAutocompleteModule, MatTabsModule, MatSidenavModule, MatBadgeModule,
-    MatFormFieldModule, MatIconModule, MatToolbarModule, MatDividerModule, MatGridListModule, MatSelectModule, MatProgressBarModule
+    MatButtonModule, MatCardModule, MatDialogModule, MatTableModule, MatSortModule,
+    MatInputModule, MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule,
+    MatTabsModule, MatSidenavModule, MatBadgeModule, MatFormFieldModule, MatIconModule,
+    MatToolbarModule, MatDividerModule, MatGridListModule, MatSelectModule, MatProgressBarModule,
+    MatChipsModule, MatPaginatorModule,
   ],
 
 })

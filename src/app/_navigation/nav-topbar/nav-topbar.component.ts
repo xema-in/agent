@@ -3,8 +3,8 @@ import { BackendService } from "../../_shared/backend.service";
 import { Router } from "@angular/router";
 import { SharedDataService } from "src/app/_shared/shared-data.service";
 import { ServerConnection } from "jema";
-import { MatDialog } from "@angular/material";
 import { MatDialogComponent } from "src/app/mat-dialog/mat-dialog.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-nav-topbar",

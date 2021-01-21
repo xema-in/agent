@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from '../../_shared/backend.service';
-import { CountupTimerService, countUpTimerConfigModel, timerTexts } from 'ngx-timer';
 import { SharedDataService } from '../../_shared/shared-data.service';
 import { QueueUpdate } from '../../_interfaces/queue-update';
 import { ServerConnection } from 'jema';
@@ -15,7 +14,7 @@ export class QueueStatusComponent implements OnInit {
   bus: ServerConnection;
   queueUpdates: Array<QueueUpdate> = [];
 
-  constructor(private service: BackendService, private countupTimerService: CountupTimerService, public recentCall: SharedDataService) {
+  constructor(private service: BackendService, public recentCall: SharedDataService) {
     this.bus = service.getServerConnection();
   }
 
