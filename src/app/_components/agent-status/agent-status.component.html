@@ -1,0 +1,95 @@
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card border-info">
+      <div class="card-header bg-info text-white">Agent Info
+        <i class="material-icons pull-right" style="font-size:28px;">perm_identity</i>
+      </div>
+      <div class="card-body">
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Name :</p>
+          <p class="text-right float-right"> {{info?.agentInfo.agentName}}</p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">EmpId :</p>
+          <p class="text-right float-right"> {{info?.agentInfo.userId}}</p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> First LogIn : </p>
+          <p class="text-right float-right">{{info?.agentInfo.firstLogin | date :'mediumTime'}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-danger">
+      <div class="card-header bg-danger text-white">Live Call Info
+        <i class="material-icons pull-right" style="font-size:28px;">hourglass_empty</i>
+      </div>
+      <div class="card-body">
+
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Start Time :</p>
+          <p class="text-right float-right"> {{task?.call.dateReceived | date :'mediumTime'}} </p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">AHT Target :</p>
+          <p class="text-right float-right"><span>{{GetDuration(ahtTarget)}}</span>
+          </p>
+        </div>
+        <div class="clearfix">
+          <div class="progress">
+            <div class="progress-bar {{color}}" role="progressbar" aria-valuenow="currentprogress" aria-valuemin="0"
+              aria-valuemax="100" [style.width.%]="completed">
+              <span style="font-size: 15px;"> {{GetDuration(currentprogress)}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-success">
+      <div class="card-header bg-success text-white">Call Details
+        <i class="material-icons pull-right" style="font-size:28px;">phone</i>
+      </div>
+      <div class="card-body">
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Campaign :</p>
+          <p class="text-right float-right"> {{task?.call.queue}} </p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"> Cli :</p>
+          <p class="text-right float-right"> {{task?.call.attributes.destconnectedlinenum}} </p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">Call Number :</p>
+          <p class="text-right float-right">{{task?.call.attributes.linkedid}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3">
+    <div class="card border-secondary">
+      <div class="card-header bg-secondary text-white">CRM's
+        <i class="material-icons pull-right" style="font-size:28px;">list</i>
+      </div>
+      <div class="card-body">
+        <div class="col-md-4 pl-5 text-center" *ngIf="nodata">
+          <img style="height: 120px;" src="assets/nodata.png" alt="Xema">
+        </div>
+        <div class="clearfix">
+          <mat-chip-list class="mat-chip-list-stacked" *ngFor="let crm of crms">
+            <a href="{{crm.url}}" target="_blank">
+              <mat-chip selected>
+                {{crm.name}}
+              </mat-chip>
+            </a>
+          </mat-chip-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

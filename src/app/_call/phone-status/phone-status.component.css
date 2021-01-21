@@ -1,0 +1,13 @@
+.select {
+  background: transparent !important;
+  border: none;
+  color: white;
+  outline: none !important
+}
+
+.options {
+  background: #dc3545 !important;
+  border: none !important;
+  color: white;
+  outline: none !important;
+}
