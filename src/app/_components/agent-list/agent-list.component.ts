@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../_shared/backend.service';
-import { ChatMessage } from '../../_interfaces/chat.message';
-import { FormControl } from '@angular/forms';
-import { ServerConnection } from 'jema';
+import { Component, OnInit } from "@angular/core";
+import { BackendService } from "../../_shared/backend.service";
+import { ChatMessage } from "../../_interfaces/chat.message";
+import { FormControl } from "@angular/forms";
+import { ServerConnection } from "jema";
 
 @Component({
-  selector: 'app-agent-list',
-  templateUrl: './agent-list.component.html',
-  styleUrls: ['./agent-list.component.css']
+  selector: "app-agent-list",
+  templateUrl: "./agent-list.component.html",
+  styleUrls: ["./agent-list.component.css"],
 })
 export class AgentListComponent implements OnInit {
   result: any;
@@ -22,10 +22,9 @@ export class AgentListComponent implements OnInit {
   today: any;
   group: any;
 
-  message = new FormControl('', [
+  message = new FormControl("", [
     // Validators.required
   ]);
-
 
   constructor(private service: BackendService) {
     this.bus = service.getServerConnection();
@@ -34,9 +33,9 @@ export class AgentListComponent implements OnInit {
   ngOnInit() {
     // this.receivedDate = new Date();
     this.chatMessage = new ChatMessage();
-    this.bus.getAgents().subscribe(res => {
+    this.bus.getAgents().subscribe((res) => {
       this.result = res;
-      this.group = this.result.find(x => x.team);
+      this.group = this.result.find((x) => x.teamName);
     });
 
     this.bus.messageReceived.subscribe((res) => {
@@ -52,7 +51,7 @@ export class AgentListComponent implements OnInit {
     this.receivedMessage = null;
     this.receivedFrom = null;
     this.today = new Date().toLocaleTimeString();
-    this.chatMessage.to = agent !== null ? agent.name : group.team;
+    this.chatMessage.to = agent !== null ? agent.name : group.teamName;
     this.chatMessage.message = this.message.value;
     this.chatMessage.timestamp = this.today;
     if (agent) {
@@ -63,5 +62,4 @@ export class AgentListComponent implements OnInit {
     }
     this.message.reset();
   }
-
 }

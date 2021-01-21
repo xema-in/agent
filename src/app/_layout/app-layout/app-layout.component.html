@@ -2,35 +2,23 @@
   <a class="navbar-brand col-sm-2 col-md-1 mr-0" href="/">
     <img src="assets/logo-old.png" alt="Xema" width="45" class="d-block mx-auto">
   </a>
-  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button> -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <app-nav-topbar></app-nav-topbar>
- <!-- <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-     <form class="form-inline my-2 my-lg-0">
-       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-     </form>
-   </li>
- </ul> -->
   </div>
 </nav>
 
 <div class="container-fluid">
-    <div class="row">
-        <nav class="col-md-1 d-none d-md-block sidebar">
-            <div class="sidebar-sticky">
-              <br>
-                <app-nav-sidebar></app-nav-sidebar>
-            </div>
-        </nav>
-
-        <main role="main" class="col-md-11 ml-sm-auto col-lg-11 pl-0">
-            <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-                <router-outlet></router-outlet>
-            </div>
-        </main>
-    </div>
+  <div class="row">
+    <nav class="col-md-1 d-none d-md-block sidebar">
+      <div class="sidebar-sticky">
+        <br>
+        <app-nav-sidebar></app-nav-sidebar>
+      </div>
+    </nav>
+    <main role="main" class="col-md-11 ml-sm-auto col-lg-11 pl-0">
+      <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
 </div>

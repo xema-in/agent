@@ -1,27 +1,32 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BackendService } from '../../_shared/backend.service';
-import { Router } from '@angular/router';
-import { SharedDataService } from 'src/app/_shared/shared-data.service';
-import { ServerConnection } from 'jema';
-import { BreakState } from 'jema/lib/_interfaces/break-state';
+import { Component, OnInit, Input } from "@angular/core";
+import { BackendService } from "../../_shared/backend.service";
+import { Router } from "@angular/router";
+import { SharedDataService } from "src/app/_shared/shared-data.service";
+import { ServerConnection } from "jema";
+import { MatDialog } from "@angular/material";
+import { MatDialogComponent } from "src/app/mat-dialog/mat-dialog.component";
 
 @Component({
-  selector: 'app-nav-topbar',
-  templateUrl: './nav-topbar.component.html',
-  styleUrls: ['./nav-topbar.component.css']
+  selector: "app-nav-topbar",
+  templateUrl: "./nav-topbar.component.html",
+  styleUrls: ["./nav-topbar.component.css"],
 })
 export class NavTopbarComponent implements OnInit {
-
   bus: ServerConnection;
   phoneState: any;
-  breakState: BreakState;
+  breakState: any;
+  info: any;
 
-  constructor(private service: BackendService, private router: Router, public shared: SharedDataService) {
+  constructor(
+    private service: BackendService,
+    private router: Router,
+    public shared: SharedDataService,
+    public dialog: MatDialog
+  ) {
     this.bus = service.getServerConnection();
   }
 
   ngOnInit() {
-
     this.bus.phoneState.subscribe((state) => {
       this.phoneState = state;
     });
@@ -30,6 +35,9 @@ export class NavTopbarComponent implements OnInit {
       this.breakState = state;
     });
 
+    this.bus.agentInfo.subscribe((res) => {
+      this.info = res;
+    });
   }
 
   Logoff() {
@@ -44,14 +52,16 @@ export class NavTopbarComponent implements OnInit {
     //   }
     // );
 
-    this.service.setAppState({ state: 'Unknown' });
-    localStorage.removeItem('access_token');
-    this.router.navigateByUrl('/login');
-
+    this.service.setAppState({ state: "Unknown" });
+    localStorage.removeItem("access_token");
+    this.router.navigateByUrl("/login");
   }
 
   askBreak() {
-    this.bus.askBreak();
+    const dialogRef = this.dialog.open(MatDialogComponent, {
+      data: { info: this.info },
+      disableClose: true,
+    });
   }
 
   cancelBreak() {
@@ -61,5 +71,4 @@ export class NavTopbarComponent implements OnInit {
   exitBreak() {
     this.bus.exitBreak();
   }
-
 }
