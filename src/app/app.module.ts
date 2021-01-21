@@ -8,8 +8,9 @@ import { TimeagoModule, TimeagoFormatter, TimeagoClock } from 'ngx-timeago';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialComponentsModule } from './app-material.module';
-import { AppComponent } from './app.component';
+import { QueueMonitorPanelModule } from '@xema/queue-monitor-panel';
 
+import { AppComponent } from './app.component';
 import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
 import { ConnectComponent } from './auth/connect/connect.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -62,6 +63,7 @@ import { CustomFormatter } from './_code/custom-formatter';
     ReactiveFormsModule,
     AppRoutingModule,
     AppMaterialComponentsModule,
+    QueueMonitorPanelModule,
     TimeagoModule.forRoot({
       formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
       clock: { provide: TimeagoClock, useClass: CustomClock },

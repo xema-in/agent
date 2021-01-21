@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerConnection } from 'jema';
 import { BackendService } from '../_shared/backend.service';
 import { SharedDataService } from '../_shared/shared-data.service';
 
@@ -10,8 +11,10 @@ import { SharedDataService } from '../_shared/shared-data.service';
 
 export class DashboardComponent implements OnInit {
   teamLead = false;
+  serverConnection: ServerConnection;
 
   constructor(private service: BackendService, public recentCall: SharedDataService) {
+    this.serverConnection = service.getServerConnection();
   }
 
   ngOnInit() {
