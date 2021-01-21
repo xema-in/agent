@@ -1,14 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { TimeagoModule, TimeagoFormatter, TimeagoClock } from 'ngx-timeago';
+import { QueueMonitorPanelModule } from '@xema/queue-monitor-panel';
+import { TeamMonitorPanelModule } from '@xema/team-monitor-panel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialComponentsModule } from './app-material.module';
-import { QueueMonitorPanelModule } from '@xema/queue-monitor-panel';
 
 import { AppComponent } from './app.component';
 import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
@@ -25,7 +25,6 @@ import { AgentListComponent } from './_components/agent-list/agent-list.componen
 import { AgentStatusComponent } from './_components/agent-status/agent-status.component';
 import { MessengerComponent } from './_components/messenger/messenger.component';
 import { RecentCallsComponent } from './_components/recent-calls/recent-calls.component';
-import { TeamStatusComponent } from './_components/team-status/team-status.component';
 import { AppLayoutComponent } from './_layout/app-layout/app-layout.component';
 import { LoginLayoutComponent } from './_layout/login-layout/login-layout.component';
 import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.component';
@@ -52,7 +51,6 @@ import { CustomFormatter } from './_code/custom-formatter';
     AgentStatusComponent,
     MessengerComponent,
     RecentCallsComponent,
-    TeamStatusComponent,
     ServerSelectionComponent,
     ConnectComponent
   ],
@@ -64,6 +62,7 @@ import { CustomFormatter } from './_code/custom-formatter';
     AppRoutingModule,
     AppMaterialComponentsModule,
     QueueMonitorPanelModule,
+    TeamMonitorPanelModule,
     TimeagoModule.forRoot({
       formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
       clock: { provide: TimeagoClock, useClass: CustomClock },
