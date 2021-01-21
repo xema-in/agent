@@ -12,14 +12,7 @@ import { Authenticator, ServerConnection } from 'jema';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm = new FormGroup({
-    username: new FormControl('', [
-      Validators.required, Validators.maxLength(60),
-      // Validators.pattern('[a-zA-Z1-9]*')
-    ]),
-    password: new FormControl('', [Validators.required, Validators.maxLength(100)])
-  });
-
+  public loginForm: FormGroup;
   manager: string;
   isLoading = false;
   disable: boolean;
@@ -40,6 +33,13 @@ export class LoginComponent implements OnInit {
     //   }
     // );
 
+    this.loginForm = new FormGroup({
+      username: new FormControl('', [
+        Validators.required, Validators.maxLength(60),
+        // Validators.pattern('[a-zA-Z1-9]*')
+      ]),
+      password: new FormControl('', [Validators.required, Validators.maxLength(100)])
+    });
 
   }
 
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
         if (err.status === 401) {
 
           Swal.fire({
-            icon: 'error',
+            type: 'error',
             title: 'Authentication failed!',
             text: 'It seems you haven\'t entered valid credentials. Check your User Name and Password!'
           });
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
         } else {
 
           Swal.fire({
-            icon: 'error',
+            type: 'error',
             title: 'Oops...',
             text: err.message
           });
