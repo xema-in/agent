@@ -21,26 +21,15 @@
     </div>
   </div>
 
-
-  <!-- variables block -->
-
   <div class="col-sm-3" *ngIf="task">
     <div class="card border-info">
       <div class="card-header bg-info text-white">Queue Info
         <i class="material-icons pull-right" style="font-size:28px;">queue</i>
       </div>
-      <div class="card-body">
+      <div class="card-body" *ngFor="let item of task?.variables | keyvalue">
         <div class="clearfix">
-          <p class="card-text float-left text-secondary">Queue Position :</p>
-          <p class="text-right float-right">{{task?.variables.queueposition}}</p>
-        </div>
-        <div class="clearfix">
-          <p class="card-text float-left text-secondary"></p>
-          <p class="text-right float-right"></p>
-        </div>
-        <div class="clearfix">
-          <p class="card-text float-left text-secondary"></p>
-          <p class="text-right float-right"></p>
+          <p class="card-text float-left text-secondary"> {{item.key}} :</p>
+          <p class="text-right float-right"> {{item.value}}</p>
         </div>
       </div>
     </div>
