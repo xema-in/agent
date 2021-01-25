@@ -31,3 +31,7 @@ jobs:
       - name: npm run build
         run: npm run build
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: docs
