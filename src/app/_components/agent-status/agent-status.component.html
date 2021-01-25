@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-3">
+  <div class="col-sm-3" *ngIf="!task">
     <div class="card border-info">
       <div class="card-header bg-info text-white">Agent Info
         <i class="material-icons pull-right" style="font-size:28px;">perm_identity</i>
@@ -21,7 +21,32 @@
     </div>
   </div>
 
-  <div class="col-sm-3">
+
+  <!-- variables block -->
+
+  <div class="col-sm-3" *ngIf="task">
+    <div class="card border-info">
+      <div class="card-header bg-info text-white">Queue Info
+        <i class="material-icons pull-right" style="font-size:28px;">queue</i>
+      </div>
+      <div class="card-body">
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary">Queue Position :</p>
+          <p class="text-right float-right">{{task?.variables.queueposition}}</p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"></p>
+          <p class="text-right float-right"></p>
+        </div>
+        <div class="clearfix">
+          <p class="card-text float-left text-secondary"></p>
+          <p class="text-right float-right"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-3" *ngIf="task">
     <div class="card border-danger">
       <div class="card-header bg-danger text-white">Live Call Info
         <i class="material-icons pull-right" style="font-size:28px;">hourglass_empty</i>
@@ -49,7 +74,7 @@
     </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-sm-3" *ngIf="task">
     <div class="card border-success">
       <div class="card-header bg-success text-white">Call Details
         <i class="material-icons pull-right" style="font-size:28px;">phone</i>
@@ -71,7 +96,7 @@
     </div>
   </div>
 
-  <div class="col-sm-3">
+  <div class="col-sm-3" *ngIf="task">
     <div class="card border-secondary">
       <div class="card-header bg-secondary text-white">CRM's
         <i class="material-icons pull-right" style="font-size:28px;">list</i>
