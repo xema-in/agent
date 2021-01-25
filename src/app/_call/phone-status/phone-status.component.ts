@@ -8,10 +8,9 @@ import { ManagerEnvironment } from 'src/app/_code/manager-environment';
 @Component({
   selector: 'app-phone-status',
   templateUrl: './phone-status.component.html',
-  styleUrls: ['./phone-status.component.css']
+  styleUrls: ['./phone-status.component.css'],
 })
 export class PhoneStatusComponent implements OnInit {
-
   bus: ServerConnection;
   phoneState: any;
   onHook: boolean;
@@ -22,13 +21,14 @@ export class PhoneStatusComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.bus.phoneState.subscribe((state) => {
       this.phoneState = state;
-
       this.onHook = true;
       switch (this.phoneState.state) {
         case 'Unknown':
+          this.btnColor = 'btn-secondary';
+          break;
+        case 'UNAVAILABLE':
           this.btnColor = 'btn-secondary';
           break;
         case 'INUSE':
@@ -44,7 +44,6 @@ export class PhoneStatusComponent implements OnInit {
           break;
       }
     });
-
   }
 
   unassignPhone() {
@@ -59,17 +58,13 @@ export class PhoneStatusComponent implements OnInit {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, change'
+      confirmButtonText: 'Yes, change',
     }).then((result) => {
       if (result.value) {
-
         this.bus.unassignPhone().subscribe(() => {
           this.router.navigateByUrl('/phone');
         });
-
       }
     });
-
   }
-
 }
