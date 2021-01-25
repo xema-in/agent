@@ -1,0 +1,17 @@
+.mat-grid-tile{
+    left: 0px;
+    width: calc(((62% - 0.5px) * 1) + 0px) !important;
+    margin-top: 0px;
+    padding-top: calc(((24% - 0.5px) * 1) + 0px) !important;
+}
+.pill-bg{background: #563d7c !important}
+.pill-bg:hover{background: #360a79 !important}
+
+
+/* 
+.card-footer i {
+    font-size: 22px;
+    color: #ccc;
+} */
+
+

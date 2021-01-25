@@ -1,0 +1,164 @@
+/* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+
+/* @media (max-width: 767px) {
+     .body-content {
+      padding-top: 50px;
+    }
+  }
+
+ @media(min-width:920px){
+    }
+
+  .example-containernav {
+    width: 100vw;
+    height: 100vh;
+    padding: 0px !important;
+  }
+
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .example-sidenav {
+    padding: 20px;
+  }
+
+
+
+  @media (min-width: 768px) {
+
+  }  */
+
+/* Fixes dropdown menus placed on the right side */
+
+/* .ml-auto .dropdown-menu {
+    left: auto !important;
+    right: 0px;
+  } */
+
+body {
+  font-size: 0.875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+   * Sidebar
+   */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  /* Behind the navbar */
+  padding: 48px 0 0;
+  /* Height of navbar */
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    background: #303641;
+    width: 80px;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #6d5ed7 !important;
+  text-align: center !important;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather, .sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+/*
+   * Content
+   */
+
+[role="main"] {
+  padding-top: 30px;
+  /* Space for fixed navbar */
+  position: relative;
+  /* left: -10px; */
+}
+
+/*
+   * Navbar
+   */
+
+.fixed-top {
+  height: 70px;
+  /* overflow: hidden; */
+  padding-top: 10px;
+  background-color: #563d7c;
+}
+
+.navbar-brand {
+  /* color: rgba(0,0,0,.9);
+    background: #303641; */
+  position: relative;
+  left: -16px;
+  max-width: 80px;
+  width: 80px;
+  height: 70px;
+  margin-top: 10px !important;
+}
+
+.navbar .form-control {
+  padding: 0.75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
+}
+
+@media screen and (max-width: 1170px) {
+  .sidebar-sticky {
+    width: 85px;
+  }
+}

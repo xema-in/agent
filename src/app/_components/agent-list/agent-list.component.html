@@ -1,0 +1,59 @@
+<table class="w-100">
+  <tr>
+    <a style="cursor: pointer" (click)="visibleRowIndex= 0">
+      <p>
+        <mat-icon>supervisor_account</mat-icon> <span class="user">{{group?.teamName}}</span>
+        <small *ngIf="group?.teamName == receivedFrom" class="badge badge-pill badge-danger">1</small>
+      </p>
+      <div [hidden]="visibleRowIndex !== 0">
+        <form autocomplete="off">
+          <div *ngIf="group?.teamName == receivedFrom" class="form-group bg-light p-2 shadow border rounded clearfix">
+            <p class="text-center mt-n4">
+              <small class="bg-white px-2 day-label">{{receivedDate | date: 'EEEE, MMMM d, y' }}</small>
+            </p>
+            <p class="small" class="text-secondary m-0"><small>{{receivedFromAgent}}</small> </p>
+            <small class="float-left"> {{receivedMessage}} </small>
+            <small class="text-secondary float-right ">{{ receivedDate | date: 'h:mm a'}}</small>
+          </div>
+          <div class="form-group input-group mt-n3">
+            <textarea class="form-control float-left" placeholder="Your message" [formControl]="message"> </textarea>
+            <div class="input-group-append ml-n-2">
+              <button class="btn btn-info" type="button" (click)="sendMessage(null, group)">
+                <mat-icon>send</mat-icon>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </a>
+  </tr>
+
+  <tr *ngFor="let item of result">
+    <a style="cursor: pointer" (click)="visibleRowIndex=item.id">
+
+      <p>
+        <mat-icon>perm_identity</mat-icon> <span class="user"> {{item.name}}</span>
+        <small *ngIf="item.name == receivedFrom" class="badge badge-pill badge-danger">1</small>
+      </p>
+
+      <div [hidden]="visibleRowIndex !== item.id">
+        <form autocomplete="off">
+          <div *ngIf="item.name == receivedFrom" class="form-group bg-light p-2 shadow border rounded clearfix">
+            <p class="text-center mt-n4"> <small class="bg-white px-2 day-label">{{receivedDate | date: 'EEEE, MMMM d,
+                y' }}</small> </p>
+            <small class="float-left"> {{receivedMessage}} </small>
+            <small class="text-secondary float-right ">{{ receivedDate | date: 'h:mm a'}}</small>
+          </div>
+          <div class="form-group input-group mt-n3">
+            <textarea class="form-control float-left" placeholder="Your message" [formControl]="message"> </textarea>
+            <div class="input-group-append ml-n-2">
+              <button class="btn btn-info" type="button" (click)="sendMessage(item, null)">
+                <mat-icon>send</mat-icon>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </a>
+  </tr>
+</table>

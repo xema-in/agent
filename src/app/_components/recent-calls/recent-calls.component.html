@@ -1,0 +1,37 @@
+<div class="my-3">
+  <div class="d-flex flex-row">
+    <div class="p-1">
+      <i class="material-icons text-secondary" style="margin-top: -2px;">access_time</i>
+    </div>
+    <div class="p-1">
+      <h6 class="font-weight-normal text-secondary">Recent Calls</h6>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table *ngIf="recentCall.callinfolist?.length != 0" class="table table-bordered table-hover">
+      <thead>
+        <tr class="bg-secondary text-white">
+          <!-- <th><small>SNo</small></th> -->
+          <th><small>Queue</small></th>
+          <th><small>Call Number</small></th>
+          <th><small>Cli</small></th>
+          <th><small>StartTime</small></th>
+          <th><small>EndTime</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let call of recentCall.callinfolist; let i=index">
+          <!-- <td>{{i +1}}</td> -->
+          <td>{{call.queue}}</td>
+          <td>{{call.callNumber}}</td>
+          <td>{{call.cli}}</td>
+          <td>{{call.startTime | date :'medium'}}</td>
+          <td>{{call.endTime | date :'medium'}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="clearfix" *ngIf="recentCall.callinfolist?.length == 0">
+      <p class="text-secondary display-4">No recent calls </p>
+    </div>
+  </div>
+</div>
