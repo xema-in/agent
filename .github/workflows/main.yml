@@ -31,7 +31,10 @@ jobs:
       - name: npm run build
         run: npm run build
 
-      - uses: actions/upload-artifact@v2
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
-          name: artifact
-          path: docs
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: docs
+          CLEAN: true         
