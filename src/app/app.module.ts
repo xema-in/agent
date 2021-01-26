@@ -31,6 +31,7 @@ import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.compo
 import { NavTopbarComponent } from './_navigation/nav-topbar/nav-topbar.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
+import { AgentInfoComponent } from './_components/agent-info/agent-info.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { CustomFormatter } from './_code/custom-formatter';
     MessengerComponent,
     RecentCallsComponent,
     ServerSelectionComponent,
-    ConnectComponent
+    ConnectComponent,
+    AgentInfoComponent
   ],
   imports: [
     BrowserModule,
