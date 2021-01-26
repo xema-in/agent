@@ -1,28 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Import CSS from UI libraries here */
-
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import "~font-awesome/css/font-awesome.css";
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-.mat-drawer-content {
-  height: 100vh !important;
-  overflow: hidden !important;
-}
-
-.mat-drawer-inner-container {
-  background: #343a40;
-}
-
-.navbar-dark .nav-link {
-  font-size: 10px !important
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
