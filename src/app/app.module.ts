@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TimeagoModule, TimeagoFormatter, TimeagoClock } from 'ngx-timeago';
 import { QueueMonitorPanelModule } from '@xema/queue-monitor-panel';
@@ -61,6 +62,7 @@ import { AgentInfoComponent } from './_components/agent-info/agent-info.componen
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     AppRoutingModule,
     AppMaterialComponentsModule,
     QueueMonitorPanelModule,
