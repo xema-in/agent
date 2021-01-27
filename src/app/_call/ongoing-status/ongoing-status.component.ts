@@ -8,10 +8,9 @@ import { ServerConnection } from 'jema';
 @Component({
   selector: 'app-ongoing-status',
   templateUrl: './ongoing-status.component.html',
-  styleUrls: ['./ongoing-status.component.css']
+  styleUrls: ['./ongoing-status.component.css'],
 })
 export class OngoingStatusComponent implements OnInit {
-
   bus: ServerConnection;
   ongoingCallsList: Array<ActiveCall>;
   parkedChannelsList: Array<Channel>;
@@ -23,7 +22,6 @@ export class OngoingStatusComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.bus.ongoingCalls.subscribe((list) => {
       this.ongoingCallsList = list;
     });
@@ -35,7 +33,6 @@ export class OngoingStatusComponent implements OnInit {
     this.bus.conferenceCall.subscribe((call) => {
       this.conferenceCall = call;
     });
-
   }
 
   park(call: ActiveCall) {
@@ -43,10 +40,14 @@ export class OngoingStatusComponent implements OnInit {
   }
 
   resume(call: Channel) {
-    this.ongoingCallsList.forEach(otherCall => {
+    this.ongoingCallsList.forEach((otherCall) => {
       this.bus.hold(otherCall.remoteChannel);
     });
     this.bus.resume(call.channel);
   }
 
+  getCli(cli) {
+    const lastdigits = cli.slice(cli.length - 4);
+    return lastdigits;
+  }
 }
