@@ -48,11 +48,18 @@
 
         <div class="clearfix">
           <p class="card-text float-left text-secondary"> Cli :</p>
-          <p class="text-right float-right"> {{task?.call.attributes.destconnectedlinenum}} </p>
+          <p class="text-right float-right" style="cursor: pointer;"
+            [cdkCopyToClipboard]="task?.call.attributes.destconnectedlinenum" matTooltip="Copy Cli"
+            matTooltipPosition="above">
+            {{task?.call.attributes.destconnectedlinenum}}
+          </p>
         </div>
         <div class="clearfix">
           <p class="card-text float-left text-secondary">Call Number :</p>
-          <p class="text-right float-right">{{task?.call.attributes.linkedid}} </p>
+          <p class="text-right float-right" style="cursor: pointer;"
+            [cdkCopyToClipboard]="task?.call.attributes.linkedid" matTooltip="Copy Call Number"
+            matTooltipPosition="above">
+            {{task?.call.attributes.linkedid}} </p>
         </div>
 
 

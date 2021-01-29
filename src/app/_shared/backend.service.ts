@@ -2,18 +2,17 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ServerConnection } from 'jema';
 import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BackendService {
-
   private serverConnection: ServerConnection;
   public appState = new BehaviorSubject<any>({ state: 'Unknown' });
   public teamLeadFeatures = new BehaviorSubject<boolean>(false);
 
-  constructor() {
-  }
+  constructor(private remote: HttpClient) {}
 
   setAppState(state: any): void {
     this.appState.next(state);
@@ -52,11 +51,18 @@ export class BackendService {
   }
 
   setupServerConnection() {
-    this.serverConnection = new ServerConnection(this.getBackendUrl(), this.getToken());
+    this.serverConnection = new ServerConnection(
+      this.getBackendUrl(),
+      this.getToken()
+    );
   }
 
   connect() {
     this.serverConnection.connect();
+  }
+
+  cdrslist(param) {
+    return this.remote.post(this.getBackendUrl() + '/api/Cdrs', param);
   }
 
   // login(param: LoginParameters) {
@@ -104,5 +110,4 @@ export class BackendService {
   //   this.log('Api', 'GetTeamMembers');
   //   return this.remote.get(ManagerEnvironment.getBackendUrl() + '/api/Agents/GetTeamMembers');
   // }
-
 }

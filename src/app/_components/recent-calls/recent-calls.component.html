@@ -1,37 +1,58 @@
-<div class="my-3">
-  <div class="d-flex flex-row">
-    <div class="p-1">
-      <i class="material-icons text-secondary" style="margin-top: -2px;">access_time</i>
-    </div>
-    <div class="p-1">
-      <h6 class="font-weight-normal text-secondary">Recent Calls</h6>
-    </div>
-  </div>
-  <div class="table-responsive">
-    <table *ngIf="recentCall.callinfolist?.length != 0" class="table table-bordered table-hover">
-      <thead>
-        <tr class="bg-secondary text-white">
-          <!-- <th><small>SNo</small></th> -->
-          <th><small>Queue</small></th>
-          <th><small>Call Number</small></th>
-          <th><small>Cli</small></th>
-          <th><small>StartTime</small></th>
-          <th><small>EndTime</small></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let call of recentCall.callinfolist; let i=index">
-          <!-- <td>{{i +1}}</td> -->
-          <td>{{call.queue}}</td>
-          <td>{{call.callNumber}}</td>
-          <td>{{call.cli}}</td>
-          <td>{{call.startTime | date :'medium'}}</td>
-          <td>{{call.endTime | date :'medium'}}</td>
-        </tr>
-      </tbody>
+<mat-toolbar>
+    <mat-toolbar-row class="toolbar-row">
+        <span>Call Records</span>
+        <span class="spacer"></span>
+        <small>
+            <mat-form-field appearance="standard">
+                <mat-label>Filter</mat-label>
+                <input matInput placeholder="DNI, ANI, AgentId, PhoneId etc."
+                    (keyup)="applyFilter($event.target.value)">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </small>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div>
+    <table mat-table class="full-width-table" matSort [dataSource]="dataSource">
+
+        <ng-container matColumnDef="originNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>CLI</th>
+            <td mat-cell *matCellDef="let row" style="cursor: pointer;" [cdkCopyToClipboard]="GetCli(row.originNumber)">
+                <span matTooltip="Copy Cli" matTooltipPosition="right"> {{GetCli(row.originNumber)}} </span>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dialledNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>DNI</th>
+            <td mat-cell *matCellDef="let row">{{row.dialledNumber}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="agentId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Agent Id</th>
+            <td mat-cell *matCellDef="let row">{{row.agentId}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="phoneId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Id</th>
+            <td mat-cell *matCellDef="let row">{{row.phoneId}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="startTimestamp">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Time</th>
+            <td mat-cell *matCellDef="let row">{{row.startTimestamp | date :'medium'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalTime">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Time</th>
+            <td mat-cell *matCellDef="let row">{{GetDuration(row.totalTime)}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <div class="clearfix" *ngIf="recentCall.callinfolist?.length == 0">
-      <p class="text-secondary display-4">No recent calls </p>
-    </div>
-  </div>
+
+    <mat-paginator #paginator [length]="dataSource?.data.length" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]">
+    </mat-paginator>
 </div>

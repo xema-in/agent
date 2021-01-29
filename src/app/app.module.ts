@@ -31,6 +31,8 @@ import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.compo
 import { NavTopbarComponent } from './_navigation/nav-topbar/nav-topbar.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
+import { HttpClientModule } from '@angular/common/http';
+import { CallhistoryDialogComponent } from './_components/callhistory-dialog/callhistory-dialog.component';
 
 @NgModule({
   declarations: [
@@ -52,10 +54,12 @@ import { CustomFormatter } from './_code/custom-formatter';
     MessengerComponent,
     RecentCallsComponent,
     ServerSelectionComponent,
-    ConnectComponent
+    ConnectComponent,
+    CallhistoryDialogComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -66,12 +70,10 @@ import { CustomFormatter } from './_code/custom-formatter';
     TimeagoModule.forRoot({
       formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
       clock: { provide: TimeagoClock, useClass: CustomClock },
-    })
+    }),
   ],
-  entryComponents: [
-    MatDialogComponent
-  ],
+  entryComponents: [MatDialogComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

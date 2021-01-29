@@ -20,16 +20,34 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-
   exports: [
-    MatButtonModule, MatCardModule, MatDialogModule, MatTableModule, MatSortModule,
-    MatInputModule, MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule,
-    MatTabsModule, MatSidenavModule, MatBadgeModule, MatFormFieldModule, MatIconModule,
-    MatToolbarModule, MatDividerModule, MatGridListModule, MatSelectModule, MatProgressBarModule,
-    MatChipsModule, MatPaginatorModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatAutocompleteModule,
+    MatTabsModule,
+    MatSidenavModule,
+    MatBadgeModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatGridListModule,
+    MatSelectModule,
+    MatProgressBarModule,
+    MatChipsModule,
+    MatPaginatorModule,
+    ClipboardModule,
+    MatTooltipModule,
   ],
-
 })
-export class AppMaterialComponentsModule { }
+export class AppMaterialComponentsModule {}

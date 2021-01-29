@@ -8,16 +8,21 @@ import { LoginLayoutComponent } from './_layout/login-layout/login-layout.compon
 import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.component';
 import { ServerSelectionComponent } from './auth/server-selection/server-selection.component';
 import { ConnectComponent } from './auth/connect/connect.component';
+import { RecentCallsComponent } from './_components/recent-calls/recent-calls.component';
 
 const routes: Routes = [
-
   // application pages
   {
     path: '',
     component: AppLayoutComponent,
     children: [
       { path: '', component: DashboardComponent, pathMatch: 'full' },
-    ]
+      {
+        path: 'recentcalls',
+        component: RecentCallsComponent,
+        pathMatch: 'full',
+      },
+    ],
   },
 
   // login, forgot password pages
@@ -30,16 +35,15 @@ const routes: Routes = [
       { path: 'connect', component: ConnectComponent },
       { path: 'phone', component: PhoneSelectionComponent },
       { path: 'forgot', component: LoginComponent },
-    ]
+    ],
   },
 
   // // default route
   // { path: '**', redirectTo: '' }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

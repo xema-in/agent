@@ -1,21 +1,22 @@
 <ul class="nav flex-column mt-2">
   <li class="nav-item  pb-2">
-    <a class="nav-link active" routerLink="/dashboard">
+    <a class="nav-link active" routerLink="/">
       <mat-icon>dashboard</mat-icon><br>
       <span data-feather="home"></span>
-      Dashboard <span class="sr-only">(current)</span>
+      Dashboard
+      <span class="sr-only">(current)</span>
     </a>
 
   </li>
 
   <div class="dropdown-divider w-50 d-block mx-auto"></div>
-  <!-- <li class="nav-item pt-2">
-        <a class="nav-link" routerLink="/dashboard">
-            <mat-icon>headset_mic</mat-icon><br>
-            <span data-feather="file"></span>
-            Phones
-        </a>
-    </li>
+  <li class="nav-item pt-2">
+    <a style="cursor: pointer" class="nav-link" (click)="callhistory()">
+      <mat-icon>list</mat-icon><br>
+      <span data-feather="file"></span>
+      Calls
+    </a>
+  </li>
 
-    <div class="dropdown-divider w-50 d-block mx-auto"></div> -->
+  <div class="dropdown-divider w-50 d-block mx-auto"></div>
 </ul>
