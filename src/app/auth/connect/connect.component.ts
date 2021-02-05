@@ -13,8 +13,9 @@ export class ConnectComponent implements OnInit {
   ngOnInit() {
     this.service.setupServerConnection();
 
-    this.service.getServerConnection().connectionState.subscribe((state) => {
-      this.service.setAppState({ state: 'Connected' });
+    this.service.getServerConnection().connectionState.subscribe((connectionState) => {
+      if (connectionState.connected === true)
+        this.service.setAppState({ state: 'Connected' });
     });
 
     this.service.connect();

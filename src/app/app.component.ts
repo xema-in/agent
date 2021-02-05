@@ -14,6 +14,8 @@ export class AppComponent {
 
     this.service.appState.subscribe((state) => {
 
+      console.log(state);
+
       switch (state.state) {
 
         case 'Unknown': {
