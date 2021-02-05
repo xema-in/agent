@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { BackendService } from './_shared/backend.service';
 
 @Component({
@@ -35,6 +36,18 @@ export class AppComponent {
         }
 
         case 'Connected': {
+          this.service.getServerConnection().connectionState.subscribe((connectionState) => {
+            if (connectionState.connected === false) {
+              Swal.fire({
+                icon: 'error',
+                title: connectionState.state,
+                text: 'Your session is terminated!'
+              }).then(() => {
+                this.service.setAppState({ state: 'ServerFound', connected: false });
+              });
+            }
+          });
+
           this.router.navigateByUrl('/phone');
           break;
         }
