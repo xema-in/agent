@@ -26,7 +26,7 @@
     "@xema/team-monitor-panel": "0.0.1",
     "bootstrap": "^4.5.3",
     "font-awesome": "^4.7.0",
-    "jema": "0.0.29",
+    "jema": "0.0.42",
     "jquery": "^3.5.1",
     "ngx-timeago": "^2.0.0",
     "popper.js": "^1.16.1",
