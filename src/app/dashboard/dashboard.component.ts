@@ -10,8 +10,10 @@ import { SharedDataService } from '../_shared/shared-data.service';
 })
 
 export class DashboardComponent implements OnInit {
+
   teamLead = false;
   serverConnection: ServerConnection;
+  task: any;
 
   constructor(private service: BackendService, public recentCall: SharedDataService) {
     this.serverConnection = service.getServerConnection();
@@ -22,6 +24,9 @@ export class DashboardComponent implements OnInit {
       this.teamLead = status;
     });
 
+    this.serverConnection.task.subscribe((task) => {
+      this.task = task;
+    })
   }
 
 }
