@@ -56,7 +56,7 @@ export class RecentCallsComponent implements OnInit {
   }
 
   fetchData() {
-    this.service.cdrslist(this.queryParameters).subscribe(
+    this.bus.getCallHistory(this.queryParameters).subscribe(
       (data: any) => {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;

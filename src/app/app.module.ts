@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { QueueMonitorTablePanelModule } from '@xema/queue-monitor-table-panel';
+import { TeamMonitorTablePanelModule } from '@xema/team-monitor-table-panel';
 import { TimeagoModule, TimeagoFormatter, TimeagoClock } from 'ngx-timeago';
-import { QueueMonitorPanelModule } from '@xema/queue-monitor-panel';
-import { TeamMonitorPanelModule } from '@xema/team-monitor-panel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialComponentsModule } from './app-material.module';
@@ -67,8 +67,8 @@ import { AgentInfoComponent } from './_components/agent-info/agent-info.componen
     ReactiveFormsModule,
     AppRoutingModule,
     AppMaterialComponentsModule,
-    QueueMonitorPanelModule,
-    TeamMonitorPanelModule,
+    QueueMonitorTablePanelModule,
+    TeamMonitorTablePanelModule,
     TimeagoModule.forRoot({
       formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
       clock: { provide: TimeagoClock, useClass: CustomClock },
