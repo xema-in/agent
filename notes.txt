@@ -1,0 +1,16 @@
+Merge
+=====
+
+git pull https://github.com/xema-in/agent.git main
+
+
+Update Jema
+===========
+npm install jema@latest
+
+
+Update Components
+=================
+npm install @xema/queue-monitor-panel@latest
+npm install @xema/team-monitor-panel@latest
+

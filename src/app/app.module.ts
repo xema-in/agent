@@ -33,6 +33,7 @@ import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
 import { HttpClientModule } from '@angular/common/http';
 import { CallhistoryDialogComponent } from './_components/callhistory-dialog/callhistory-dialog.component';
+import { AgentInfoComponent } from './_components/agent-info/agent-info.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CallhistoryDialogComponent } from './_components/callhistory-dialog/cal
     ServerSelectionComponent,
     ConnectComponent,
     CallhistoryDialogComponent,
+    AgentInfoComponent,
   ],
   imports: [
     BrowserModule,
