@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ServerConnection } from 'jema';
 import { BackendService } from 'src/app/_shared/backend.service';
 import Swal from 'sweetalert2';
@@ -11,14 +12,20 @@ import Swal from 'sweetalert2';
 export class ConnectComponent implements OnInit {
 
   server: ServerConnection;
+  reconnect: boolean;
 
-  constructor(private service: BackendService) { }
+  constructor(private route: ActivatedRoute, private service: BackendService) {
+    this.route.params.subscribe(params => {
+      this.reconnect = params['reconnect'];
+    });
+  }
 
   ngOnInit() {
     this.service.setupServerConnection();
     this.server = this.service.getServerConnection();
 
-    this.tryConnect();
+    if (!this.reconnect)
+      this.tryConnect();
   }
 
   tryConnect() {
@@ -48,7 +55,7 @@ export class ConnectComponent implements OnInit {
         // console.log(err);
         this.server.connectionState.subscribe((connectionState) => {
           if (connectionState.connected === true)
-            this.service.setAppState({ state: 'Connected' });
+            this.service.setAppState({ state: 'Connected', connected: true });
         });
 
         this.service.connect();

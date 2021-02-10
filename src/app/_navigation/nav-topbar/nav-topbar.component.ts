@@ -51,7 +51,7 @@ export class NavTopbarComponent implements OnInit {
     //   }
     // );
 
-    this.service.setAppState({ state: "Unknown" });
+    this.service.setAppState({ state: "Unknown", connected: false });
     this.router.navigateByUrl("/login");
   }
 

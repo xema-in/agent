@@ -15,8 +15,6 @@ export class AppComponent {
 
     this.service.appState.subscribe((state) => {
 
-      console.log(state);
-
       switch (state.state) {
 
         case 'Unknown': {
@@ -31,7 +29,11 @@ export class AppComponent {
 
         case 'LoggedIn': {
           this.router.navigateByUrl('/connect');
-          // this.service.connect();
+          break;
+        }
+
+        case 'RemoteLogout': {
+          this.router.navigateByUrl('/reconnect/true');
           break;
         }
 
@@ -43,7 +45,7 @@ export class AppComponent {
                 title: connectionState.state,
                 text: 'Your session is terminated!'
               }).then(() => {
-                this.service.setAppState({ state: 'ServerFound', connected: false });
+                this.service.setAppState({ state: 'RemoteLogout', connected: false });
               });
             }
           });

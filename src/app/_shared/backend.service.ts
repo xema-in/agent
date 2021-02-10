@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ServerConnection } from 'jema';
 import { BehaviorSubject } from 'rxjs';
+import { ConnectionState } from 'jema/lib/_interfaces/connection-state';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,13 @@ export class BackendService {
 
   private token: string;
   private serverConnection: ServerConnection;
-  public appState = new BehaviorSubject<any>({ state: 'Unknown' });
+  public appState = new BehaviorSubject<ConnectionState>({ state: 'Unknown', connected: false });
   public teamLeadFeatures = new BehaviorSubject<boolean>(false);
 
   constructor() {
   }
 
-  setAppState(state: any): void {
+  setAppState(state: ConnectionState): void {
     this.appState.next(state);
   }
 

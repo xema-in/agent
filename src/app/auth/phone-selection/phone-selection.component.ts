@@ -60,7 +60,7 @@ export class PhoneSelectionComponent implements OnInit {
     this.bus.mapPhone(param).subscribe(
       (data: any) => {
         this.isLoading = false;
-        this.service.setAppState({ state: 'Ready' });
+        this.service.setAppState({ state: 'Ready', connected: true });
         if (data.teamLead) {
           console.log('Enabling Team Lead features...');
           this.service.enableTeamLeadFeatures(true);
