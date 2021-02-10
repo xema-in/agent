@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BackendService {
 
+  private token: string;
   private serverConnection: ServerConnection;
   public appState = new BehaviorSubject<any>({ state: 'Unknown' });
   public teamLeadFeatures = new BehaviorSubject<boolean>(false);
@@ -23,16 +24,12 @@ export class BackendService {
     this.teamLeadFeatures.next(flag);
   }
 
-  // pingServer(ip) {
-  //   return this.remote.get(ip + '/api/Setup/Ping');
-  // }
-
   getToken(): string {
-    return localStorage.getItem('access_token');
+    return this.token;
   }
 
   saveToken(token: string) {
-    localStorage.setItem('access_token', token);
+    this.token = token;
   }
 
   getBackendUrl(): string {

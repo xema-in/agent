@@ -44,7 +44,6 @@ export class NavTopbarComponent implements OnInit {
     // this.bus.logout().subscribe(
     //   data => {
     //     this.service.setAppState({ state: 'Unknown' });
-    //     localStorage.removeItem('access_token');
     //     this.router.navigateByUrl('/login');
     //   },
     //   err => {
@@ -53,7 +52,6 @@ export class NavTopbarComponent implements OnInit {
     // );
 
     this.service.setAppState({ state: "Unknown" });
-    localStorage.removeItem("access_token");
     this.router.navigateByUrl("/login");
   }
 
