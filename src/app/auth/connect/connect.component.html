@@ -1,3 +1,19 @@
-<p>
-  Connecting...
-</p>
+<mat-card>
+  <mat-card-header>
+    <div mat-card-avatar class="agent-image"></div>
+    <mat-card-title class="mb-1">Agent</mat-card-title>
+    <mat-card-subtitle>Welcome back</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mat-card-subtitle">
+      This is a business use computer system and is for authorized use only! Users of this computer system have no
+      explicit or implicit expectation of privacy. Any and all user activity, data files, and communications on this
+      system may be intercepted, monitored, recorded, copied, audited, inspected, and disclosed to local, state, or
+      federal law enforcement, administrators, and/or their authorized agents. By clicking SUBMIT the user agrees to
+      the above statement.
+    </div>
+  </mat-card-content>
+  <mat-card-actions class="w-75">
+    <button mat-raised-button color="primary" (click)="tryConnect()">Connect</button>
+  </mat-card-actions>
+</mat-card>
