@@ -24,7 +24,7 @@ export class ServerSelectionComponent implements OnInit {
     if (ManagerEnvironment.getBackendUrl() !== null &&
       ManagerEnvironment.getBackendUrl() !== undefined &&
       ManagerEnvironment.getBackendUrl() !== '') {
-      this.service.setAppState({ state: 'ServerFound' });
+      this.service.setAppState({ state: 'ServerFound', connected: false });
     } else {
       const detectedServerName = location.hostname + (location.port ? ':' + location.port : '');
       const detectedProtocol = location.protocol;
@@ -49,7 +49,7 @@ export class ServerSelectionComponent implements OnInit {
     }
 
     this.service.saveBackendIpAddress(url);
-    this.service.setAppState({ state: 'ServerFound' });
+    this.service.setAppState({ state: 'ServerFound', connected: false });
   }
 
 

@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         this.isLoading = false;
         this.disable = false;
         this.service.saveToken(data.auth_token);
-        this.service.setAppState({ state: 'LoggedIn' });
+        this.service.setAppState({ state: 'LoggedIn', connected: false });
       },
       err => {
         this.isLoading = false;
