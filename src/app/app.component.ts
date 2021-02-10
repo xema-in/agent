@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { BackendService } from './_shared/backend.service';
 
 @Component({
@@ -13,8 +14,6 @@ export class AppComponent {
   constructor(private service: BackendService, private router: Router) {
 
     this.service.appState.subscribe((state) => {
-
-      console.log(state);
 
       switch (state.state) {
 
@@ -30,11 +29,27 @@ export class AppComponent {
 
         case 'LoggedIn': {
           this.router.navigateByUrl('/connect');
-          // this.service.connect();
+          break;
+        }
+
+        case 'RemoteLogout': {
+          this.router.navigateByUrl('/reconnect/true');
           break;
         }
 
         case 'Connected': {
+          this.service.getServerConnection().connectionState.subscribe((connectionState) => {
+            if (connectionState.connected === false) {
+              Swal.fire({
+                icon: 'error',
+                title: connectionState.state,
+                text: 'Your session is terminated!'
+              }).then(() => {
+                this.service.setAppState({ state: 'RemoteLogout', connected: false });
+              });
+            }
+          });
+
           this.router.navigateByUrl('/phone');
           break;
         }

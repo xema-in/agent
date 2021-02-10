@@ -2,20 +2,22 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { ServerConnection } from 'jema';
 import { BehaviorSubject } from 'rxjs';
+import { ConnectionState } from 'jema/lib/_interfaces/connection-state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
+  private token: string;
   private serverConnection: ServerConnection;
-  public appState = new BehaviorSubject<any>({ state: 'Unknown' });
+  public appState = new BehaviorSubject<ConnectionState>({ state: 'Unknown', connected: false });
   public teamLeadFeatures = new BehaviorSubject<boolean>(false);
 
   constructor() {
   }
 
-  setAppState(state: any): void {
+  setAppState(state: ConnectionState): void {
     this.appState.next(state);
   }
 
@@ -23,16 +25,12 @@ export class BackendService {
     this.teamLeadFeatures.next(flag);
   }
 
-  // pingServer(ip) {
-  //   return this.remote.get(ip + '/api/Setup/Ping');
-  // }
-
   getToken(): string {
-    return localStorage.getItem('access_token');
+    return this.token;
   }
 
   saveToken(token: string) {
-    localStorage.setItem('access_token', token);
+    this.token = token;
   }
 
   getBackendUrl(): string {

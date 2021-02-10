@@ -30,6 +30,7 @@ const routes: Routes = [
       { path: 'connect', component: ConnectComponent },
       { path: 'phone', component: PhoneSelectionComponent },
       { path: 'forgot', component: LoginComponent },
+      { path: 'reconnect/:reconnect', component: ConnectComponent },
     ]
   },
 
