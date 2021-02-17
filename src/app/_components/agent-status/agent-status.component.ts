@@ -96,7 +96,7 @@ export class AgentStatusComponent implements OnInit {
       }
     });
 
-    this.bus.agentInfo.subscribe((res) => {
+    this.bus.info.subscribe((res) => {
       this.info = res;
     });
 

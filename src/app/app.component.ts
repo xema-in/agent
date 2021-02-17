@@ -55,9 +55,6 @@ export class AppComponent {
         }
 
         case 'Ready': {
-          const bus = this.service.getServerConnection();
-          bus.refreshPhoneState();
-          bus.getAgentInfo();
           this.router.navigateByUrl('/');
           break;
         }

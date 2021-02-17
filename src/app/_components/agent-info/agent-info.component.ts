@@ -16,7 +16,7 @@ export class AgentInfoComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.bus.agentInfo.subscribe((agentInfo) => {
+    this.bus.info.subscribe((agentInfo) => {
       this.info = agentInfo;
     });
 
