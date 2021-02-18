@@ -33,6 +33,7 @@ import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
 import { AgentInfoComponent } from './_components/agent-info/agent-info.component';
 import { BreakLogoutControlComponent } from './break-logout-control/break-logout-control.component';
+import { LeftSidebarNavigatorComponent } from './left-sidebar-navigator/left-sidebar-navigator.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { BreakLogoutControlComponent } from './break-logout-control/break-logout
     ServerSelectionComponent,
     ConnectComponent,
     AgentInfoComponent,
-    BreakLogoutControlComponent
+    BreakLogoutControlComponent,
+    LeftSidebarNavigatorComponent
   ],
   imports: [
     BrowserModule,
