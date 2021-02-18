@@ -3,7 +3,7 @@ import { BackendService } from '../../_shared/backend.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServerConnection } from 'jema';
-import { ManagerEnvironment } from 'src/app/_code/manager-environment';
+import { PhoneState } from 'jema/lib/_interfaces/phone-state';
 
 @Component({
   selector: 'app-phone-status',
@@ -12,7 +12,7 @@ import { ManagerEnvironment } from 'src/app/_code/manager-environment';
 })
 export class PhoneStatusComponent implements OnInit {
   bus: ServerConnection;
-  phoneState: any;
+  phoneState: PhoneState;
   onHook: boolean;
   btnColor: string;
 

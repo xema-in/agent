@@ -1,11 +1,4 @@
-<span [ngClass]="btnColor" class="btn btn-sm">
-  <span style="position: relative;top: -5px;">
-    <span (click)="unassignPhone()">
-      <mat-icon style="position: relative; top:7px;">contact_phone</mat-icon>
-      &nbsp;
-      <span>{{phoneState.device}}</span>
-    </span>
-    <!-- &nbsp; <span>|</span> &nbsp;
-    <span *ngIf="phoneState.state !== 'INUSE'">{{phoneState.state}}</span> -->
-  </span>
-</span>
+<button mat-flat-button [ngClass]="btnColor" (click)="unassignPhone()">
+  <mat-icon>local_phone</mat-icon>
+  <span>&nbsp;{{phoneState.device}}</span>
+</button>
