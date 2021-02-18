@@ -49,7 +49,7 @@ export class AgentStatusComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bus.queueUpdates.subscribe((queueUpdates) => {
+    this.bus.queueStates.subscribe((queueUpdates) => {
       this.queueUpdates = queueUpdates;
     });
 
