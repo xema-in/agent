@@ -27,7 +27,7 @@ import { AgentStatusComponent } from './_components/agent-status/agent-status.co
 import { MessengerComponent } from './_components/messenger/messenger.component';
 import { RecentCallsComponent } from './_components/recent-calls/recent-calls.component';
 import { AppLayoutComponent } from './_layout/app-layout/app-layout.component';
-import { LoginLayoutComponent } from './_layout/login-layout/login-layout.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
