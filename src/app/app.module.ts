@@ -29,10 +29,10 @@ import { RecentCallsComponent } from './_components/recent-calls/recent-calls.co
 import { AppLayoutComponent } from './_layout/app-layout/app-layout.component';
 import { LoginLayoutComponent } from './_layout/login-layout/login-layout.component';
 import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.component';
-import { NavTopbarComponent } from './_navigation/nav-topbar/nav-topbar.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
 import { AgentInfoComponent } from './_components/agent-info/agent-info.component';
+import { BreakLogoutControlComponent } from './break-logout-control/break-logout-control.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,6 @@ import { AgentInfoComponent } from './_components/agent-info/agent-info.componen
     PhoneStatusComponent,
     LoginComponent,
     DashboardComponent,
-    NavTopbarComponent,
     NavSidebarComponent,
     AppLayoutComponent,
     LoginLayoutComponent,
@@ -55,7 +54,8 @@ import { AgentInfoComponent } from './_components/agent-info/agent-info.componen
     RecentCallsComponent,
     ServerSelectionComponent,
     ConnectComponent,
-    AgentInfoComponent
+    AgentInfoComponent,
+    BreakLogoutControlComponent
   ],
   imports: [
     BrowserModule,
