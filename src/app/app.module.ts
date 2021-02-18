@@ -26,7 +26,7 @@ import { AgentListComponent } from './_components/agent-list/agent-list.componen
 import { AgentStatusComponent } from './_components/agent-status/agent-status.component';
 import { MessengerComponent } from './_components/messenger/messenger.component';
 import { RecentCallsComponent } from './_components/recent-calls/recent-calls.component';
-import { AppLayoutComponent } from './_layout/app-layout/app-layout.component';
+import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.component';
 import { CustomClock } from './_code/custom-clock';
