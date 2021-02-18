@@ -1,29 +1,18 @@
-<ul class="list-unstyled">
-  <li>
-    <div *ngFor="let call of ongoingCallsList">
-      <button *ngIf="call.cli !== unknown" mat-raised-button color="primary" (click)="park(call)">
-        <span style="margin-top:6px">Hold</span> &nbsp;
-        {{getCli(call.cli)}}
-      </button>
-    </div>
-  </li>
-  <li>
-    <div>
-      <button mat-raised-button color="primary">
-        <span *ngIf="conferenceCall?.members.length > 0">
-          {{conferenceCall?.members.length}} &nbsp;
-          <i class="material-icons pull-right" style="margin-top:6px">call_split</i>
-        </span>
-      </button>
-    </div>
-  </li>
-  <li>
+<i *ngFor="let call of ongoingCallsList">
+  <button *ngIf="call.cli !== unknown" mat-flat-button (click)="park(call)">
+    <span>Hold</span> &nbsp; {{getCli(call.cli)}}
+  </button>
+</i>
 
-    <div *ngFor="let call of parkedChannelsList" style="position:relative;top:-20px;">
-      <button mat-raised-button color="primary" (click)="resume(call)">
-        <span style="margin-top:6px">Resume</span> &nbsp;
-        {{getCli(call.cli)}}
-      </button>
-    </div>
-  </li>
-</ul>
+<button mat-flat-button>
+  <span *ngIf="conferenceCall?.members.length > 0">
+    {{conferenceCall?.members.length}} &nbsp;
+    <i class="material-icons pull-right">call_split</i>
+  </span>
+</button>
+
+<i *ngFor="let call of parkedChannelsList">
+  <button mat-flat-button (click)="resume(call)">
+    <span>Resume</span> &nbsp; {{getCli(call.cli)}}
+  </button>
+</i>
