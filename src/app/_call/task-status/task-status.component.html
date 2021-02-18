@@ -1,7 +1,4 @@
-<span *ngIf="taskAssigned" class="btn btn-sm btn-secondary py-2">
-  <!-- <span class="mat-button-wrapper"> Q: {{task.queue.name}} ({{task.call.attributes.destcalleridnum}}) </span>
- <span class="mat-button-wrapper"> C: {{task.call.attributes.calleridnum}} ({{task.call.attributes.calleridname}}) </span> -->
-  <span class="mat-button-wrapper"> Q: {{task.call.queue}} </span>
-  &nbsp;|&nbsp;
-  <span class="mat-button-wrapper"> C: {{task.call.attributes.calleridnum}}</span>
-</span>
+<button mat-flat-button class="btn-secondary">
+  <mat-icon>reorder</mat-icon>
+  <span>{{task.call.queue}} | {{task.call.attributes.calleridnum}}</span>
+</button>

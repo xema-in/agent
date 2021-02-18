@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/_shared/backend.service';
-import { Router } from '@angular/router';
 import { ServerConnection } from 'jema';
 
 @Component({
@@ -12,21 +11,21 @@ export class TaskStatusComponent implements OnInit {
 
   bus: ServerConnection;
   task: any;
-  taskAssigned: boolean;
+  hasTask = false;
 
-  constructor(private service: BackendService, private router: Router) {
+  constructor(private service: BackendService) {
     this.bus = service.getServerConnection();
   }
 
   ngOnInit() {
 
     this.bus.task.subscribe((task) => {
-      if (task === null || task === undefined) {
-        this.taskAssigned = false;
-      } else {
-        this.taskAssigned = true;
-      }
       this.task = task;
+      if (this.task === null || this.task === undefined) {
+        this.hasTask = false;
+      } else {
+        this.hasTask = true;
+      }
     });
 
   }
