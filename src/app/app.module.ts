@@ -28,7 +28,6 @@ import { MessengerComponent } from './_components/messenger/messenger.component'
 import { RecentCallsComponent } from './_components/recent-calls/recent-calls.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
-import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
 import { AgentInfoComponent } from './_components/agent-info/agent-info.component';
@@ -41,7 +40,6 @@ import { LeftSidebarNavigatorComponent } from './left-sidebar-navigator/left-sid
     PhoneStatusComponent,
     LoginComponent,
     DashboardComponent,
-    NavSidebarComponent,
     AppLayoutComponent,
     LoginLayoutComponent,
     PhoneSelectionComponent,
