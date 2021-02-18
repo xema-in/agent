@@ -1,14 +1,16 @@
-<div class="wallpaper" fxLayout="column" fxLayoutAlign="space-around center">
+<div class="wallpaper" fxLayout="column">
 
   <div fxFlex="20%"></div>
 
-  <div fxFlex="40%" fxLayout="row">
+  <div fxFlex="400px">
 
-    <div fxFlex="50%"></div>
-    <div fxFlex>
-      <router-outlet></router-outlet>
+    <div fxLayout="row">
+      <div fxFlex="60%"></div>
+      <div fxFlex="350px">
+        <router-outlet></router-outlet>
+      </div>
+      <div fxFlex></div>
     </div>
-    <div fxFlex="20%"></div>
 
   </div>
 
