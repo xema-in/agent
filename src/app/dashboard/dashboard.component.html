@@ -1,24 +1,14 @@
-<div style="margin-left: 16px; margin-top: 16px;">
-  <div fxLayout="row wrap" fxLayout.xs="column" fxFlexFill fxLayoutAlign="start stretch" fxLayoutGap="16px grid">
+<div class="gutter">
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start stretch">
 
-    <app-agent-info *ngIf="!task" fxFlex="1 0 250px"></app-agent-info>
-    <app-task-info *ngIf="task" fxFlex="1 0 250px"></app-task-info>
-
-    <app-agent-status fxFlex="1 0 250px"></app-agent-status>
+    <app-agent-info-card class="gutter" *ngIf="!task" fxFlex="250px"></app-agent-info-card>
+    <app-task-info-card class="gutter" *ngIf="task" fxFlex="250px"></app-task-info-card>
+    <app-variables-card class="gutter" *ngIf="task" fxFlex="250px"></app-variables-card>
+    <app-crms-list-card class="gutter" *ngIf="task" fxFlex="250px"></app-crms-list-card>
 
   </div>
 
 </div>
-
-
-<div class="row mt-5">
-  <!-- Space for Top Bar -->
-</div>
-
-<!-- <div class="row">
-  <app-agent-info *ngIf="!task"></app-agent-info>
-</div> -->
-
 
 <div *ngIf="teamLead">
 

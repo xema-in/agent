@@ -1,0 +1,13 @@
+<div class="col-sm-3">
+  <div class="card border-info">
+    <div class="card-header bg-info text-white">Variables
+      <i class="material-icons pull-right" style="font-size:28px;">queue</i>
+    </div>
+    <div class="card-body">
+      <div class="clearfix" *ngFor="let item of filteredvariables">
+        <p class="card-text float-left text-secondary"> {{item.key}} :</p>
+        <p class="text-right float-right"> {{item.value}}</p>
+      </div>
+    </div>
+  </div>
+</div>

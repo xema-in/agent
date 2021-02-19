@@ -30,9 +30,12 @@ import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
-import { AgentInfoComponent } from './agent-info/agent-info.component';
 import { BreakLogoutControlComponent } from './break-logout-control/break-logout-control.component';
 import { LeftSidebarNavigatorComponent } from './left-sidebar-navigator/left-sidebar-navigator.component';
+import { VariablesCardComponent } from './variables-card/variables-card.component';
+import { TaskInfoCardComponent } from './task-info-card/task-info-card.component';
+import { AgentInfoCardComponent } from './agent-info-card/agent-info-card.component';
+import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +56,12 @@ import { LeftSidebarNavigatorComponent } from './left-sidebar-navigator/left-sid
     RecentCallsComponent,
     ServerSelectionComponent,
     ConnectComponent,
-    AgentInfoComponent,
     BreakLogoutControlComponent,
-    LeftSidebarNavigatorComponent
+    LeftSidebarNavigatorComponent,
+    VariablesCardComponent,
+    TaskInfoCardComponent,
+    AgentInfoCardComponent,
+    CrmsListCardComponent
   ],
   imports: [
     BrowserModule,

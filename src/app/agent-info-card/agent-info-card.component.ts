@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from 'src/app/_shared/backend.service';
+import { BackendService } from '../_shared/backend.service';
 
 @Component({
-  selector: 'app-agent-info',
-  templateUrl: './agent-info.component.html',
-  styleUrls: ['./agent-info.component.css']
+  selector: 'app-agent-info-card',
+  templateUrl: './agent-info-card.component.html',
+  styleUrls: ['./agent-info-card.component.css']
 })
-export class AgentInfoComponent implements OnInit {
+export class AgentInfoCardComponent implements OnInit {
   bus: any;
   info: any;
 
@@ -21,5 +21,4 @@ export class AgentInfoComponent implements OnInit {
     });
 
   }
-
 }

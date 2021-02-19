@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgentInfoComponent } from './agent-info.component';
+import { AgentInfoCardComponent } from './agent-info-card.component';
 
-describe('AgentInfoComponent', () => {
-  let component: AgentInfoComponent;
-  let fixture: ComponentFixture<AgentInfoComponent>;
+describe('AgentInfoCardComponent', () => {
+  let component: AgentInfoCardComponent;
+  let fixture: ComponentFixture<AgentInfoCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AgentInfoComponent ]
+      declarations: [ AgentInfoCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgentInfoComponent);
+    fixture = TestBed.createComponent(AgentInfoCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
