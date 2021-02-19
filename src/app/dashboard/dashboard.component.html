@@ -1,3 +1,16 @@
+<div style="margin-left: 16px; margin-top: 16px;">
+  <div fxLayout="row wrap" fxLayout.xs="column" fxFlexFill fxLayoutAlign="start stretch" fxLayoutGap="16px grid">
+
+    <app-agent-info *ngIf="!task" fxFlex="1 0 250px"></app-agent-info>
+    <app-task-info *ngIf="task" fxFlex="1 0 250px"></app-task-info>
+
+    <app-agent-status fxFlex="1 0 250px"></app-agent-status>
+
+  </div>
+
+</div>
+
+
 <div class="row mt-5">
   <!-- Space for Top Bar -->
 </div>
@@ -6,40 +19,11 @@
   <app-agent-info *ngIf="!task"></app-agent-info>
 </div> -->
 
-<app-agent-status></app-agent-status>
 
 <div *ngIf="teamLead">
 
-  <div class="row mt-5">
-    <!-- Space -->
-  </div>
-
   <!-- <xe-queue-monitor-panel [serverConnection]="serverConnection"></xe-queue-monitor-panel> -->
-
-  <div class="row mt-5">
-    <!-- Space -->
-  </div>
 
   <!-- <xe-team-monitor-panel [serverConnection]="serverConnection"></xe-team-monitor-panel> -->
 
-</div>
-
-<div class="row mt-5">
-  <!-- Space -->
-</div>
-
-<div class="row">
-  <div class="col-md-9">
-    <br />
-
-    <!-- <app-recent-calls></app-recent-calls> -->
-
-  </div>
-
-  <div class="col-sm-3">
-    <br>
-
-    <!-- <app-messenger></app-messenger> -->
-
-  </div>
 </div>
