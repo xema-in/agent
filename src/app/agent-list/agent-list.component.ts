@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { BackendService } from "../../_shared/backend.service";
-import { ChatMessage } from "../../_interfaces/chat.message";
+import { BackendService } from "../_shared/backend.service";
+import { ChatMessage } from "../_interfaces/chat.message";
 import { FormControl } from "@angular/forms";
 import { ServerConnection } from "jema";
 

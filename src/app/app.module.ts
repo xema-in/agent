@@ -22,15 +22,15 @@ import { DispositionToolsComponent } from './disposition-tools/disposition-tools
 import { CallManagementComponent } from './call-management/call-management.component';
 import { PhoneStatusComponent } from './phone-status/phone-status.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
-import { AgentListComponent } from './_components/agent-list/agent-list.component';
-import { AgentStatusComponent } from './_components/agent-status/agent-status.component';
-import { MessengerComponent } from './_components/messenger/messenger.component';
-import { RecentCallsComponent } from './_components/recent-calls/recent-calls.component';
+import { AgentListComponent } from './agent-list/agent-list.component';
+import { AgentStatusComponent } from './agent-status/agent-status.component';
+import { MessengerComponent } from './messenger/messenger.component';
+import { RecentCallsComponent } from './recent-calls/recent-calls.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
-import { AgentInfoComponent } from './_components/agent-info/agent-info.component';
+import { AgentInfoComponent } from './agent-info/agent-info.component';
 import { BreakLogoutControlComponent } from './break-logout-control/break-logout-control.component';
 import { LeftSidebarNavigatorComponent } from './left-sidebar-navigator/left-sidebar-navigator.component';
 
