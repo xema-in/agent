@@ -6,11 +6,11 @@ import { Channel } from 'src/app/_interfaces/channel';
 import { ServerConnection } from 'jema';
 
 @Component({
-  selector: 'app-ongoing-status',
-  templateUrl: './ongoing-status.component.html',
-  styleUrls: ['./ongoing-status.component.css'],
+  selector: 'app-call-management',
+  templateUrl: './call-management.component.html',
+  styleUrls: ['./call-management.component.css'],
 })
-export class OngoingStatusComponent implements OnInit {
+export class CallManagementComponent implements OnInit {
   bus: ServerConnection;
   ongoingCallsList: Array<ActiveCall>;
   parkedChannelsList: Array<Channel>;

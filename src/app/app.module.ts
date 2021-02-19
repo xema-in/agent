@@ -19,7 +19,7 @@ import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.
 import { ServerSelectionComponent } from './auth/server-selection/server-selection.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DispositionToolsComponent } from './_call/disposition-tools/disposition-tools.component';
-import { OngoingStatusComponent } from './_call/ongoing-status/ongoing-status.component';
+import { CallManagementComponent } from './_call/call-management/call-management.component';
 import { PhoneStatusComponent } from './phone-status/phone-status.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
 import { AgentListComponent } from './_components/agent-list/agent-list.component';
@@ -47,7 +47,7 @@ import { LeftSidebarNavigatorComponent } from './left-sidebar-navigator/left-sid
     DispositionToolsComponent,
     MatDialogComponent,
     TaskStatusComponent,
-    OngoingStatusComponent,
+    CallManagementComponent,
     AgentStatusComponent,
     MessengerComponent,
     RecentCallsComponent,

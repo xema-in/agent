@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OngoingStatusComponent } from './ongoing-status.component';
+import { CallManagementComponent } from './call-management.component';
 
 describe('OngoingStatusComponent', () => {
-  let component: OngoingStatusComponent;
-  let fixture: ComponentFixture<OngoingStatusComponent>;
+  let component: CallManagementComponent;
+  let fixture: ComponentFixture<CallManagementComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OngoingStatusComponent ]
+      declarations: [CallManagementComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OngoingStatusComponent);
+    fixture = TestBed.createComponent(CallManagementComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
