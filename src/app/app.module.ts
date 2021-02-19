@@ -18,7 +18,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.component';
 import { ServerSelectionComponent } from './auth/server-selection/server-selection.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DispositionToolsComponent } from './_call/disposition-tools/disposition-tools.component';
+import { DispositionToolsComponent } from './disposition-tools/disposition-tools.component';
 import { CallManagementComponent } from './call-management/call-management.component';
 import { PhoneStatusComponent } from './phone-status/phone-status.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
