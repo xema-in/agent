@@ -20,7 +20,7 @@ import { ServerSelectionComponent } from './auth/server-selection/server-selecti
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DispositionToolsComponent } from './_call/disposition-tools/disposition-tools.component';
 import { OngoingStatusComponent } from './_call/ongoing-status/ongoing-status.component';
-import { PhoneStatusComponent } from './_call/phone-status/phone-status.component';
+import { PhoneStatusComponent } from './phone-status/phone-status.component';
 import { TaskStatusComponent } from './_call/task-status/task-status.component';
 import { AgentListComponent } from './_components/agent-list/agent-list.component';
 import { AgentStatusComponent } from './_components/agent-status/agent-status.component';

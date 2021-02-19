@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from '../../_shared/backend.service';
+import { BackendService } from '../_shared/backend.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ServerConnection } from 'jema';
