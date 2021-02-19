@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CallManagementComponent } from './call-management.component';
 
-describe('OngoingStatusComponent', () => {
+describe('CallManagementComponent', () => {
   let component: CallManagementComponent;
   let fixture: ComponentFixture<CallManagementComponent>;
 
