@@ -9,6 +9,7 @@ import { BackendService } from '../_shared/backend.service';
 export class AgentInfoCardComponent implements OnInit {
   bus: any;
   info: any;
+  values = [];
 
   constructor(service: BackendService) {
     this.bus = service.getServerConnection();
@@ -16,8 +17,15 @@ export class AgentInfoCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.bus.info.subscribe((agentInfo) => {
-      this.info = agentInfo;
+    this.bus.info.subscribe((info) => {
+      this.info = info;
+
+      this.values = [
+        { name: 'Name', value: info?.agentInfo.agentName },
+        { name: 'User Id', value: info?.agentInfo.userId },
+        { name: 'First Login', value: new Date(info?.agentInfo.firstLogin).toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" }) },
+      ];
+
     });
 
   }
