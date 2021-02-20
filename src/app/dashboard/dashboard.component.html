@@ -1,19 +1,25 @@
 <div class="gutter">
-  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start stretch">
 
-    <app-agent-info-card class="gutter" *ngIf="!task" fxFlex="250px"></app-agent-info-card>
-    <app-task-info-card class="gutter" *ngIf="task" fxFlex="250px"></app-task-info-card>
-    <app-variables-card class="gutter" *ngIf="task" fxFlex="250px"></app-variables-card>
-    <app-crms-list-card class="gutter" *ngIf="task" fxFlex="250px"></app-crms-list-card>
+  <div fxLayout="column" fxLayoutAlign="start stretch">
+    <div fxFlex>
+      <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start stretch">
 
+        <app-agent-info-card class="gutter" *ngIf="!task" fxFlex="250px"></app-agent-info-card>
+        <app-task-info-card class="gutter" *ngIf="task" fxFlex="250px"></app-task-info-card>
+        <app-variables-card class="gutter" *ngIf="task" fxFlex="250px"></app-variables-card>
+        <app-crms-list-card class="gutter" *ngIf="task" fxFlex="250px"></app-crms-list-card>
+
+      </div>
+    </div>
+    <div fxFlex *ngIf="teamLead">
+
+      <!-- <xe-queue-monitor-panel [serverConnection]="serverConnection"></xe-queue-monitor-panel> -->
+
+      <!-- <xe-team-monitor-panel [serverConnection]="serverConnection"></xe-team-monitor-panel> -->
+
+    </div>
+
+    <div fxFlex="1 1 500px"></div>
   </div>
-
-</div>
-
-<div *ngIf="teamLead">
-
-  <!-- <xe-queue-monitor-panel [serverConnection]="serverConnection"></xe-queue-monitor-panel> -->
-
-  <!-- <xe-team-monitor-panel [serverConnection]="serverConnection"></xe-team-monitor-panel> -->
 
 </div>
