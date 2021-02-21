@@ -46,9 +46,9 @@ export class TaskInfoCardComponent implements OnInit {
         this.service.secondsClock.subscribe((data) => {
           this.currentprogress += 1;
           this.completed = (this.currentprogress / this.ahtTarget) * 100;
-          this.color = 'green';
+          this.color = 'green-progress-bar';
           if (this.currentprogress > this.ahtTarget) {
-            this.color = 'warn';
+            this.color = 'red-progress-bar';
           }
         });
 
