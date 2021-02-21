@@ -27,8 +27,6 @@ export class TaskInfoCardComponent implements OnInit {
   ngOnInit(): void {
 
     this.bus.task.subscribe((task) => {
-      if (task === null || task === undefined) return;
-
       this.task = task;
 
       this.values = [
@@ -36,13 +34,13 @@ export class TaskInfoCardComponent implements OnInit {
         { name: 'Unique Id', value: task?.call.attributes.linkedid },
         { name: 'Cli', value: task?.call.attributes.destconnectedlinenum, enableCopy: true },
         { name: 'Start Time', value: new Date(task?.call.dateReceived).toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" }) },
-        { name: 'AHT Target', value: this.GetDuration(task?.queue.baseQueueOptions.ahtTarget) },
+        { name: 'AHT Target', value: this.formatTime(task?.queue.baseQueueOptions.ahtTarget) },
       ];
 
-      if (this.task.queue.baseQueueOptions.ahtTarget) {
-        this.ahtTarget = this.task.queue.baseQueueOptions.ahtTarget;
-        this.currentprogress = 0;
+      this.ahtTarget = this.task.queue.baseQueueOptions.ahtTarget;
+      this.currentprogress = 0;
 
+      if (this.task.queue.baseQueueOptions.ahtTarget) {
         this.service.secondsClock.subscribe((data) => {
           this.currentprogress += 1;
           this.completed = (this.currentprogress / this.ahtTarget) * 100;
@@ -51,7 +49,6 @@ export class TaskInfoCardComponent implements OnInit {
             this.color = 'red-progress-bar';
           }
         });
-
       }
 
       if (this.task && this.task.call.attributes.destconnectedlinenum) {
@@ -66,7 +63,7 @@ export class TaskInfoCardComponent implements OnInit {
 
   }
 
-  GetDuration(seconds) {
+  formatTime(seconds) {
     const h = Math.floor(seconds / 3600);
     const m = Math.floor((seconds % 3600) / 60);
     const s = Math.floor((seconds % 3600) % 60);
