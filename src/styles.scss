@@ -28,3 +28,11 @@ body {
     background-color: red;
   }
 }
+
+th.truncated200px, td.truncated200px {
+  overflow: hidden;
+  width:auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px;
+}
