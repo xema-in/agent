@@ -23,7 +23,6 @@ import { CallManagementComponent } from './call-management/call-management.compo
 import { PhoneStatusComponent } from './phone-status/phone-status.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
 import { AgentListComponent } from './agent-list/agent-list.component';
-import { AgentStatusComponent } from './agent-status/agent-status.component';
 import { MessengerComponent } from './messenger/messenger.component';
 import { RecentCallsComponent } from './recent-calls/recent-calls.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
@@ -51,7 +50,6 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     MatDialogComponent,
     TaskStatusComponent,
     CallManagementComponent,
-    AgentStatusComponent,
     MessengerComponent,
     RecentCallsComponent,
     ServerSelectionComponent,
