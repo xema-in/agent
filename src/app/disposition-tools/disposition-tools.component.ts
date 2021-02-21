@@ -25,7 +25,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: "app-disposition-tools",
   templateUrl: "./disposition-tools.component.html",
-  styleUrls: ["./disposition-tools.component.css"],
+  styleUrls: ["./disposition-tools.component.scss"],
 })
 export class DispositionToolsComponent implements OnInit {
   bus: ServerConnection;
