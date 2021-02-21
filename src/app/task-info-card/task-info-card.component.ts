@@ -7,7 +7,7 @@ import { BackendService } from '../_shared/backend.service';
 @Component({
   selector: 'app-task-info-card',
   templateUrl: './task-info-card.component.html',
-  styleUrls: ['./task-info-card.component.css']
+  styleUrls: ['./task-info-card.component.scss']
 })
 export class TaskInfoCardComponent implements OnInit {
   bus: ServerConnection;

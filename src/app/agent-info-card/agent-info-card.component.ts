@@ -4,7 +4,7 @@ import { BackendService } from '../_shared/backend.service';
 @Component({
   selector: 'app-agent-info-card',
   templateUrl: './agent-info-card.component.html',
-  styleUrls: ['./agent-info-card.component.css']
+  styleUrls: ['./agent-info-card.component.scss']
 })
 export class AgentInfoCardComponent implements OnInit {
   bus: any;

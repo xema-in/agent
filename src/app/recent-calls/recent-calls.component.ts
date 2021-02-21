@@ -7,7 +7,7 @@ import { ServerConnection } from 'jema';
 @Component({
   selector: 'app-recent-calls',
   templateUrl: './recent-calls.component.html',
-  styleUrls: ['./recent-calls.component.css']
+  styleUrls: ['./recent-calls.component.scss']
 })
 export class RecentCallsComponent implements OnInit {
   bus: ServerConnection;

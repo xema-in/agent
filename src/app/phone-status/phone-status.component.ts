@@ -8,7 +8,7 @@ import { PhoneState } from 'jema/lib/_interfaces/phone-state';
 @Component({
   selector: 'app-phone-status',
   templateUrl: './phone-status.component.html',
-  styleUrls: ['./phone-status.component.css'],
+  styleUrls: ['./phone-status.component.scss'],
 })
 export class PhoneStatusComponent implements OnInit {
   bus: ServerConnection;

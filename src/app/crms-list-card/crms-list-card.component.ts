@@ -5,7 +5,7 @@ import { BackendService } from '../_shared/backend.service';
 @Component({
   selector: 'app-crms-list-card',
   templateUrl: './crms-list-card.component.html',
-  styleUrls: ['./crms-list-card.component.css']
+  styleUrls: ['./crms-list-card.component.scss']
 })
 export class CrmsListCardComponent implements OnInit {
   bus: ServerConnection;

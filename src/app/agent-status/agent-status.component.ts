@@ -7,7 +7,7 @@ import { ServerConnection } from 'jema';
 @Component({
   selector: 'app-agent-status',
   templateUrl: './agent-status.component.html',
-  styleUrls: ['./agent-status.component.css'],
+  styleUrls: ['./agent-status.component.scss'],
 })
 export class AgentStatusComponent implements OnInit {
   bus: ServerConnection;

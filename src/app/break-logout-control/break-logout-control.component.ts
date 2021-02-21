@@ -8,7 +8,7 @@ import { BackendService } from '../_shared/backend.service';
 @Component({
   selector: 'app-break-logout-control',
   templateUrl: './break-logout-control.component.html',
-  styleUrls: ['./break-logout-control.component.css']
+  styleUrls: ['./break-logout-control.component.scss']
 })
 export class BreakLogoutControlComponent implements OnInit {
 

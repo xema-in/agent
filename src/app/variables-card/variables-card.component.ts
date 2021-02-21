@@ -5,7 +5,7 @@ import { BackendService } from '../_shared/backend.service';
 @Component({
   selector: 'app-variables-card',
   templateUrl: './variables-card.component.html',
-  styleUrls: ['./variables-card.component.css']
+  styleUrls: ['./variables-card.component.scss']
 })
 export class VariablesCardComponent implements OnInit {
   bus: ServerConnection;

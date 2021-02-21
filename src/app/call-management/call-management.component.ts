@@ -8,7 +8,7 @@ import { ServerConnection } from 'jema';
 @Component({
   selector: 'app-call-management',
   templateUrl: './call-management.component.html',
-  styleUrls: ['./call-management.component.css'],
+  styleUrls: ['./call-management.component.scss'],
 })
 export class CallManagementComponent implements OnInit {
   bus: ServerConnection;
