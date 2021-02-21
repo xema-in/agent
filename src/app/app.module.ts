@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TimeagoModule, TimeagoFormatter, TimeagoClock } from 'ngx-timeago';
-import { QueueMonitorPanelModule } from '@xema/queue-monitor-panel';
-import { TeamMonitorPanelModule } from '@xema/team-monitor-panel';
+import { QueueMonitorTablePanelModule } from '@xema/queue-monitor-table-panel';
+import { TeamMonitorTablePanelModule } from '@xema/team-monitor-table-panel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialComponentsModule } from './app-material.module';
@@ -69,8 +69,8 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     FlexLayoutModule,
     AppRoutingModule,
     AppMaterialComponentsModule,
-    QueueMonitorPanelModule,
-    TeamMonitorPanelModule,
+    QueueMonitorTablePanelModule,
+    TeamMonitorTablePanelModule,
     TimeagoModule.forRoot({
       formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
       clock: { provide: TimeagoClock, useClass: CustomClock },
