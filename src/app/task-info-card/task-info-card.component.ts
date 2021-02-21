@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { ServerConnection } from 'jema';
 import { BackendService } from '../_shared/backend.service';
 
+@UntilDestroy()
 @Component({
   selector: 'app-task-info-card',
   templateUrl: './task-info-card.component.html',
@@ -10,6 +12,8 @@ import { BackendService } from '../_shared/backend.service';
 export class TaskInfoCardComponent implements OnInit {
   bus: ServerConnection;
   task: any;
+  values = [];
+
   color: string;
   completed: any;
   ahtTarget: number;
@@ -23,20 +27,38 @@ export class TaskInfoCardComponent implements OnInit {
   ngOnInit(): void {
 
     this.bus.task.subscribe((task) => {
+      if (task === null || task === undefined) return;
 
       this.task = task;
+
+      this.values = [
+        { name: 'Queue Name', value: task?.call.queue },
+        { name: 'Unique Id', value: task?.call.attributes.linkedid },
+        { name: 'Cli', value: task?.call.attributes.destconnectedlinenum, enableCopy: true },
+        { name: 'Start Time', value: new Date(task?.call.dateReceived).toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" }) },
+        { name: 'AHT Target', value: this.GetDuration(task?.queue.baseQueueOptions.ahtTarget) },
+      ];
+
+      if (this.task.queue.baseQueueOptions.ahtTarget) {
+        this.ahtTarget = this.task.queue.baseQueueOptions.ahtTarget;
+        this.currentprogress = 0;
+
+        this.service.secondsClock.subscribe((data) => {
+          this.currentprogress += 1;
+          this.completed = (this.currentprogress / this.ahtTarget) * 100;
+          this.color = 'green';
+          if (this.currentprogress > this.ahtTarget) {
+            this.color = 'red';
+          }
+        });
+
+      }
 
       if (this.task && this.task.call.attributes.destconnectedlinenum) {
         if (this.task.call.attributes.destconnectedlinenum.startsWith('+91')) {
           this.task.call.attributes.destconnectedlinenum = this.task.call.attributes.destconnectedlinenum.substring(
             3
           );
-        }
-        clearInterval(this.interval);
-        if (this.task.queue.baseQueueOptions.ahtTarget) {
-          this.ahtTarget = this.task.queue.baseQueueOptions.ahtTarget;
-          this.currentprogress = 0;
-          this.startTimer();
         }
       }
 
@@ -52,18 +74,6 @@ export class TaskInfoCardComponent implements OnInit {
     const mDisplay = m > 0 ? m + (m === 1 ? ' min ' : ' min ') : '';
     const sDisplay = s > 0 ? s + (s === 1 ? ' s' : ' s') : '';
     return hDisplay + mDisplay + sDisplay;
-  }
-
-  startTimer() {
-    this.interval = setInterval(() => {
-      this.currentprogress += 1;
-      this.completed = (this.currentprogress / this.ahtTarget) * 100;
-      this.color = 'green';
-      if (this.currentprogress > this.ahtTarget) {
-        this.color = 'red';
-        // clearInterval(this.interval);
-      }
-    }, 1000);
   }
 
 }
