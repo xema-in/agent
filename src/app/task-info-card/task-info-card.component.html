@@ -4,7 +4,7 @@
     <mat-card-subtitle>Active Call</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-progress-bar mode="determinate" [value]="completed"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" [value]="completed" [color]="color"></mat-progress-bar>
     <mat-divider></mat-divider>
     <table mat-table [dataSource]="values">
       <ng-container matColumnDef="name">

@@ -48,7 +48,7 @@ export class TaskInfoCardComponent implements OnInit {
           this.completed = (this.currentprogress / this.ahtTarget) * 100;
           this.color = 'green';
           if (this.currentprogress > this.ahtTarget) {
-            this.color = 'red';
+            this.color = 'warn';
           }
         });
 
