@@ -1,21 +1,17 @@
-<div class="col-sm-3">
-  <div class="card border-secondary">
-    <div class="card-header bg-secondary text-white">CRM's
-      <i class="material-icons pull-right" style="font-size:28px;">list</i>
-    </div>
-    <div class="card-body">
-      <div class="col-md-4 pl-5 text-center" *ngIf="nodata">
-        <img style="height: 206px;" src="assets/nodata.png" alt="Xema">
-      </div>
-      <div class="clearfix">
-        <mat-chip-list class="mat-chip-list-stacked" *ngFor="let crm of crms">
-          <a href="{{crm.url}}" target="_blank">
-            <mat-chip selected>
-              {{crm.name}}
-            </mat-chip>
-          </a>
-        </mat-chip-list>
-      </div>
-    </div>
-  </div>
-</div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>External Apps</mat-card-title>
+    <mat-card-subtitle>CRM, Script, etc.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <table mat-table [dataSource]="crms">
+      <ng-container matColumnDef="value">
+        <td mat-cell *matCellDef="let crm">
+          <a mat-stroked-button href="{{crm.url}}" target="_blank">{{crm.name}}</a>
+        </td>
+      </ng-container>
+      <tr mat-row *matRowDef="let row; columns: ['value'];"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

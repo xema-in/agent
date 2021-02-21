@@ -9,7 +9,6 @@ import { BackendService } from '../_shared/backend.service';
 })
 export class CrmsListCardComponent implements OnInit {
   bus: ServerConnection;
-  nodata = true;
   crms: any;
 
   constructor(private service: BackendService) {
@@ -20,7 +19,6 @@ export class CrmsListCardComponent implements OnInit {
 
     this.bus.task.subscribe((task) => {
       this.crms = [];
-      this.nodata = true;
       if (
         task &&
         task.queue &&
@@ -28,7 +26,6 @@ export class CrmsListCardComponent implements OnInit {
         task.queue.crms.length > 0
       ) {
         this.crms = task.queue.crms;
-        this.nodata = false;
       }
 
     });
