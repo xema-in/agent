@@ -9,7 +9,7 @@ import { ServerConnection } from 'jema';
 @Component({
   selector: 'app-phone-selection',
   templateUrl: './phone-selection.component.html',
-  styleUrls: ['./phone-selection.component.css']
+  styleUrls: ['./phone-selection.component.scss']
 })
 export class PhoneSelectionComponent implements OnInit {
 

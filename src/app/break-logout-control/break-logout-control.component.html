@@ -1,0 +1,5 @@
+<button *ngIf="breakState.bsCode === 0" mat-raised-button color="warn" (click)="askBreak()">Break</button>
+<button *ngIf="breakState.bsCode === 1" mat-raised-button color="warn" (click)="cancelBreak()">Cancel Break</button>
+<button *ngIf="breakState.bsCode === 2" mat-raised-button color="accent" (click)="exitBreak()">Resume</button>
+
+<a href="" mat-raised-button style="margin-left: 16px;" (click)="logoff()">Logout</a>

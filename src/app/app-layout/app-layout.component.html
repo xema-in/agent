@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <img src="assets/logo-old.png" alt="Xema" width="45">
+  <span style="width: 32px;"></span>
+  <app-phone-status></app-phone-status>
+  <span style="width: 32px;"></span>
+  <app-task-status></app-task-status>
+  <span style="width: 32px;"></span>
+  <app-call-management></app-call-management>
+  <span style="width: 32px;"></span>
+  <app-disposition-tools></app-disposition-tools>
+  <span class="spacer"></span>
+  <app-break-logout-control></app-break-logout-control>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer mode="side" opened>
+    <app-left-sidebar-navigator></app-left-sidebar-navigator>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

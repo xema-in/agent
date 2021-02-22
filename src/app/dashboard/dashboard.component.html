@@ -1,45 +1,25 @@
-<div class="row mt-5">
-  <!-- Space for Top Bar -->
-</div>
+<div class="gutter">
 
-<!-- <div class="row">
-  <app-agent-info *ngIf="!task"></app-agent-info>
-</div> -->
+  <div fxLayout="column" fxLayoutAlign="start stretch">
+    <div fxFlex>
+      <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="start stretch">
 
-<app-agent-status></app-agent-status>
+        <app-agent-info-card class="gutter" *ngIf="!task" fxFlex="300px"></app-agent-info-card>
+        <app-task-info-card class="gutter" *ngIf="task" fxFlex="300px"></app-task-info-card>
+        <app-variables-card class="gutter" *ngIf="task" fxFlex="378px"></app-variables-card>
+        <app-crms-list-card class="gutter" *ngIf="task" fxFlex="200px"></app-crms-list-card>
 
-<div *ngIf="teamLead">
+      </div>
+    </div>
+    <div fxFlex *ngIf="teamLead">
 
-  <div class="row mt-5">
-    <!-- Space -->
+      <xe-queue-monitor-table-panel [serverConnection]="bus"></xe-queue-monitor-table-panel>
+
+      <xe-team-monitor-table-panel [serverConnection]="bus"></xe-team-monitor-table-panel>
+
+    </div>
+
+    <div fxFlex="1 1 500px"></div>
   </div>
 
-  <xe-queue-monitor-panel [serverConnection]="serverConnection"></xe-queue-monitor-panel>
-
-  <div class="row mt-5">
-    <!-- Space -->
-  </div>
-
-  <xe-team-monitor-panel [serverConnection]="serverConnection"></xe-team-monitor-panel>
-
-</div>
-
-<div class="row mt-5">
-  <!-- Space -->
-</div>
-
-<div class="row">
-  <div class="col-md-9">
-    <br />
-
-    <!-- <app-recent-calls></app-recent-calls> -->
-
-  </div>
-
-  <div class="col-sm-3">
-    <br>
-
-    <app-messenger></app-messenger>
-
-  </div>
 </div>

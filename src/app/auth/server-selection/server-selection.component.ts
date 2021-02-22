@@ -7,7 +7,7 @@ import { NetworkTester } from 'jema';
 @Component({
   selector: 'app-server-selection',
   templateUrl: './server-selection.component.html',
-  styleUrls: ['./server-selection.component.css']
+  styleUrls: ['./server-selection.component.scss']
 })
 export class ServerSelectionComponent implements OnInit {
 

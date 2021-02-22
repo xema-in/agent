@@ -1,0 +1,4 @@
+<button *ngIf="hasTask" mat-flat-button class="btn-secondary">
+  <mat-icon>reorder</mat-icon>
+  <span>&nbsp;{{task?.call?.queue}} | {{task?.call?.attributes?.calleridnum}}</span>
+</button>

@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AppLayoutComponent } from './_layout/app-layout/app-layout.component';
-import { LoginLayoutComponent } from './_layout/login-layout/login-layout.component';
+import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.component';
 import { ServerSelectionComponent } from './auth/server-selection/server-selection.component';
 import { ConnectComponent } from './auth/connect/connect.component';

@@ -5,8 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { TimeagoModule, TimeagoFormatter, TimeagoClock } from 'ngx-timeago';
-import { QueueMonitorPanelModule } from '@xema/queue-monitor-panel';
-import { TeamMonitorPanelModule } from '@xema/team-monitor-panel';
+import { QueueMonitorTablePanelModule } from '@xema/queue-monitor-table-panel';
+import { TeamMonitorTablePanelModule } from '@xema/team-monitor-table-panel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialComponentsModule } from './app-material.module';
@@ -18,21 +18,23 @@ import { LoginComponent } from './auth/login/login.component';
 import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.component';
 import { ServerSelectionComponent } from './auth/server-selection/server-selection.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { DispositionToolsComponent } from './_call/disposition-tools/disposition-tools.component';
-import { OngoingStatusComponent } from './_call/ongoing-status/ongoing-status.component';
-import { PhoneStatusComponent } from './_call/phone-status/phone-status.component';
-import { TaskStatusComponent } from './_call/task-status/task-status.component';
-import { AgentListComponent } from './_components/agent-list/agent-list.component';
-import { AgentStatusComponent } from './_components/agent-status/agent-status.component';
-import { MessengerComponent } from './_components/messenger/messenger.component';
-import { RecentCallsComponent } from './_components/recent-calls/recent-calls.component';
-import { AppLayoutComponent } from './_layout/app-layout/app-layout.component';
-import { LoginLayoutComponent } from './_layout/login-layout/login-layout.component';
-import { NavSidebarComponent } from './_navigation/nav-sidebar/nav-sidebar.component';
-import { NavTopbarComponent } from './_navigation/nav-topbar/nav-topbar.component';
+import { DispositionToolsComponent } from './disposition-tools/disposition-tools.component';
+import { CallManagementComponent } from './call-management/call-management.component';
+import { PhoneStatusComponent } from './phone-status/phone-status.component';
+import { TaskStatusComponent } from './task-status/task-status.component';
+import { AgentListComponent } from './agent-list/agent-list.component';
+import { MessengerComponent } from './messenger/messenger.component';
+import { RecentCallsComponent } from './recent-calls/recent-calls.component';
+import { AppLayoutComponent } from './app-layout/app-layout.component';
+import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { CustomClock } from './_code/custom-clock';
 import { CustomFormatter } from './_code/custom-formatter';
-import { AgentInfoComponent } from './_components/agent-info/agent-info.component';
+import { BreakLogoutControlComponent } from './break-logout-control/break-logout-control.component';
+import { LeftSidebarNavigatorComponent } from './left-sidebar-navigator/left-sidebar-navigator.component';
+import { VariablesCardComponent } from './variables-card/variables-card.component';
+import { TaskInfoCardComponent } from './task-info-card/task-info-card.component';
+import { AgentInfoCardComponent } from './agent-info-card/agent-info-card.component';
+import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component';
 
 @NgModule({
   declarations: [
@@ -40,8 +42,6 @@ import { AgentInfoComponent } from './_components/agent-info/agent-info.componen
     PhoneStatusComponent,
     LoginComponent,
     DashboardComponent,
-    NavTopbarComponent,
-    NavSidebarComponent,
     AppLayoutComponent,
     LoginLayoutComponent,
     PhoneSelectionComponent,
@@ -49,13 +49,17 @@ import { AgentInfoComponent } from './_components/agent-info/agent-info.componen
     DispositionToolsComponent,
     MatDialogComponent,
     TaskStatusComponent,
-    OngoingStatusComponent,
-    AgentStatusComponent,
+    CallManagementComponent,
     MessengerComponent,
     RecentCallsComponent,
     ServerSelectionComponent,
     ConnectComponent,
-    AgentInfoComponent
+    BreakLogoutControlComponent,
+    LeftSidebarNavigatorComponent,
+    VariablesCardComponent,
+    TaskInfoCardComponent,
+    AgentInfoCardComponent,
+    CrmsListCardComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +69,8 @@ import { AgentInfoComponent } from './_components/agent-info/agent-info.componen
     FlexLayoutModule,
     AppRoutingModule,
     AppMaterialComponentsModule,
-    QueueMonitorPanelModule,
-    TeamMonitorPanelModule,
+    QueueMonitorTablePanelModule,
+    TeamMonitorTablePanelModule,
     TimeagoModule.forRoot({
       formatter: { provide: TimeagoFormatter, useClass: CustomFormatter },
       clock: { provide: TimeagoClock, useClass: CustomClock },

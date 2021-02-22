@@ -6,7 +6,7 @@ import { BackendService } from './_shared/backend.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   title = 'Agent';
@@ -55,9 +55,6 @@ export class AppComponent {
         }
 
         case 'Ready': {
-          const bus = this.service.getServerConnection();
-          bus.refreshPhoneState();
-          bus.getAgentInfo();
           this.router.navigateByUrl('/');
           break;
         }

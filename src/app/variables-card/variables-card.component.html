@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Variables</mat-card-title>
+    <mat-card-subtitle>Information from IVR, Xapp, Trunk, etc.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <table mat-table [dataSource]="filteredvariables">
+      <ng-container matColumnDef="name">
+        <td class="truncated200px" mat-cell *matCellDef="let element"> {{element.key}} </td>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <td class="truncated200px" mat-cell *matCellDef="let element"> {{element.value}} </td>
+      </ng-container>
+      <tr mat-row *matRowDef="let row; columns: ['name', 'value'];"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

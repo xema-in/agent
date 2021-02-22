@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{task?.call.queue}}</mat-card-title>
+    <mat-card-subtitle>Active Call</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-progress-bar mode="determinate" [value]="completed" [ngClass]="color"></mat-progress-bar>
+    <mat-divider></mat-divider>
+    <table mat-table [dataSource]="values">
+      <ng-container matColumnDef="name">
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+      </ng-container>
+      <tr mat-row *matRowDef="let row; columns: ['name', 'value'];"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

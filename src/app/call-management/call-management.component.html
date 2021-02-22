@@ -1,0 +1,18 @@
+<i *ngFor="let call of ongoingCallsList">
+  <button *ngIf="call.cli !== unknown" mat-flat-button (click)="park(call)">
+    <span>Hold</span> &nbsp; {{getCli(call.cli)}}
+  </button>
+</i>
+
+<button mat-flat-button>
+  <span *ngIf="conferenceCall?.members.length > 0">
+    {{conferenceCall?.members.length}} &nbsp;
+    <i class="material-icons pull-right">call_split</i>
+  </span>
+</button>
+
+<i *ngFor="let call of parkedChannelsList">
+  <button mat-flat-button (click)="resume(call)">
+    <span>Resume</span> &nbsp; {{getCli(call.cli)}}
+  </button>
+</i>

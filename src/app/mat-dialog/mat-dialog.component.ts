@@ -22,7 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: "app-mat-dialog",
   templateUrl: "./mat-dialog.component.html",
-  styleUrls: ["./mat-dialog.component.css"],
+  styleUrls: ["./mat-dialog.component.scss"],
 })
 export class MatDialogComponent implements OnInit {
   bus: ServerConnection;

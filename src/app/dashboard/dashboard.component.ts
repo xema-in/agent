@@ -6,17 +6,17 @@ import { SharedDataService } from '../_shared/shared-data.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 
 export class DashboardComponent implements OnInit {
 
   teamLead = false;
-  serverConnection: ServerConnection;
+  bus: ServerConnection;
   task: any;
 
   constructor(private service: BackendService, public recentCall: SharedDataService) {
-    this.serverConnection = service.getServerConnection();
+    this.bus = service.getServerConnection();
   }
 
   ngOnInit() {
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
       this.teamLead = status;
     });
 
-    this.serverConnection.task.subscribe((task) => {
+    this.bus.task.subscribe((task) => {
       this.task = task;
     })
   }
