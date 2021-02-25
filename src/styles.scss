@@ -13,10 +13,6 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
-
 .green-progress-bar {
   .mat-progress-bar-fill::after {
     background-color: green;
@@ -28,6 +24,12 @@ body {
     background-color: red;
   }
 }
+
+// .full-width-table {
+//   .mat-table {
+//     width: 100%;
+//   }
+// }
 
 th.truncated200px, td.truncated200px {
   overflow: hidden;
