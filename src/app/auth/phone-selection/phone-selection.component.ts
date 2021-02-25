@@ -68,7 +68,6 @@ export class PhoneSelectionComponent implements OnInit {
         this.disable = false;
       },
       err => {
-        console.error(err);
         this.isLoading = false;
         this.disable = false;
         if (err.response !== undefined) { err = err.response; }

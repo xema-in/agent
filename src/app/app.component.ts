@@ -18,6 +18,7 @@ export class AppComponent {
       switch (state.state) {
 
         case 'Unknown': {
+          // this.router.navigateByUrl('/test');
           this.router.navigateByUrl('/server');
           break;
         }

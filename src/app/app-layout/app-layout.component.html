@@ -1,15 +1,13 @@
-<mat-toolbar color="primary">
-  <img src="assets/logo-old.png" alt="Xema" width="45">
-  <span style="width: 32px;"></span>
-  <app-phone-status></app-phone-status>
-  <span style="width: 32px;"></span>
-  <app-task-status></app-task-status>
-  <span style="width: 32px;"></span>
-  <app-call-management></app-call-management>
-  <span style="width: 32px;"></span>
-  <app-disposition-tools></app-disposition-tools>
-  <span class="spacer"></span>
-  <app-break-logout-control></app-break-logout-control>
+<mat-toolbar color="primary" fxLayout="row">
+  <img fxFlex="45px" src="assets/logo-old.png" alt="Xema">
+  <span fxFlex="32px"></span>
+  <app-phone-status fxFlex></app-phone-status>
+  <span fxFlex="32px"></span>
+  <app-task-status fxFlex></app-task-status>
+  <app-call-management fxFlex></app-call-management>
+  <app-disposition-tools fxFlex></app-disposition-tools>
+  <span fxFlex></span>
+  <app-break-logout-control fxFlex="250px"></app-break-logout-control>
 </mat-toolbar>
 
 <mat-drawer-container>

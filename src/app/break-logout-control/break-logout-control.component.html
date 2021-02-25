@@ -1,5 +1,46 @@
-<button *ngIf="breakState.bsCode === 0" mat-raised-button color="warn" (click)="askBreak()">Break</button>
-<button *ngIf="breakState.bsCode === 1" mat-raised-button color="warn" (click)="cancelBreak()">Cancel Break</button>
-<button *ngIf="breakState.bsCode === 2" mat-raised-button color="accent" (click)="exitBreak()">Resume</button>
+<div fxLayout="row">
+  <div fxFlex="32px">
+    <button mat-raised-button color="warn" (click)="askBreak()">
+      Break
+    </button>
 
-<a href="" mat-raised-button style="margin-left: 16px;" (click)="logoff()">Logout</a>
+  </div>
+  <div fxFlex="32px">
+    <button mat-raised-button color="warn" (click)="askBreak()">
+      Break
+    </button>
+
+  </div>
+
+  <!-- <span fxFlex></span> -->
+  <!-- <button fxFlex *ngIf="breakState.bsCode === 0" mat-raised-button color="warn" (click)="askBreak()">
+        Break
+      </button>
+      <button fxFlex *ngIf="breakState.bsCode === 1" mat-raised-button color="warn" (click)="cancelBreak()">
+        Cancel Break
+      </button>
+      <button fxFlex *ngIf="breakState.bsCode === 2" mat-raised-button color="accent" (click)="exitBreak()">
+        Resume
+      </button> -->
+
+  <div fxFlex="32px"></div>
+  <div fxFlex="32px">
+    <!-- <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="" height="40px" width="40px"> -->
+  </div>
+
+
+
+  <!-- <div fxFlex="45px">
+        <button mat-icon-button [matMenuTriggerFor]="beforeMenu">
+          <img src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="" height="40px">
+        </button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+          <a href="" mat-raised-button style="margin-left: 16px;" (click)="logoff()">Logout</a>
+        </mat-menu>
+      </div> -->
+
+  <div fxFlex="32px"></div>
+
+</div>
