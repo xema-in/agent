@@ -14,7 +14,7 @@ export class PhoneStatusComponent implements OnInit {
   bus: ServerConnection;
   phoneState: PhoneState;
   onHook: boolean;
-  btnColor: string;
+  color: string;
 
   constructor(private service: BackendService, private router: Router) {
     this.bus = service.getServerConnection();
@@ -26,21 +26,21 @@ export class PhoneStatusComponent implements OnInit {
       this.onHook = true;
       switch (this.phoneState.state) {
         case 'Unknown':
-          this.btnColor = 'btn-secondary';
+          this.color = 'gray-button';
           break;
         case 'UNAVAILABLE':
-          this.btnColor = 'btn-secondary';
+          this.color = 'gray-button';
           break;
         case 'INUSE':
           this.onHook = false;
-          this.btnColor = 'btn-danger';
+          this.color = 'red-button';
           break;
         case 'Not in use':
         case 'NOT_INUSE':
-          this.btnColor = 'btn-success';
+          this.color = 'green-button';
           break;
         default:
-          this.btnColor = 'btn-success';
+          this.color = 'blue-button';
           break;
       }
     });
