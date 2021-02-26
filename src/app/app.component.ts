@@ -18,6 +18,7 @@ export class AppComponent {
       switch (state.state) {
 
         case 'Unknown': {
+          // this.router.navigateByUrl('/test');
           this.router.navigateByUrl('/server');
           break;
         }
@@ -38,18 +39,7 @@ export class AppComponent {
         }
 
         case 'Connected': {
-          this.service.getServerConnection().connectionState.subscribe((connectionState) => {
-            if (connectionState.connected === false) {
-              Swal.fire({
-                icon: 'error',
-                title: connectionState.state,
-                text: 'Your session is terminated!'
-              }).then(() => {
-                this.service.setAppState({ state: 'RemoteLogout', connected: false });
-              });
-            }
-          });
-
+          this.monitorConnection();
           this.router.navigateByUrl('/phone');
           break;
         }
@@ -62,6 +52,43 @@ export class AppComponent {
         default: {
           console.log('Unhandled App State: ' + state.state);
           break;
+        }
+
+      }
+
+    });
+
+  }
+
+  monitorConnection() {
+
+    this.service.getServerConnection().connectionState.subscribe((connectionState) => {
+
+      if (connectionState.connected === false) {
+
+        switch (connectionState.state) {
+
+          case 'Logout': {
+            this.service.setAppState({ state: 'Unknown', connected: false });
+            break;
+          }
+
+          case 'RemoteLogout': {
+            Swal.fire({
+              icon: 'info',
+              title: 'Remote Logout',
+              text: 'Your session is terminated!'
+            }).then(() => {
+              this.service.setAppState({ state: 'RemoteLogout', connected: false });
+            });
+            break;
+          }
+
+          case 'Disconnected': {
+            Swal.fire({ icon: 'error', title: 'Disconnected!', text: 'Connection to the Server disconnected.' });
+            break;
+          }
+
         }
 
       }

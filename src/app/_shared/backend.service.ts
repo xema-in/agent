@@ -63,4 +63,8 @@ export class BackendService {
     this.serverConnection.connect();
   }
 
+  disconnect() {
+    this.serverConnection.disconnect();
+  }
+
 }

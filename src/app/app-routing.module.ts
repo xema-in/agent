@@ -17,6 +17,7 @@ const routes: Routes = [
     component: AppLayoutComponent,
     children: [
       { path: '', component: DashboardComponent, pathMatch: 'full' },
+      { path: 'test', component: DashboardComponent },
     ]
   },
 

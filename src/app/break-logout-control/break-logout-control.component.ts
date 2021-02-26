@@ -46,8 +46,7 @@ export class BreakLogoutControlComponent implements OnInit {
   }
 
   logoff() {
-    this.service.setAppState({ state: "Unknown", connected: false });
-    this.router.navigateByUrl("/login");
+    this.service.disconnect();
   }
 
 }

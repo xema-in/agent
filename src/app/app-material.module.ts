@@ -20,6 +20,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
 
@@ -28,7 +29,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule, MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule,
     MatTabsModule, MatSidenavModule, MatBadgeModule, MatFormFieldModule, MatIconModule,
     MatToolbarModule, MatDividerModule, MatGridListModule, MatSelectModule, MatProgressBarModule,
-    MatChipsModule, MatPaginatorModule,
+    MatChipsModule, MatPaginatorModule, MatMenuModule,
   ],
 
 })
