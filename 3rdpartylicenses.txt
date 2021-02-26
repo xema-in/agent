@@ -97,7 +97,7 @@ Apache-2.0
 @ngneat/until-destroy
 MIT
 
-@xema/queue-monitor-table-panel
+@xema/queue-monitor-panel
 UNLICENSED
 
 @xema/team-monitor-table-panel
