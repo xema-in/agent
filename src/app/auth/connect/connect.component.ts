@@ -55,7 +55,6 @@ export class ConnectComponent implements OnInit {
       },
       (err) => {
         this.server.connectionState
-          .pipe(untilDestroyed(this))
           .subscribe((connectionState) => {
             console.log(connectionState);
             if (connectionState.connected === true)
