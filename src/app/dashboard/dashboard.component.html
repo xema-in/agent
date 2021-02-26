@@ -11,12 +11,10 @@
 
       </div>
     </div>
+
     <div fxFlex *ngIf="teamLead">
-
-      <xe-queue-monitor-table-panel [serverConnection]="bus"></xe-queue-monitor-table-panel>
-
+      <xe-queue-monitor-panel [serverConnection]="bus"></xe-queue-monitor-panel>
       <xe-team-monitor-table-panel [serverConnection]="bus"></xe-team-monitor-table-panel>
-
     </div>
 
     <div fxFlex="1 1 500px"></div>
