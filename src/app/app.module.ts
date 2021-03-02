@@ -23,8 +23,6 @@ import { DispositionToolsComponent } from './disposition-tools/disposition-tools
 import { CallManagementComponent } from './call-management/call-management.component';
 import { PhoneStatusComponent } from './phone-status/phone-status.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
-import { AgentListComponent } from './agent-list/agent-list.component';
-import { MessengerComponent } from './messenger/messenger.component';
 import { RecentCallsComponent } from './recent-calls/recent-calls.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
@@ -46,12 +44,10 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     AppLayoutComponent,
     LoginLayoutComponent,
     PhoneSelectionComponent,
-    AgentListComponent,
     DispositionToolsComponent,
     MatDialogComponent,
     TaskStatusComponent,
     CallManagementComponent,
-    MessengerComponent,
     RecentCallsComponent,
     ServerSelectionComponent,
     ConnectComponent,

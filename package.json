@@ -26,7 +26,7 @@
     "@ngneat/until-destroy": "^8.0.3",
     "@xema/queue-monitor-panel": "0.0.14",
     "@xema/queue-monitor-table-panel": "0.0.12",
-    "@xema/team-monitor-table-panel": "0.0.17",
+    "@xema/team-monitor-table-panel": "0.0.19",
     "jema": "0.0.57",
     "material-design-icons": "^3.0.1",
     "moment": "^2.29.1",
