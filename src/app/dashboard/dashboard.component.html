@@ -14,6 +14,7 @@
 
     <div fxFlex *ngIf="teamLead">
       <xe-queue-monitor-panel [serverConnection]="bus"></xe-queue-monitor-panel>
+      <xe-queue-monitor-table-panel [serverConnection]="bus"></xe-queue-monitor-table-panel>
       <xe-team-monitor-table-panel [serverConnection]="bus"></xe-team-monitor-table-panel>
     </div>
 
