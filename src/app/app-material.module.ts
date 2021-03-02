@@ -29,7 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
     MatInputModule, MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule,
     MatTabsModule, MatSidenavModule, MatBadgeModule, MatFormFieldModule, MatIconModule,
     MatToolbarModule, MatDividerModule, MatGridListModule, MatSelectModule, MatProgressBarModule,
-    MatChipsModule, MatPaginatorModule, MatMenuModule,
+    MatChipsModule, MatPaginatorModule, MatMenuModule, MatDividerModule,
   ],
 
 })
