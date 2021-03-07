@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialComponentsModule } from './app-material.module';
 
 import { AppComponent } from './app.component';
-import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
+import { BreakRequestDialogComponent } from './break-request-dialog/break-request-dialog.component';
 import { ConnectComponent } from './auth/connect/connect.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.component';
@@ -45,7 +45,7 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     LoginLayoutComponent,
     PhoneSelectionComponent,
     DispositionToolsComponent,
-    MatDialogComponent,
+    BreakRequestDialogComponent,
     TaskStatusComponent,
     CallManagementComponent,
     RecentCallsComponent,
@@ -75,7 +75,7 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     })
   ],
   entryComponents: [
-    MatDialogComponent
+    BreakRequestDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

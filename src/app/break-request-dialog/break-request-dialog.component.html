@@ -1,0 +1,29 @@
+<form class="breakForm" autocomplete="off" [formGroup]="breakRequestForm">
+
+  <mat-form-field>
+    <mat-label>Select Break Type</mat-label>
+    <mat-select formControlName="breaktype" (selectionChange)="onChangeType()">
+      <mat-option *ngFor="let break of data.info.breakTypes" [value]="break">
+        {{break.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="breakRequestForm.controls['breaktype'].hasError('required')">
+      Break Type is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea rows="4" matInput placeholder="{{breakRequestForm.value?.breaktype?.description}}"
+      formControlName="reason"></textarea>
+    <mat-error *ngIf="breakRequestForm.controls['reason'].hasError('required')">
+      Reason <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <div class="actions-row">
+    <button mat-raised-button color="primary" (click)="Submit()"
+      [disabled]="!breakRequestForm.valid || !breakRequestForm.touched">Request</button>
+    <button mat-stroked-button [mat-dialog-close]="" color="primary">Dismiss</button>
+  </div>
+
+</form>

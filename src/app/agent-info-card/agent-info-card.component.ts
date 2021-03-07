@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakState } from 'jema/lib/_interfaces/break-state';
 import { BackendService } from '../_shared/backend.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { BackendService } from '../_shared/backend.service';
 export class AgentInfoCardComponent implements OnInit {
   bus: any;
   info: any;
+  breakState: BreakState;
   values = [];
 
   constructor(service: BackendService) {
@@ -21,11 +23,16 @@ export class AgentInfoCardComponent implements OnInit {
       this.info = info;
 
       this.values = [
-        { name: 'Name', value: info?.agentInfo.agentName },
+        // { name: 'Name', value: info?.agentInfo.agentName },
         { name: 'User Id', value: info?.agentInfo.userId },
         { name: 'First Login', value: new Date(info?.agentInfo.firstLogin).toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" }) },
       ];
 
+    });
+
+    this.bus.breakState.subscribe((breakState) => {
+      console.log(breakState);
+      this.breakState = breakState;
     });
 
   }

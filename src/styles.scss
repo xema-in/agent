@@ -50,6 +50,12 @@ body {
     width: 100%;
 }
 
+.actions-row button {
+  display: table-cell;
+  margin-right: 8px;
+  margin-top: 32px;
+}
+
 th.truncated200px, td.truncated200px {
   overflow: hidden;
   width:auto;
@@ -58,6 +64,8 @@ th.truncated200px, td.truncated200px {
   max-width: 160px;
 }
 
+
+// Other
 
 
 table {

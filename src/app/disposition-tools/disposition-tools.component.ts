@@ -3,7 +3,6 @@ import { BackendService } from "src/app/_shared/backend.service";
 import { FormControl, FormGroupDirective, NgForm } from "@angular/forms";
 import { ActiveCall } from "src/app/_interfaces/active-call";
 import { Channel } from "src/app/_interfaces/channel";
-import { SharedDataService } from "src/app/_shared/shared-data.service";
 import { ServerConnection } from "jema";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { MatDialog } from "@angular/material/dialog";
@@ -52,9 +51,7 @@ export class DispositionToolsComponent implements OnInit {
 
   constructor(
     private service: BackendService,
-    public shared: SharedDataService,
     public dialog: MatDialog,
-    public recentCall: SharedDataService
   ) {
     this.bus = service.getServerConnection();
   }

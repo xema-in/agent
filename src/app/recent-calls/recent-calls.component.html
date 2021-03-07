@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table *ngIf="recentCall.callinfolist?.length != 0" class="table table-bordered table-hover">
+    <table *ngIf="service.callinfolist?.length != 0" class="table table-bordered table-hover">
       <thead>
         <tr class="bg-secondary text-white">
           <!-- <th><small>SNo</small></th> -->
@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let call of recentCall.callinfolist; let i=index">
+        <tr *ngFor="let call of service.callinfolist; let i=index">
           <!-- <td>{{i +1}}</td> -->
           <td>{{call.queue}}</td>
           <td>{{call.callNumber}}</td>
@@ -30,7 +30,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="clearfix" *ngIf="recentCall.callinfolist?.length == 0">
+    <div class="clearfix" *ngIf="service.callinfolist?.length == 0">
       <p class="text-secondary display-4">No recent calls </p>
     </div>
   </div>

@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { ServerConnection } from 'jema';
 import { BehaviorSubject, interval, Subject } from 'rxjs';
 import { ConnectionState } from 'jema/lib/_interfaces/connection-state';
+import { CallInfo, CallLog } from '../_interfaces/call-info';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,9 @@ export class BackendService {
   public appState = new BehaviorSubject<ConnectionState>({ state: 'Unknown', connected: false });
   public teamLeadFeatures = new BehaviorSubject<boolean>(false);
   public secondsClock = new Subject<number>();
+
+  callinfolist: Array<CallInfo> = [];
+  calllog: CallLog;
 
   constructor() {
     this.secondsTimer$.subscribe((number) => {

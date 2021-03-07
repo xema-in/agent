@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/_shared/backend.service';
 import Swal from 'sweetalert2';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ManagerEnvironment } from 'src/app/_code/manager-environment';
 import { Authenticator, ServerConnection } from 'jema';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -12,35 +13,26 @@ import { Authenticator, ServerConnection } from 'jema';
 })
 export class LoginComponent implements OnInit {
 
-  public loginForm: FormGroup;
-  manager: string;
   isLoading = false;
+  manager: string;
   disable: boolean;
 
-  constructor(private service: BackendService) { }
+  public loginForm: FormGroup = this.fb.group({
+    username: [null, Validators.compose([Validators.required, Validators.maxLength(60)])],
+    password: [null, Validators.compose([Validators.required, Validators.maxLength(100)])]
+  });
+
+  constructor(private service: BackendService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.disable = false;
     this.manager = ManagerEnvironment.getBackendUrl();
 
-
-    // this.service.IsAgentAuthenticated().subscribe(
-    //   data => {
-    //     this.bus.setAppState({ state: 'LoggedIn' });
-    //   },
-    //   err => {
-    //     console.error(err);
-    //   }
-    // );
-
-    this.loginForm = new FormGroup({
-      username: new FormControl('', [
-        Validators.required, Validators.maxLength(60),
-        // Validators.pattern('[a-zA-Z1-9]*')
-      ]),
-      password: new FormControl('', [Validators.required, Validators.maxLength(100)])
-    });
-
+    if (!environment.production) {
+      this.loginForm.controls['username'].setValue('1');
+      this.loginForm.controls['password'].setValue('Vasu123$');
+      this.submit();
+    }
   }
 
   public hasError = (controlName: string, errorName: string) => {
