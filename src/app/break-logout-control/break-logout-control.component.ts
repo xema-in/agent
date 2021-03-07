@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from "@angular/material/dialog";
 import { ServerConnection } from 'jema';
-import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
+import { BreakRequestDialogComponent } from '../break-request-dialog/break-request-dialog.component';
 import { BackendService } from '../_shared/backend.service';
 
 @Component({
@@ -31,9 +31,10 @@ export class BreakLogoutControlComponent implements OnInit {
   }
 
   askBreak() {
-    const dialogRef = this.dialog.open(MatDialogComponent, {
+    const dialogRef = this.dialog.open(BreakRequestDialogComponent, {
       data: { info: this.info },
       disableClose: true,
+      width: '400px',
     });
   }
 

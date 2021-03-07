@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/_shared/backend.service';
 import { Router } from '@angular/router';
-import { SharedDataService } from 'src/app/_shared/shared-data.service';
 import { ServerConnection } from 'jema';
 
 @Component({
@@ -13,7 +12,7 @@ export class RecentCallsComponent implements OnInit {
   bus: ServerConnection;
 
 
-  constructor(private service: BackendService, private router: Router, public recentCall: SharedDataService) {
+  constructor(public service: BackendService, private router: Router,) {
     this.bus = service.getServerConnection();
   }
 

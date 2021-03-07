@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BackendService } from 'src/app/_shared/backend.service';
 import Swal from 'sweetalert2';
 import { DeviceMapParameters } from 'src/app/_interfaces/device.map';
 import { ManagerEnvironment } from 'src/app/_code/manager-environment';
 import { ServerConnection } from 'jema';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-phone-selection',
@@ -14,12 +15,16 @@ import { ServerConnection } from 'jema';
 export class PhoneSelectionComponent implements OnInit {
 
   bus: ServerConnection;
-  public phoneSelectionForm: FormGroup;
+
   manager: string;
   isLoading = false;
   disable: boolean;
 
-  constructor(private service: BackendService) {
+  public phoneSelectionForm: FormGroup = this.fb.group({
+    deviceName: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]*')])]
+  });
+
+  constructor(private service: BackendService, private fb: FormBuilder) {
     this.bus = service.getServerConnection();
   }
 
@@ -36,9 +41,10 @@ export class PhoneSelectionComponent implements OnInit {
       }
     );
 
-    this.phoneSelectionForm = new FormGroup({
-      deviceName: new FormControl('', [Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]*')]),
-    });
+    if (!environment.production) {
+      this.phoneSelectionForm.controls['deviceName'].setValue('1001');
+      this.mapDevice();
+    }
 
   }
 

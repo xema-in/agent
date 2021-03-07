@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-app-layout',
@@ -11,11 +12,13 @@ export class AppLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    window.addEventListener('beforeunload', function (e) {
-      const confirmationMessage = '\o/';
-      e.returnValue = confirmationMessage;
-      return confirmationMessage;
-    });
+    if (environment.production) {
+      window.addEventListener('beforeunload', function (e) {
+        const confirmationMessage = '\o/';
+        e.returnValue = confirmationMessage;
+        return confirmationMessage;
+      });
+    }
   }
 
 }

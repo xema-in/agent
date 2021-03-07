@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backend: ''
+  backend: '',
   // backend: 'http://manager.xema.in:8080' // manager.xema.in
   // backend: 'http://192.168.29.60'
   // backend: 'http://172.23.179.133' // test

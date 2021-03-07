@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerConnection } from 'jema';
 import { BackendService } from '../_shared/backend.service';
-import { SharedDataService } from '../_shared/shared-data.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +14,7 @@ export class DashboardComponent implements OnInit {
   bus: ServerConnection;
   task: any;
 
-  constructor(private service: BackendService, public recentCall: SharedDataService) {
+  constructor(private service: BackendService,) {
     this.bus = service.getServerConnection();
   }
 
