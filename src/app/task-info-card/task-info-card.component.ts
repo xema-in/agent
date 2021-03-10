@@ -28,6 +28,7 @@ export class TaskInfoCardComponent implements OnInit {
 
     this.bus.task.subscribe((task) => {
       this.task = task;
+      if (!task) return;
 
       this.values = [
         { name: 'Queue Name', value: task?.call.queue },
