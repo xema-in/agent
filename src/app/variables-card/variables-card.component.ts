@@ -12,10 +12,8 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class VariablesCardComponent implements OnInit {
 
-  taskSub: any;
-
+  taskSubscription: any;
   bus: ServerConnection;
-
   task: any;
 
   filteredvariables: {
@@ -29,7 +27,7 @@ export class VariablesCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.taskSub = this.bus.task.subscribe((task) => {
+    this.taskSubscription = this.bus.task.subscribe((task) => {
       this.task = task;
       if (this.task && this.task.variables) {
         this.transformVariables();
