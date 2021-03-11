@@ -3,9 +3,9 @@
     <mat-card-title>{{task?.call.queue}}</mat-card-title>
     <mat-card-subtitle>Active Call</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-content style="height: 300px; overflow-y: auto; overflow-x: hidden;">
     <mat-progress-bar mode="determinate" [value]="completed" [ngClass]="color"></mat-progress-bar>
-    <mat-divider></mat-divider>
     <table mat-table [dataSource]="values">
       <ng-container matColumnDef="name">
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>

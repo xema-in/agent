@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { UntilDestroy } from '@ngneat/until-destroy';
 import { BreakState } from 'jema/lib/_interfaces/break-state';
 import { BackendService } from '../_shared/backend.service';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-agent-info-card',
   templateUrl: './agent-info-card.component.html',
   styleUrls: ['./agent-info-card.component.scss']
 })
 export class AgentInfoCardComponent implements OnInit {
+  breakStateSubscription: any;
+  agentInfoSubscription: any;
+
   bus: any;
   info: any;
   breakState: BreakState;
@@ -19,7 +24,7 @@ export class AgentInfoCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.bus.info.subscribe((info) => {
+    this.agentInfoSubscription = this.bus.info.subscribe((info) => {
       this.info = info;
 
       this.values = [
@@ -30,7 +35,7 @@ export class AgentInfoCardComponent implements OnInit {
 
     });
 
-    this.bus.breakState.subscribe((breakState) => {
+    this.breakStateSubscription = this.bus.breakState.subscribe((breakState) => {
       console.log(breakState);
       this.breakState = breakState;
     });
