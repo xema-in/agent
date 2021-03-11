@@ -3,22 +3,24 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 import { ServerConnection } from 'jema';
 import { BackendService } from '../_shared/backend.service';
 
-@UntilDestroy()
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-task-info-card',
   templateUrl: './task-info-card.component.html',
   styleUrls: ['./task-info-card.component.scss']
 })
 export class TaskInfoCardComponent implements OnInit {
+  taskSubscription: any;
+
   bus: ServerConnection;
   task: any;
+  startTime;
   values = [];
 
   color: string;
   completed: any;
   ahtTarget: number;
   currentprogress: any;
-  interval;
 
   constructor(private service: BackendService) {
     this.bus = service.getServerConnection();
@@ -26,9 +28,10 @@ export class TaskInfoCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.bus.task.subscribe((task) => {
+    this.taskSubscription = this.bus.task.subscribe((task) => {
       this.task = task;
       if (!task) return;
+      this.startTime = new Date();
 
       this.values = [
         { name: 'Queue Name', value: task?.call.queue },

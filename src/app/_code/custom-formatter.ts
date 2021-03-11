@@ -21,15 +21,19 @@ export class CustomFormatter implements TimeagoFormatter {
     let str = '';
 
     if (hours > 0) {
-      str += hours + 'h ';
+      str += hours + ':';
     }
 
-    if (minutes > 0 || hours > 0) {
-      str += minutes + 'm ';
-    }
+    if (minutes < 10)
+      str += '0' + minutes + ':';
+    else
+      str += minutes + ':';
 
-    if (hours < 1 && seconds > 0) {
-      str += seconds + 's';
+    if (hours < 1) {
+      if (seconds < 10)
+        str += '0' + seconds;
+      else
+        str += seconds;
     }
 
     return str;
