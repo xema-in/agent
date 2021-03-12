@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerConnection } from 'jema';
 import { BackendService } from '../_shared/backend.service';
+import * as Collections from 'typescript-collections';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-variables-card',
   templateUrl: './variables-card.component.html',
   styleUrls: ['./variables-card.component.scss']
 })
 export class VariablesCardComponent implements OnInit {
-  bus: ServerConnection;
 
+  taskSubscription: any;
+  bus: ServerConnection;
   task: any;
-  expressions: any;
+
   filteredvariables: {
     key: string;
     value: string;
@@ -23,36 +27,61 @@ export class VariablesCardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.bus.task.subscribe((task) => {
+    this.taskSubscription = this.bus.task.subscribe((task) => {
       this.task = task;
       if (this.task && this.task.variables) {
-        this.GetVariable();
+        this.transformVariables();
       }
     });
 
   }
 
-  GetVariable() {
+  transformVariables() {
     this.filteredvariables = [];
-    this.expressions = this.task.baseQueueOptions?.agentChannelVariablesExpression.split(';');
+
+    var vars = new Collections.Dictionary<string, string>();
+
     for (let key of Object.keys(this.task.variables)) {
-      const varkey = this.expressions ? this.expressions.filter((x) => x.includes(key))[0] : null;
-      if (!varkey) {
-        this.filteredvariables.push({
-          key: key,
-          value: this.task.variables[key],
-        });
-      }
-      if (varkey) {
-        const lable = varkey.split('=');
-        if (lable[1]) {
-          this.filteredvariables.push({
-            key: lable[1],
-            value: this.task.variables[key],
-          });
+      vars.setValue(key, this.task.variables[key]);
+    }
+
+    let expressions: string[] = this.task.queue?.baseQueueOptions?.agentChannelVariablesExpression.split(';');
+    expressions.forEach(element => {
+      let parts = element.split('=');
+      let varName = parts[0];
+      if (varName.startsWith('!')) {
+        vars.remove(varName.substr(1));
+      } else if (parts.length > 1) {
+        if (vars.containsKey(varName)) {
+          let newName = parts[1];
+          let currentValue = vars.getValue(varName);
+          vars.remove(varName);
+          vars.setValue(newName, currentValue);
         }
       }
+    });
+
+    for (let key of Object.keys(this.task.varAltNames)) {
+      let varName = key;
+      if (vars.containsKey(varName)) {
+        let newName = this.task.varAltNames[varName];
+        let currentValue = vars.getValue(varName);
+        vars.remove(varName);
+        vars.setValue(newName, currentValue);
+      }
     }
+
+    vars.forEach((key, value) => {
+      this.filteredvariables.push({ key: key, value: value });
+    });
+
+    console.log(this.filteredvariables);
+
+    // this.filteredvariables.sort((a, b) => (a.key < b.key ? -1 : 1));
+    this.filteredvariables.sort((a, b) => {
+      return a.key.toLowerCase().localeCompare(b.key.toLowerCase());
+    });
+
   }
 
 }

@@ -6,7 +6,7 @@ export class CustomFormatter implements TimeagoFormatter {
     const now = Date.now();
 
     let totalUnits = Math.round(Math.abs(now - then) / 1000); // units in seconds
-    // totalUnits = 50;
+    // totalUnits += 5000;
 
     const seconds = totalUnits % 60;
     totalUnits -= seconds;
@@ -21,16 +21,18 @@ export class CustomFormatter implements TimeagoFormatter {
     let str = '';
 
     if (hours > 0) {
-      str += hours + 'h ';
+      str += hours + ':';
     }
 
-    if (minutes > 0 || hours > 0) {
-      str += minutes + 'm ';
-    }
+    if (minutes < 10)
+      str += '0' + minutes;
+    else
+      str += minutes;
 
-    if (hours < 1 && seconds > 0) {
-      str += seconds + 's';
-    }
+    if (seconds < 10)
+      str += ':0' + seconds;
+    else
+      str += ':' + seconds;
 
     return str;
   }
