@@ -5,13 +5,9 @@
 export const environment = {
   production: false,
   backend: '',
-  // backend: 'http://manager.xema.in:8080' // manager.xema.in
-  // backend: 'http://192.168.29.60'
-  // backend: 'http://172.23.179.133' // test
-  // backend: 'http://172.23.179.157' // production
-  // backend: 'http://223.196.176.248:8080' // production
-  // backend: 'http://223.196.176.248:8081' // test
-  // backend: 'https://localhost:44394'
+  devUserName: 'APNRTS7',
+  devPassword: 'Agent@123',
+  devPhone: '1007'
 };
 
 /*
