@@ -201,8 +201,12 @@ export class DispositionToolsComponent implements OnInit {
       this.number.value,
       this.task.call.attributes.linkedid
     );
-    this.parked =
-      this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
+
+    if (this.parkedCallsList != undefined && this.parkedCallsList != null &&
+      this.parkedCallsList.length > 0)
+      this.parked = this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
+    else
+      this.parked = "";
   }
 
   call1() {
