@@ -1,6 +1,6 @@
 <i *ngFor="let call of ongoingCallsList">
   <button *ngIf="call.cli !== unknown" mat-flat-button (click)="park(call)">
-    <span>Hold</span> &nbsp; {{getCli(call.cli)}}
+    <span>Hold &nbsp; {{getCli(call.cli)}}</span>
   </button>
 </i>
 

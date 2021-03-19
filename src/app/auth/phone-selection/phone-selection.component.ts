@@ -42,7 +42,7 @@ export class PhoneSelectionComponent implements OnInit {
     );
 
     if (!environment.production) {
-      this.phoneSelectionForm.controls['deviceName'].setValue('1001');
+      this.phoneSelectionForm.controls['deviceName'].setValue(environment.devPhone);
       setTimeout(() => { this.mapDevice(); }, 1000);
     }
 

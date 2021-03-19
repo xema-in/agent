@@ -45,21 +45,23 @@ export class VariablesCardComponent implements OnInit {
       vars.setValue(key, this.task.variables[key]);
     }
 
-    let expressions: string[] = this.task.queue?.baseQueueOptions?.agentChannelVariablesExpression.split(';');
-    expressions.forEach(element => {
-      let parts = element.split('=');
-      let varName = parts[0];
-      if (varName.startsWith('!')) {
-        vars.remove(varName.substr(1));
-      } else if (parts.length > 1) {
-        if (vars.containsKey(varName)) {
-          let newName = parts[1];
-          let currentValue = vars.getValue(varName);
-          vars.remove(varName);
-          vars.setValue(newName, currentValue);
+    if (this.task.queue?.baseQueueOptions?.agentChannelVariablesExpression != null) {
+      let expressions: string[] = this.task.queue?.baseQueueOptions?.agentChannelVariablesExpression.split(';');
+      expressions.forEach(element => {
+        let parts = element.split('=');
+        let varName = parts[0];
+        if (varName.startsWith('!')) {
+          vars.remove(varName.substr(1));
+        } else if (parts.length > 1) {
+          if (vars.containsKey(varName)) {
+            let newName = parts[1];
+            let currentValue = vars.getValue(varName);
+            vars.remove(varName);
+            vars.setValue(newName, currentValue);
+          }
         }
-      }
-    });
+      });
+    }
 
     for (let key of Object.keys(this.task.varAltNames)) {
       let varName = key;

@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
     this.manager = ManagerEnvironment.getBackendUrl();
 
     if (!environment.production) {
-      this.loginForm.controls['username'].setValue('1');
-      this.loginForm.controls['password'].setValue('Vasu123$');
+      this.loginForm.controls['username'].setValue(environment.devUserName);
+      this.loginForm.controls['password'].setValue(environment.devPassword);
       this.submit();
     }
   }

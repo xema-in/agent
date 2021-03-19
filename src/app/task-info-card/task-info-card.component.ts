@@ -38,8 +38,11 @@ export class TaskInfoCardComponent implements OnInit {
         { name: 'Unique Id', value: task?.call.attributes.linkedid },
         { name: 'Cli', value: task?.call.attributes.destconnectedlinenum, enableCopy: true },
         { name: 'Start Time', value: new Date(task?.call.dateReceived).toLocaleTimeString([], { hour: '2-digit', minute: "2-digit" }) },
-        { name: 'AHT Target', value: this.formatTime(task?.queue.baseQueueOptions.ahtTarget) },
       ];
+
+      if (task?.queue.baseQueueOptions.ahtTarget != null && task?.queue.baseQueueOptions.ahtTarget > 0) {
+        this.values.push({ name: 'AHT Target', value: this.formatTime(task?.queue.baseQueueOptions.ahtTarget) });
+      }
 
       this.ahtTarget = this.task.queue.baseQueueOptions.ahtTarget;
       this.currentprogress = 0;
