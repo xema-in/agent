@@ -1,46 +1,43 @@
-<div *ngIf="taskAssigned">
+<span *ngIf="taskAssigned">
 
-  <!-- Standard Actions -->
-  <div class="row pl-3">
+  <!-- Call Back Option -->
+  <span *ngIf="!callerOnline && isCallBack && task?.queue.baseQueueOptions.allowCallback">
+    <button mat-raised-button color="accent" (click)="callBack()">Call Back</button>
+  </span>
 
-    <!-- Call Back Option -->
-    <div class="col-sm" *ngIf="!callerOnline && isCallBack && task.queue.baseQueueOptions.allowCallback">
-      <button mat-raised-button color="accent" (click)="callBack()">Call Back</button>
-    </div>
+  <!-- End Call Option -->
+  <span *ngIf="isEndCall && task?.queue.baseQueueOptions.allowEndCall">
+    <button mat-raised-button color="warn" (click)="endCall()">End Call</button>
+  </span>
 
-    <!-- End Call Option -->
-    <div class="col-sm" *ngIf="isEndCall && task.queue.baseQueueOptions.allowEndCall">
-      <button mat-raised-button color="warn" (click)="endCall()">End Call</button>
-    </div>
+  <!-- Add Call Option -->
+  <!-- <span *ngIf="task?.queue.baseQueueOptions.allowNewCall">
+    <form class="col-sm input-group" autocomplete="off">
+      <input type="text" class="col-xs form-control" placeholder="Enter Number" [formControl]="number">
+      <div class="input-group-append">
+        <button class="btn btn-success" type="button" (click)="call()">
+          <i class="material-icons pull-right">phone</i></button>
+      </div>
+    </form>
+  </span> -->
 
-    <!-- Add Call Option -->
-    <div class="row" *ngIf="task.queue.baseQueueOptions.allowNewCall">
-      <form class="col-sm input-group" autocomplete="off">
-        <input type="text" class="col-xs form-control" placeholder="Enter Number" [formControl]="number">
-        <div class="input-group-append">
-          <button class="btn btn-success" type="button" (click)="call()">
-            <i class="material-icons pull-right">phone</i></button>
-        </div>
-      </form>
-    </div>
+  <span *ngIf="task?.queue.baseQueueOptions.allowNewCall">
+    <button type="button" (click)="call1()">New Call</button>
+  </span>
 
-    <!-- Conference Option -->
-    <div class="col-sm" *ngIf="task.queue.baseQueueOptions.allowConference && parked === 'Parked'">
-      <button mat-raised-button color="link" style="background-color: #ffc107;" (click)="conference()">
-        Merge
-        <i class="material-icons">call_merge</i>
-      </button>
+  <!-- Conference Option -->
+  <span *ngIf="task?.queue.baseQueueOptions.allowConference && parked === 'Parked'">
+    <button mat-raised-button color="link" style="background-color: #ffc107;" (click)="conference()">
+      Merge
+      <i class="material-icons">call_merge</i>
+    </button>
 
-    </div>
+  </span>
 
-    <!-- Canned Actions -->
-    <!-- <div>
-        </div> -->
+  <!-- Dispose Call -->
+  <span *ngIf="!callerOnline && parked !== 'Parked'">
+    <button [ngStyle]="{'pointer-events': disable ? 'none': ''}" mat-raised-button color="warn"
+      (click)="dispose()">Dispose</button>
+  </span>
 
-    <!-- Dispose Call -->
-    <div class="col-sm" *ngIf="!callerOnline && parked !== 'Parked'">
-      <button [ngStyle]="{'pointer-events': disable ? 'none': ''}" mat-raised-button color="warn"
-        (click)="dispose()">Dispose</button>
-    </div>
-  </div>
-</div>
+</span>

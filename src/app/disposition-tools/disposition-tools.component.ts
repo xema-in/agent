@@ -6,6 +6,7 @@ import { Channel } from "src/app/_interfaces/channel";
 import { ServerConnection } from "jema";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { MatDialog } from "@angular/material/dialog";
+import Swal from "sweetalert2";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -202,6 +203,23 @@ export class DispositionToolsComponent implements OnInit {
     );
     this.parked =
       this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
+  }
+
+  call1() {
+    Swal.fire({
+      title: 'Phone Number',
+      input: 'text',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Call',
+      showLoaderOnConfirm: true,
+      preConfirm: (number) => {
+        this.number.setValue(number);
+        this.call();
+      },
+    });
   }
 
   conference() {
