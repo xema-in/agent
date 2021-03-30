@@ -4,6 +4,7 @@ import { ServerConnection } from 'jema';
 import { BehaviorSubject, interval, Subject } from 'rxjs';
 import { ConnectionState } from 'jema/lib/_interfaces/connection-state';
 import { CallInfo, CallLog } from '../_interfaces/call-info';
+import { GuiType } from 'jema/lib/_interfaces/gui-type';
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +61,7 @@ export class BackendService {
   }
 
   setupServerConnection() {
-    this.serverConnection = new ServerConnection(this.getBackendUrl(), this.getToken());
+    this.serverConnection = new ServerConnection(this.getBackendUrl(), this.getToken(), GuiType.Agent);
   }
 
   connect() {
