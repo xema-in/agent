@@ -7,6 +7,7 @@ import { ServerConnection } from "jema";
 import { ErrorStateMatcher } from "@angular/material/core";
 import { MatDialog } from "@angular/material/dialog";
 import Swal from "sweetalert2";
+import { Conference } from "jema/lib/_interfaces/conference";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -31,6 +32,7 @@ export class DispositionToolsComponent implements OnInit {
   bus: ServerConnection;
   ongoingCallsList: Array<ActiveCall>;
   parkedCallsList: Array<Channel>;
+  conferenceCall: Conference;
   callerOnline: boolean;
   task: any;
   taskAssigned: boolean;
@@ -45,7 +47,10 @@ export class DispositionToolsComponent implements OnInit {
   ]);
   queueCall: any;
   isCallBack: boolean;
+  isNewCall: boolean;
+  isMerge: boolean;
   isEndCall: boolean;
+  isDispose: boolean;
   phoneState: any;
 
   matcher = new MyErrorStateMatcher();
@@ -92,6 +97,29 @@ export class DispositionToolsComponent implements OnInit {
       this.parkedCallsList = list;
       this.parked =
         this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
+
+      if (this.parked == 'Parked') {
+        this.isCallBack = false;
+        this.isDispose = false;
+        this.isEndCall = false;
+        this.isNewCall = true;
+      }
+      else {
+        this.isNewCall = false;
+        this.isEndCall = true;
+        this.isDispose = true;
+      }
+    });
+
+    this.bus.conferenceCall.subscribe((call) => {
+      this.conferenceCall = call;
+      if (this.conferenceCall?.members.length > 0) {
+        this.isNewCall = true;
+        this.isDispose = false;
+      } else {
+        this.isNewCall = false;
+        this.isDispose = true;
+      }
     });
 
     this.bus.task.subscribe((queueCall) => {
@@ -135,6 +163,7 @@ export class DispositionToolsComponent implements OnInit {
           break;
       }
     });
+
   }
 
   openNewtab() {
@@ -170,8 +199,19 @@ export class DispositionToolsComponent implements OnInit {
       });
 
       this.isEndCall = false;
-      this.isCallBack = true;
+      this.isMerge = false;
+      this.isDispose = true;
     }
+
+    this.bus.parkedChannels.subscribe((list) => {
+      this.parkedCallsList = list;
+      this.parked =
+        this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
+      if (this.parked == 'Parked') {
+        this.isDispose = false;
+        this.isNewCall = true;
+      }
+    });
 
     // check if the original call is active
     if (
@@ -189,7 +229,7 @@ export class DispositionToolsComponent implements OnInit {
         this.bus.hangupCall(ch.remoteChannel);
       }
     }
-    this.parked = "";
+    // this.parked = "";
   }
 
   call() {
@@ -201,6 +241,8 @@ export class DispositionToolsComponent implements OnInit {
       this.number.value,
       this.task.call.attributes.linkedid
     );
+    this.isMerge = true;
+    this.isNewCall = true;
 
     if (this.parkedCallsList != undefined && this.parkedCallsList != null &&
       this.parkedCallsList.length > 0)
@@ -230,7 +272,6 @@ export class DispositionToolsComponent implements OnInit {
     this.ongoingCallsList.forEach((otherCall) => {
       this.bus.hold(otherCall.remoteChannel);
     });
-
     const listActive = this.ongoingCallsList.map((x) => x.remoteChannel);
     const listParked = this.parkedCallsList.map((x) => x.channel);
     const total = listActive.concat(listParked);

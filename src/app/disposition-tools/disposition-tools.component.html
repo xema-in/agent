@@ -1,43 +1,30 @@
-<span *ngIf="taskAssigned">
-
-  <!-- Call Back Option -->
-  <span *ngIf="!callerOnline && isCallBack && task?.queue.baseQueueOptions.allowCallback">
-    <button mat-raised-button color="accent" (click)="callBack()">Call Back</button>
-  </span>
-
-  <!-- End Call Option -->
-  <span *ngIf="isEndCall && task?.queue.baseQueueOptions.allowEndCall">
-    <button mat-raised-button color="warn" (click)="endCall()">End Call</button>
-  </span>
-
-  <!-- Add Call Option -->
-  <!-- <span *ngIf="task?.queue.baseQueueOptions.allowNewCall">
-    <form class="col-sm input-group" autocomplete="off">
-      <input type="text" class="col-xs form-control" placeholder="Enter Number" [formControl]="number">
-      <div class="input-group-append">
-        <button class="btn btn-success" type="button" (click)="call()">
-          <i class="material-icons pull-right">phone</i></button>
-      </div>
-    </form>
-  </span> -->
-
-  <span *ngIf="task?.queue.baseQueueOptions.allowNewCall">
+<div *ngIf="taskAssigned" fxLayout="row" fxLayoutAlign="start center" fxFlex="50" fxLayoutGap="5px">
+  <!-- Add New call -->
+  <span *ngIf="task?.queue.baseQueueOptions.allowNewCall && isNewCall">
     <button mat-raised-button color="accent" type="button" (click)="call1()">New Call</button>
   </span>
 
   <!-- Conference Option -->
-  <span *ngIf="task?.queue.baseQueueOptions.allowConference && parked === 'Parked'">
+  <span *ngIf="task?.queue.baseQueueOptions.allowConference && parked === 'Parked' && isMerge">
     <button mat-raised-button color="link" style="background-color: #ffc107;" (click)="conference()">
       Merge
-      <i class="material-icons">call_merge</i>
+      <mat-icon matSuffix>call_merge</mat-icon>
     </button>
+  </span>
 
+  <!-- Call Back Option -->
+  <span *ngIf="!callerOnline && task?.queue.baseQueueOptions.allowCallback  && isCallBack">
+    <button mat-raised-button color="accent" (click)="callBack()">Call Back</button>
+  </span>
+
+  <!-- End Call Option -->
+  <span *ngIf="task?.queue.baseQueueOptions.allowEndCall && isEndCall">
+    <button mat-raised-button color="warn" (click)="endCall()">End Call</button>
   </span>
 
   <!-- Dispose Call -->
-  <span *ngIf="!callerOnline && parked !== 'Parked'">
+  <span *ngIf="!callerOnline && parked !== 'Parked' && isDispose">
     <button [ngStyle]="{'pointer-events': disable ? 'none': ''}" mat-raised-button color="warn"
       (click)="dispose()">Dispose</button>
   </span>
-
-</span>
+</div>
