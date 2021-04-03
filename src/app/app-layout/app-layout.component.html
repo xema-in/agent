@@ -1,11 +1,14 @@
 <mat-toolbar color="primary" fxLayout="row">
-  <img fxFlex="45px" src="assets/logo-old.png" alt="Xema">
-  <span fxFlex="32px"></span>
-  <app-phone-status fxFlex></app-phone-status>
-  <span fxFlex="32px"></span>
-  <app-task-status fxFlex></app-task-status>
-  <app-call-management fxFlex></app-call-management>
-  <app-disposition-tools fxFlex></app-disposition-tools>
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+    <img fxFlex="45px" src="assets/logo-old.png" alt="Xema">
+    <span fxFlex="32px"></span>
+    <app-phone-status fxFlex></app-phone-status>
+    <span fxFlex="32px"></span>
+    <!-- <app-task-status fxFlex></app-task-status> -->
+    <app-call-management fxFlex></app-call-management>
+    <span fxFlex="32px"></span>
+    <app-disposition-tools fxFlex></app-disposition-tools>
+  </div>
   <span fxFlex></span>
   <app-break-logout-control fxFlex="250px"></app-break-logout-control>
 </mat-toolbar>
