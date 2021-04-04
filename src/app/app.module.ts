@@ -23,7 +23,6 @@ import { DispositionToolsComponent } from './disposition-tools/disposition-tools
 import { CallManagementComponent } from './call-management/call-management.component';
 import { PhoneStatusComponent } from './phone-status/phone-status.component';
 import { TaskStatusComponent } from './task-status/task-status.component';
-import { RecentCallsComponent } from './recent-calls/recent-calls.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { CustomClock } from './_code/custom-clock';
@@ -34,6 +33,7 @@ import { VariablesCardComponent } from './variables-card/variables-card.componen
 import { TaskInfoCardComponent } from './task-info-card/task-info-card.component';
 import { AgentInfoCardComponent } from './agent-info-card/agent-info-card.component';
 import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component';
+import { CallHistoryComponent } from './call-history/call-history.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,6 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     BreakRequestDialogComponent,
     TaskStatusComponent,
     CallManagementComponent,
-    RecentCallsComponent,
     ServerSelectionComponent,
     ConnectComponent,
     BreakLogoutControlComponent,
@@ -56,7 +55,8 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     VariablesCardComponent,
     TaskInfoCardComponent,
     AgentInfoCardComponent,
-    CrmsListCardComponent
+    CrmsListCardComponent,
+    CallHistoryComponent
   ],
   imports: [
     BrowserModule,
