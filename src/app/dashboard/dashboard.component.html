@@ -12,6 +12,10 @@
       </div>
     </div>
 
+    <div fxFlex *ngIf="task">
+      <app-task-crm-view></app-task-crm-view>
+    </div>
+
     <div fxFlex *ngIf="teamLead">
       <xe-queue-monitor-panel [serverConnection]="bus"></xe-queue-monitor-panel>
       <xe-queue-monitor-table-panel [serverConnection]="bus"></xe-queue-monitor-table-panel>

@@ -34,6 +34,7 @@ import { VariablesCardComponent } from './variables-card/variables-card.componen
 import { TaskInfoCardComponent } from './task-info-card/task-info-card.component';
 import { AgentInfoCardComponent } from './agent-info-card/agent-info-card.component';
 import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component';
+import { TaskCrmViewComponent } from './task-crm-view/task-crm-view.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
     VariablesCardComponent,
     TaskInfoCardComponent,
     AgentInfoCardComponent,
-    CrmsListCardComponent
+    CrmsListCardComponent,
+    TaskCrmViewComponent
   ],
   imports: [
     BrowserModule,
