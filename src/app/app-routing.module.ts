@@ -9,6 +9,7 @@ import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.
 import { ServerSelectionComponent } from './auth/server-selection/server-selection.component';
 import { ConnectComponent } from './auth/connect/connect.component';
 import { CallHistoryComponent } from './call-history/call-history.component';
+import { MissedCallsComponent } from './missed-calls/missed-calls.component';
 
 const routes: Routes = [
 
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: '', component: DashboardComponent, pathMatch: 'full' },
       { path: 'test', component: DashboardComponent },
       { path: 'callhistory', component: CallHistoryComponent },
+      { path: 'missedcalls', component: MissedCallsComponent },
     ]
   },
 
@@ -33,7 +35,7 @@ const routes: Routes = [
       { path: 'connect', component: ConnectComponent },
       { path: 'phone', component: PhoneSelectionComponent },
       { path: 'forgot', component: LoginComponent },
-      { path: 'reconnect/:reconnect', component: ConnectComponent },
+      { path: 'reconnect/:reconnect', component: MissedCallsComponent },
     ]
   },
 
