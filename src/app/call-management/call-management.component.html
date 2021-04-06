@@ -3,16 +3,15 @@
     <span>Hold &nbsp; {{getCli(call.cli)}}</span>
   </button>
 </i>
-
-<button mat-flat-button>
-  <span *ngIf="conferenceCall?.members.length > 0">
-    {{conferenceCall?.members.length}} &nbsp;
-    <i class="material-icons pull-right">call_split</i>
-  </span>
-</button>
-
+<span fxFlex="5px"></span>
 <i *ngFor="let call of parkedChannelsList">
+  <span fxFlex="5px"></span>
   <button mat-flat-button (click)="resume(call)">
     <span>Resume</span> &nbsp; {{getCli(call.cli)}}
   </button>
 </i>
+
+<button mat-flat-button *ngIf="conferenceCall?.members.length > 0">
+  {{conferenceCall?.members.length}} &nbsp;
+  <mat-icon matSuffix>call_split</mat-icon>
+</button>

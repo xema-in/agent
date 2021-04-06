@@ -8,6 +8,7 @@ import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { PhoneSelectionComponent } from './auth/phone-selection/phone-selection.component';
 import { ServerSelectionComponent } from './auth/server-selection/server-selection.component';
 import { ConnectComponent } from './auth/connect/connect.component';
+import { CallHistoryComponent } from './call-history/call-history.component';
 
 const routes: Routes = [
 
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent, pathMatch: 'full' },
       { path: 'test', component: DashboardComponent },
+      { path: 'callhistory', component: CallHistoryComponent },
     ]
   },
 
