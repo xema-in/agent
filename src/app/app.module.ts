@@ -34,6 +34,7 @@ import { TaskInfoCardComponent } from './task-info-card/task-info-card.component
 import { AgentInfoCardComponent } from './agent-info-card/agent-info-card.component';
 import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component';
 import { CallHistoryComponent } from './call-history/call-history.component';
+import { MissedCallsComponent } from './missed-calls/missed-calls.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CallHistoryComponent } from './call-history/call-history.component';
     TaskInfoCardComponent,
     AgentInfoCardComponent,
     CrmsListCardComponent,
-    CallHistoryComponent
+    CallHistoryComponent,
+    MissedCallsComponent
   ],
   imports: [
     BrowserModule,
