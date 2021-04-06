@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ServerConnection } from 'jema';
 import { BackendService } from '../_shared/backend.service';
 
@@ -10,9 +11,9 @@ import { BackendService } from '../_shared/backend.service';
 export class TaskCrmViewComponent implements OnInit {
   bus: ServerConnection;
   queueCall: any;
-  url: string;
+  url;
 
-  constructor(private service: BackendService) {
+  constructor(private service: BackendService, private sanitizer: DomSanitizer) {
     this.bus = service.getServerConnection();
   }
 
@@ -28,7 +29,7 @@ export class TaskCrmViewComponent implements OnInit {
       ) {
 
         this.queueCall.queue.crms.forEach((item, index) => {
-          this.url = item.url;
+          this.url = this.sanitizer.bypassSecurityTrustResourceUrl(item.url);
         });
 
       }
