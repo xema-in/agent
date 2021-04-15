@@ -10,6 +10,8 @@ import { ServerSelectionComponent } from './auth/server-selection/server-selecti
 import { ConnectComponent } from './auth/connect/connect.component';
 import { CallHistoryComponent } from './call-history/call-history.component';
 import { MissedCallsComponent } from './missed-calls/missed-calls.component';
+import { QueueMonitorComponent } from './queue-monitor/queue-monitor.component';
+import { TeamMonitorComponent } from './team-monitor/team-monitor.component';
 
 const routes: Routes = [
 
@@ -22,6 +24,9 @@ const routes: Routes = [
       { path: 'test', component: DashboardComponent },
       { path: 'callhistory', component: CallHistoryComponent },
       { path: 'missedcalls', component: MissedCallsComponent },
+      { path: 'queuemonitor', component: QueueMonitorComponent },
+      { path: 'teammonitor', component: TeamMonitorComponent },
+
     ]
   },
 
