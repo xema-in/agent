@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from '../_shared/backend.service';
 
 @Component({
   selector: 'app-left-sidebar-navigator',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LeftSidebarNavigatorComponent implements OnInit {
 
-  constructor() { }
+  teamLead = false;
 
-  ngOnInit(): void {
+  constructor(private service: BackendService,) { }
+
+  ngOnInit() {
+    this.service.teamLeadFeatures.subscribe((status) => {
+      this.teamLead = status;
+    });
   }
-
 }
