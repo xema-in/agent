@@ -107,7 +107,7 @@ export class DispositionToolsComponent implements OnInit {
       else {
         this.isNewCall = false;
         this.isEndCall = true;
-        this.isDispose = true;
+        this.isDispose = false;
       }
     });
 
@@ -143,11 +143,13 @@ export class DispositionToolsComponent implements OnInit {
           }
           if (this.task && this.task.queue.baseQueueOptions.allowCallback) {
             this.isCallBack = true;
+            this.isDispose = true;
           }
           break;
         case "INUSE":
           if (this.task && this.task.queue.baseQueueOptions.allowCallback) {
             this.isCallBack = false;
+            this.isDispose = false;
           }
           break;
         case "Not in use":
@@ -157,6 +159,7 @@ export class DispositionToolsComponent implements OnInit {
           }
           if (this.task && this.task.queue.baseQueueOptions.allowCallback) {
             this.isCallBack = true;
+            this.isDispose = true;
           }
           break;
         default:
