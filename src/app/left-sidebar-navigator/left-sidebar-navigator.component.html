@@ -1,18 +1,34 @@
 <div fxLayout="row">
-  <div fxFlex="84px" fxLayout="column" fxLayoutAlign="space-evenly center">
+  <div fxFlex="94px" fxLayout="column" fxLayoutAlign="space-evenly center">
     <div fxFlex="16px"></div>
     <div fxFlex="70px">
       <a mat-button routerLink="/">
         <mat-icon>dashboard</mat-icon><br>
         <h6>Dashboard</h6>
       </a>
+    </div>
+    <div fxFlex="70px">
       <a mat-button routerLink="/callhistory">
         <mat-icon>history</mat-icon><br>
         <h6>Call History</h6>
       </a>
+    </div>
+    <div fxFlex="70px">
       <a mat-button routerLink="/missedcalls">
         <mat-icon>phone_missed</mat-icon><br>
         <h6>Missed Calls</h6>
+      </a>
+    </div>
+    <div *ngIf="teamLead" fxFlex="70px">
+      <a mat-button routerLink="/queuemonitor">
+        <mat-icon>queue</mat-icon><br>
+        <h6>Queue Monitor</h6>
+      </a>
+    </div>
+    <div *ngIf="teamLead" fxFlex="70px">
+      <a mat-button routerLink="/teammonitor">
+        <mat-icon>people</mat-icon><br>
+        <h6>Team Monitor</h6>
       </a>
     </div>
   </div>

@@ -18,8 +18,6 @@
 
     <div fxFlex *ngIf="teamLead">
       <xe-queue-monitor-panel [serverConnection]="bus"></xe-queue-monitor-panel>
-      <xe-queue-monitor-table-panel [serverConnection]="bus"></xe-queue-monitor-table-panel>
-      <xe-team-monitor-table-panel [serverConnection]="bus" [teamLead]="teamLead"></xe-team-monitor-table-panel>
     </div>
 
     <div fxFlex="1 1 500px"></div>

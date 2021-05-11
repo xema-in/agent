@@ -36,6 +36,8 @@ import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component
 import { TaskCrmViewComponent } from './task-crm-view/task-crm-view.component';
 import { CallHistoryComponent } from './call-history/call-history.component';
 import { MissedCallsComponent } from './missed-calls/missed-calls.component';
+import { QueueMonitorComponent } from './queue-monitor/queue-monitor.component';
+import { TeamMonitorComponent } from './team-monitor/team-monitor.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +62,9 @@ import { MissedCallsComponent } from './missed-calls/missed-calls.component';
     CrmsListCardComponent,
     TaskCrmViewComponent,
     CallHistoryComponent,
-    MissedCallsComponent
+    MissedCallsComponent,
+    QueueMonitorComponent,
+    TeamMonitorComponent
   ],
   imports: [
     BrowserModule,
