@@ -10,6 +10,7 @@ import { BackendService } from './_shared/backend.service';
 })
 export class AppComponent {
   title = 'Agent';
+  monitoring = false;
 
   constructor(private service: BackendService, private router: Router) {
 
@@ -39,7 +40,10 @@ export class AppComponent {
         }
 
         case 'Connected': {
-          this.monitorConnection();
+          if (!this.monitoring) {
+            this.monitoring = true;
+            this.monitorConnection();
+          }
           this.router.navigateByUrl('/phone');
           break;
         }
@@ -60,9 +64,11 @@ export class AppComponent {
 
   }
 
-  monitorConnection() {
+  monitorConnection(): void {
 
-    this.service.getServerConnection().connectionState.subscribe((connectionState) => {
+    const conn = this.service.getServerConnection();
+
+    conn.connectionState.subscribe((connectionState) => {
 
       if (connectionState.connected === false) {
 
@@ -93,6 +99,11 @@ export class AppComponent {
 
       }
 
+    });
+
+
+    conn.logger.subscribe((entry) => {
+      console.log(entry.context, entry.message);
     });
 
   }
