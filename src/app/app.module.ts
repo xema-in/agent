@@ -33,6 +33,7 @@ import { VariablesCardComponent } from './variables-card/variables-card.componen
 import { TaskInfoCardComponent } from './task-info-card/task-info-card.component';
 import { AgentInfoCardComponent } from './agent-info-card/agent-info-card.component';
 import { CrmsListCardComponent } from './crms-list-card/crms-list-card.component';
+import { TaskCrmViewComponent } from './task-crm-view/task-crm-view.component';
 import { CallHistoryComponent } from './call-history/call-history.component';
 import { MissedCallsComponent } from './missed-calls/missed-calls.component';
 import { QueueMonitorComponent } from './queue-monitor/queue-monitor.component';
@@ -59,6 +60,7 @@ import { TeamMonitorComponent } from './team-monitor/team-monitor.component';
     TaskInfoCardComponent,
     AgentInfoCardComponent,
     CrmsListCardComponent,
+    TaskCrmViewComponent,
     CallHistoryComponent,
     MissedCallsComponent,
     QueueMonitorComponent,
