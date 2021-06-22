@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BackendService } from 'src/app/_shared/backend.service';
 import Swal from 'sweetalert2';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { ManagerEnvironment } from 'src/app/_code/manager-environment';
-import { Authenticator, ServerConnection } from 'jema';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Authenticator } from 'jema';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -24,13 +23,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: BackendService, private fb: FormBuilder) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.disable = false;
-    this.manager = ManagerEnvironment.getBackendUrl();
+    this.manager = this.service.getBackendUrl();
 
     if (!environment.production) {
-      this.loginForm.controls['username'].setValue(environment.devUserName);
-      this.loginForm.controls['password'].setValue(environment.devPassword);
+      this.loginForm.controls.username.setValue(environment.dev.username);
+      this.loginForm.controls.password.setValue(environment.dev.password);
       this.submit();
     }
   }
@@ -39,11 +38,11 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls[controlName].hasError(errorName);
   }
 
-  submit() {
+  submit(): void {
     this.isLoading = true;
     this.disable = true;
 
-    const auth = new Authenticator(ManagerEnvironment.getBackendUrl());
+    const auth = new Authenticator(this.service.getBackendUrl());
     auth.getAuthToken(this.loginForm.value).subscribe(
       (data: any) => {
         this.isLoading = false;

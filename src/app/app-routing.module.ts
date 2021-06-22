@@ -26,7 +26,6 @@ const routes: Routes = [
       { path: 'missedcalls', component: MissedCallsComponent },
       { path: 'queuemonitor', component: QueueMonitorComponent },
       { path: 'teammonitor', component: TeamMonitorComponent },
-
     ]
   },
 
