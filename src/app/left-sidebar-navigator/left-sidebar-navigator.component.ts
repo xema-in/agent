@@ -12,7 +12,7 @@ export class LeftSidebarNavigatorComponent implements OnInit {
 
   constructor(private service: BackendService,) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.service.teamLeadFeatures.subscribe((status) => {
       this.teamLead = status;
     });

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BackendService } from 'src/app/_shared/backend.service';
-import { ManagerEnvironment } from 'src/app/_code/manager-environment';
 import { NetworkTester } from 'jema';
 
 @Component({
@@ -16,21 +15,19 @@ export class ServerSelectionComponent implements OnInit {
 
   constructor(private service: BackendService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.serverSelectionForm = new FormGroup({
       serverIp: new FormControl('', [Validators.required, Validators.maxLength(100)]),
     });
 
-    if (ManagerEnvironment.getBackendUrl() !== null &&
-      ManagerEnvironment.getBackendUrl() !== undefined &&
-      ManagerEnvironment.getBackendUrl() !== '') {
+    if (this.service.getBackendUrl() !== null) {
       this.service.setAppState({ state: 'ServerFound', connected: false });
     } else {
       const detectedServerName = location.hostname + (location.port ? ':' + location.port : '');
       const detectedProtocol = location.protocol;
 
       this.tester.ping(detectedProtocol + '//' + detectedServerName).subscribe(() => {
-        this.serverSelectionForm.controls['serverIp'].setValue(detectedServerName);
+        this.serverSelectionForm.controls.serverIp.setValue(detectedServerName);
       });
 
     }
@@ -41,7 +38,7 @@ export class ServerSelectionComponent implements OnInit {
     return this.serverSelectionForm.controls[controlName].hasError(errorName);
   }
 
-  saveIpAddress() {
+  saveIpAddress(): void {
     let url = this.serverSelectionForm.value.serverIp;
 
     if (!url.startsWith('http:') && !url.startsWith('https:')) {

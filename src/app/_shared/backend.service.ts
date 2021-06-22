@@ -23,16 +23,16 @@ export class BackendService {
   calllog: CallLog;
 
   constructor() {
-    this.secondsTimer$.subscribe((number) => {
-      this.secondsClock.next(number);
-    })
+    this.secondsTimer$.subscribe((tick) => {
+      this.secondsClock.next(tick);
+    });
   }
 
   setAppState(state: ConnectionState): void {
     this.appState.next(state);
   }
 
-  enableTeamLeadFeatures(flag: boolean) {
+  enableTeamLeadFeatures(flag: boolean): void {
     this.teamLeadFeatures.next(flag);
   }
 
@@ -40,19 +40,37 @@ export class BackendService {
     return this.token;
   }
 
-  saveToken(token: string) {
+  saveToken(token: string): void {
     this.token = token;
   }
 
   getBackendUrl(): string {
-    if (environment.backend !== '') {
-      return environment.backend;
-    } else {
-      return localStorage.getItem('backend');
+
+    if (!environment.production) {
+      const url = environment.dev.server;
+      if (url !== null && url !== undefined && url !== '') {
+        return url;
+      }
     }
+
+    if (true) {
+      const url = environment.backend;
+      if (url !== null && url !== undefined && url !== '') {
+        return url;
+      }
+    }
+
+    if (true) {
+      const url = localStorage.getItem('backend');
+      if (url !== null && url !== undefined && url !== '') {
+        return url;
+      }
+    }
+
+    return null;
   }
 
-  saveBackendIpAddress(ip: string) {
+  saveBackendIpAddress(ip: string): void {
     localStorage.setItem('backend', ip);
   }
 
@@ -60,15 +78,15 @@ export class BackendService {
     return this.serverConnection;
   }
 
-  setupServerConnection() {
+  setupServerConnection(): void {
     this.serverConnection = new ServerConnection(this.getBackendUrl(), this.getToken(), GuiType.Agent);
   }
 
-  connect() {
+  connect(): void {
     this.serverConnection.connect();
   }
 
-  disconnect() {
+  disconnect(): void {
     this.serverConnection.disconnect();
   }
 

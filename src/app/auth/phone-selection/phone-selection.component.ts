@@ -3,7 +3,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { BackendService } from 'src/app/_shared/backend.service';
 import Swal from 'sweetalert2';
 import { DeviceMapParameters } from 'src/app/_interfaces/device.map';
-import { ManagerEnvironment } from 'src/app/_code/manager-environment';
 import { ServerConnection } from 'jema';
 import { environment } from 'src/environments/environment';
 
@@ -28,9 +27,9 @@ export class PhoneSelectionComponent implements OnInit {
     this.bus = service.getServerConnection();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.disable = false;
-    this.manager = ManagerEnvironment.getBackendUrl();
+    this.manager = this.service.getBackendUrl();
 
     this.bus.IsPhoneMapped().subscribe(
       (data: any) => {
@@ -42,7 +41,7 @@ export class PhoneSelectionComponent implements OnInit {
     );
 
     if (!environment.production) {
-      this.phoneSelectionForm.controls['deviceName'].setValue(environment.devPhone);
+      this.phoneSelectionForm.controls.deviceName.setValue(environment.dev.phone);
       setTimeout(() => { this.mapDevice(); }, 1000);
     }
 
@@ -52,15 +51,15 @@ export class PhoneSelectionComponent implements OnInit {
     return this.phoneSelectionForm.controls[controlName].hasError(errorName);
   }
 
-  mapDevice() {
+  mapDevice(): void {
     this.mapPhone(this.phoneSelectionForm.value);
   }
 
-  reconnectDevice(phone: string) {
+  reconnectDevice(phone: string): void {
     this.mapPhone({ deviceName: phone });
   }
 
-  mapPhone(param: DeviceMapParameters) {
+  mapPhone(param: DeviceMapParameters): void {
     this.disable = true;
     this.isLoading = true;
     this.bus.mapPhone(param).subscribe(
