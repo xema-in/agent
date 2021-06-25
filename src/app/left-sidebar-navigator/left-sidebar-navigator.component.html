@@ -7,13 +7,13 @@
         <h6>Dashboard</h6>
       </a>
     </div>
-    <div fxFlex="70px">
+    <div *ngIf="callHistory" fxFlex="70px">
       <a mat-button routerLink="/callhistory">
         <mat-icon>history</mat-icon><br>
         <h6>Call History</h6>
       </a>
     </div>
-    <div fxFlex="70px">
+    <div *ngIf="missedCalls" fxFlex="70px">
       <a mat-button routerLink="/missedcalls">
         <mat-icon>phone_missed</mat-icon><br>
         <h6>Missed Calls</h6>

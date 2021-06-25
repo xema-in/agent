@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerConnection } from 'jema';
 import { BackendService } from '../_shared/backend.service';
 
 @Component({
@@ -9,12 +10,25 @@ import { BackendService } from '../_shared/backend.service';
 export class LeftSidebarNavigatorComponent implements OnInit {
 
   teamLead = false;
+  callHistory = false;
+  missedCalls = false;
 
-  constructor(private service: BackendService,) { }
+  bus: ServerConnection;
+
+  constructor(private service: BackendService) {
+    this.bus = service.getServerConnection();
+  }
 
   ngOnInit(): void {
     this.service.teamLeadFeatures.subscribe((status) => {
       this.teamLead = status;
     });
+
+    this.bus.info.subscribe((data: any) => {
+      this.callHistory = data.features.callHistory;
+      this.missedCalls = data.features.missedCalls;
+    });
+
   }
+
 }
