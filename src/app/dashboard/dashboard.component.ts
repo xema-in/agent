@@ -11,10 +11,11 @@ import { BackendService } from '../_shared/backend.service';
 export class DashboardComponent implements OnInit {
 
   teamLead = false;
+  crmDashboard = false;
   bus: ServerConnection;
   task: any;
 
-  constructor(private service: BackendService,) {
+  constructor(private service: BackendService) {
     this.bus = service.getServerConnection();
   }
 
@@ -25,7 +26,12 @@ export class DashboardComponent implements OnInit {
 
     this.bus.task.subscribe((task) => {
       this.task = task;
-    })
+    });
+
+    this.bus.info.subscribe((data: any) => {
+      this.crmDashboard = data.features.crmDashboard;
+    });
+
   }
 
 }
