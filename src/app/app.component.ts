@@ -105,9 +105,9 @@ export class AppComponent {
     });
 
 
-    conn.logger.subscribe((entry) => {
-      console.log(entry.context, entry.message);
-    });
+    // conn.logger.subscribe((entry) => {
+    //   console.log(entry.context, entry.message);
+    // });
 
   }
 
