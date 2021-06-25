@@ -1,7 +1,10 @@
 export const environment = {
   production: true,
   backend: '',
-  devUserName: '',
-  devPassword: '',
-  devPhone: ''
+  dev: {
+    server: '',
+    username: '',
+    password: '',
+    phone: '',
+  }
 };

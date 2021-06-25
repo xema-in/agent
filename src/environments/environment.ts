@@ -5,9 +5,12 @@
 export const environment = {
   production: false,
   backend: '',
-  devUserName: 'APNRTS7',
-  devPassword: 'Agent@123',
-  devPhone: '1007'
+  dev: {
+    server: 'http://192.168.2.1',
+    username: '1',
+    password: 'Vasu123$',
+    phone: '1001',
+  }
 };
 
 /*

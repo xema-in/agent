@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { BackendService } from './_shared/backend.service';
@@ -9,11 +10,14 @@ import { BackendService } from './_shared/backend.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Agent';
 
-  constructor(private service: BackendService, private router: Router) {
+  monitoring = false;
+
+  constructor(private service: BackendService, private router: Router, private title: Title) {
+    this.title.setTitle('Agent');
 
     this.service.appState.subscribe((state) => {
+      this.title.setTitle('Agent: ' + state.state);
 
       switch (state.state) {
 
@@ -39,7 +43,10 @@ export class AppComponent {
         }
 
         case 'Connected': {
-          this.monitorConnection();
+          if (!this.monitoring) {
+            this.monitoring = true;
+            this.monitorConnection();
+          }
           this.router.navigateByUrl('/phone');
           break;
         }
@@ -60,9 +67,11 @@ export class AppComponent {
 
   }
 
-  monitorConnection() {
+  monitorConnection(): void {
 
-    this.service.getServerConnection().connectionState.subscribe((connectionState) => {
+    const conn = this.service.getServerConnection();
+
+    conn.connectionState.subscribe((connectionState) => {
 
       if (connectionState.connected === false) {
 
@@ -94,6 +103,11 @@ export class AppComponent {
       }
 
     });
+
+
+    // conn.logger.subscribe((entry) => {
+    //   console.log(entry.context, entry.message);
+    // });
 
   }
 
