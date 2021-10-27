@@ -1,11 +1,11 @@
 <div *ngIf="taskAssigned" fxLayout="row" fxLayoutAlign="start center" fxFlex="50" fxLayoutGap="5px">
   <!-- Add New call -->
-  <span *ngIf="task?.queue.baseQueueOptions.allowNewCall && isNewCall">
+  <span *ngIf="task?.queue.allowNewCall && isNewCall">
     <button mat-raised-button color="accent" type="button" (click)="call1()">New Call</button>
   </span>
 
   <!-- Conference Option -->
-  <span *ngIf="task?.queue.baseQueueOptions.allowConference && parked === 'Parked' && isMerge">
+  <span *ngIf="task?.queue.allowConference && parked === 'Parked' && isMerge">
     <button mat-raised-button color="link" style="background-color: #ffc107;" (click)="conference()">
       Merge
       <mat-icon matSuffix>call_merge</mat-icon>
@@ -13,12 +13,12 @@
   </span>
 
   <!-- Call Back Option -->
-  <span *ngIf="!callerOnline && task?.queue.baseQueueOptions.allowCallback  && isCallBack">
+  <span *ngIf="!callerOnline && task?.queue.allowCallback  && isCallBack">
     <button mat-raised-button color="accent" (click)="callBack()">Call Back</button>
   </span>
 
   <!-- End Call Option -->
-  <span *ngIf="task?.queue.baseQueueOptions.allowEndCall && isEndCall">
+  <span *ngIf="task?.queue.allowEndCall && isEndCall">
     <button mat-raised-button color="warn" (click)="endCall()">End Call</button>
   </span>
 

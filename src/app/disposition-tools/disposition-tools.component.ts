@@ -73,10 +73,10 @@ export class DispositionToolsComponent implements OnInit {
         this.disable = false;
       }
       this.task = task;
-      if (this.task && this.task.queue.baseQueueOptions.allowEndCall) {
+      if (this.task && this.task.queue.allowEndCall) {
         this.isEndCall = true;
       }
-      if (this.task && this.task.queue.baseQueueOptions.allowCallback) {
+      if (this.task && this.task.queue.allowCallback) {
         this.isCallBack = true;
       }
     });
@@ -138,26 +138,26 @@ export class DispositionToolsComponent implements OnInit {
       this.phoneState = state;
       switch (this.phoneState.state) {
         case "Unknown":
-          if (this.task && this.task.queue.baseQueueOptions.allowEndCall) {
+          if (this.task && this.task.queue.allowEndCall) {
             this.isEndCall = false;
           }
-          if (this.task && this.task.queue.baseQueueOptions.allowCallback) {
+          if (this.task && this.task.queue.allowCallback) {
             this.isCallBack = true;
             this.isDispose = true;
           }
           break;
         case "INUSE":
-          if (this.task && this.task.queue.baseQueueOptions.allowCallback) {
+          if (this.task && this.task.queue.allowCallback) {
             this.isCallBack = false;
             this.isDispose = false;
           }
           break;
         case "Not in use":
         case "NOT_INUSE":
-          if (this.task && this.task.queue.baseQueueOptions.allowEndCall) {
+          if (this.task && this.task.queue.allowEndCall) {
             this.isEndCall = false;
           }
-          if (this.task && this.task.queue.baseQueueOptions.allowCallback) {
+          if (this.task && this.task.queue.allowCallback) {
             this.isCallBack = true;
             this.isDispose = true;
           }
@@ -176,11 +176,11 @@ export class DispositionToolsComponent implements OnInit {
   }
 
   callBack() {
-    if (this.task.queue.baseQueueOptions.allowEndCall) {
+    if (this.task.queue.allowEndCall) {
       this.isEndCall = true;
     }
     this.bus.call(
-      this.task.queue.baseQueueOptions.callbackTrunkName,
+      this.task.queue.callbackTrunkName,
       this.task.call.attributes.calleridnum,
       this.task.call.attributes.linkedid
     );
@@ -236,11 +236,11 @@ export class DispositionToolsComponent implements OnInit {
   }
 
   call() {
-    if (this.task.queue.baseQueueOptions.allowEndCall) {
+    if (this.task.queue.allowEndCall) {
       this.isEndCall = true;
     }
     this.bus.call(
-      this.task.queue.baseQueueOptions.callbackTrunkName,
+      this.task.queue.callbackTrunkName,
       this.number.value,
       this.task.call.attributes.linkedid
     );
