@@ -45,8 +45,8 @@ export class VariablesCardComponent implements OnInit {
       vars.setValue(key, this.task.variables[key]);
     }
 
-    if (this.task.queue?.baseQueueOptions?.agentChannelVariablesExpression != null) {
-      let expressions: string[] = this.task.queue?.baseQueueOptions?.agentChannelVariablesExpression.split(';');
+    if (this.task.queue?.agentChannelVariablesExpression != null) {
+      let expressions: string[] = this.task.queue?.agentChannelVariablesExpression.split(';');
       expressions.forEach(element => {
         let parts = element.split('=');
         let varName = parts[0];
