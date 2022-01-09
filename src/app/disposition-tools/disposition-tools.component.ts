@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { BackendService } from "src/app/_shared/backend.service";
-import { FormControl, FormGroupDirective, NgForm } from "@angular/forms";
-import { ActiveCall } from "src/app/_interfaces/active-call";
-import { Channel } from "src/app/_interfaces/channel";
-import { ServerConnection } from "jema";
-import { ErrorStateMatcher } from "@angular/material/core";
-import { MatDialog } from "@angular/material/dialog";
-import Swal from "sweetalert2";
-import { Conference } from "jema/lib/_interfaces/conference";
+import { Component, OnInit } from '@angular/core';
+import { BackendService } from 'src/app/_shared/backend.service';
+import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ActiveCall } from 'src/app/_interfaces/active-call';
+import { Channel } from 'src/app/_interfaces/channel';
+import { ServerConnection } from 'jema';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+import { Conference } from 'jema/lib/_interfaces/conference';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -24,9 +24,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: "app-disposition-tools",
-  templateUrl: "./disposition-tools.component.html",
-  styleUrls: ["./disposition-tools.component.scss"],
+  selector: 'app-disposition-tools',
+  templateUrl: './disposition-tools.component.html',
+  styleUrls: ['./disposition-tools.component.scss'],
 })
 export class DispositionToolsComponent implements OnInit {
   bus: ServerConnection;
@@ -42,7 +42,7 @@ export class DispositionToolsComponent implements OnInit {
   cdate = new Date();
   calldetails: any;
   disable: boolean;
-  number = new FormControl("", [
+  number = new FormControl('', [
     // Validators.required
   ]);
   queueCall: any;
@@ -55,16 +55,18 @@ export class DispositionToolsComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(
-    private service: BackendService,
-    public dialog: MatDialog,
-  ) {
+  constructor(private service: BackendService, public dialog: MatDialog) {
     this.bus = service.getServerConnection();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+    // track phone state
+    this.trackPhoneState();
+
     this.disable = false;
 
+    // track task
     this.bus.task.subscribe((task) => {
       if (task === null || task === undefined) {
         this.taskAssigned = false;
@@ -81,6 +83,7 @@ export class DispositionToolsComponent implements OnInit {
       }
     });
 
+    // track ongoing calls
     this.bus.ongoingCalls.subscribe((list) => {
       this.ongoingCallsList = list;
       if (this.task !== null && this.task !== undefined) {
@@ -93,12 +96,13 @@ export class DispositionToolsComponent implements OnInit {
       }
     });
 
+    // track parked calls
     this.bus.parkedChannels.subscribe((list) => {
       this.parkedCallsList = list;
       this.parked =
-        this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
+        this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : '';
 
-      if (this.parked == 'Parked') {
+      if (this.parked === 'Parked') {
         this.isCallBack = false;
         this.isDispose = false;
         this.isEndCall = false;
@@ -111,6 +115,7 @@ export class DispositionToolsComponent implements OnInit {
       }
     });
 
+    // track conference calls
     this.bus.conferenceCall.subscribe((call) => {
       this.conferenceCall = call;
       if (this.conferenceCall?.members.length > 0) {
@@ -122,6 +127,7 @@ export class DispositionToolsComponent implements OnInit {
       }
     });
 
+    // TODO: rework on the CRM tab system
     this.bus.task.subscribe((queueCall) => {
       this.queueCall = queueCall;
       if (
@@ -134,10 +140,17 @@ export class DispositionToolsComponent implements OnInit {
       }
     });
 
+
+  }
+
+
+  // tracking methods
+
+  trackPhoneState(): void {
     this.bus.phoneState.subscribe((state) => {
       this.phoneState = state;
       switch (this.phoneState.state) {
-        case "Unknown":
+        case 'Unknown':
           if (this.task && this.task.queue.allowEndCall) {
             this.isEndCall = false;
           }
@@ -146,14 +159,14 @@ export class DispositionToolsComponent implements OnInit {
             this.isDispose = true;
           }
           break;
-        case "INUSE":
+        case 'INUSE':
           if (this.task && this.task.queue.allowCallback) {
             this.isCallBack = false;
             this.isDispose = false;
           }
           break;
-        case "Not in use":
-        case "NOT_INUSE":
+        case 'Not in use':
+        case 'NOT_INUSE':
           if (this.task && this.task.queue.allowEndCall) {
             this.isEndCall = false;
           }
@@ -166,16 +179,23 @@ export class DispositionToolsComponent implements OnInit {
           break;
       }
     });
-
   }
 
-  openNewtab() {
+  // crm
+
+  openNewtab(): void {
     this.queueCall.queue.crms.forEach((item, index) => {
       window.open(item.url, index);
     });
   }
 
-  callBack() {
+  // agent actions
+
+  onAction(id): void {
+    this.bus.executeAction(id);
+  }
+
+  callBack(): void {
     if (this.task.queue.allowEndCall) {
       this.isEndCall = true;
     }
@@ -186,12 +206,12 @@ export class DispositionToolsComponent implements OnInit {
     );
   }
 
-  endCall() {
+  endCall(): void {
     // find all channels in ConfBridge & hangup
     if (this.ongoingCallsList.length !== 0) {
       this.ongoingCallsList.forEach((channel) => {
         const localchannel = channel.localChannel;
-        const rmchannels = channel.remoteChannel.split(",");
+        const rmchannels = channel.remoteChannel.split(',');
         const removeconf = rmchannels.shift();
         rmchannels.push(localchannel);
         if (rmchannels) {
@@ -209,8 +229,8 @@ export class DispositionToolsComponent implements OnInit {
     this.bus.parkedChannels.subscribe((list) => {
       this.parkedCallsList = list;
       this.parked =
-        this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
-      if (this.parked == 'Parked') {
+        this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : '';
+      if (this.parked === 'Parked') {
         this.isDispose = false;
         this.isNewCall = true;
       }
@@ -235,7 +255,7 @@ export class DispositionToolsComponent implements OnInit {
     // this.parked = "";
   }
 
-  call() {
+  call(): void {
     if (this.task.queue.allowEndCall) {
       this.isEndCall = true;
     }
@@ -247,14 +267,15 @@ export class DispositionToolsComponent implements OnInit {
     this.isMerge = true;
     this.isNewCall = true;
 
-    if (this.parkedCallsList != undefined && this.parkedCallsList != null &&
-      this.parkedCallsList.length > 0)
-      this.parked = this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
-    else
-      this.parked = "";
+    if (this.parkedCallsList !== undefined && this.parkedCallsList !== null && this.parkedCallsList.length > 0) {
+      this.parked = this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : '';
+    }
+    else {
+      this.parked = '';
+    }
   }
 
-  call1() {
+  call1(): void {
     Swal.fire({
       title: 'Phone Number',
       input: 'text',
@@ -264,14 +285,14 @@ export class DispositionToolsComponent implements OnInit {
       showCancelButton: true,
       confirmButtonText: 'Call',
       showLoaderOnConfirm: true,
-      preConfirm: (number) => {
-        this.number.setValue(number);
+      preConfirm: (num) => {
+        this.number.setValue(num);
         this.call();
       },
     });
   }
 
-  conference() {
+  conference(): void {
     this.ongoingCallsList.forEach((otherCall) => {
       this.bus.hold(otherCall.remoteChannel);
     });
@@ -280,11 +301,13 @@ export class DispositionToolsComponent implements OnInit {
     const total = listActive.concat(listParked);
     this.bus.conference(total);
     this.parked =
-      this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : "";
+      this.parkedCallsList[0] != null ? this.parkedCallsList[0].status : '';
   }
 
-  dispose() {
+  dispose(): void {
     this.bus.dispose();
     this.disable = false;
   }
+
+
 }
