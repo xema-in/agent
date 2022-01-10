@@ -31,8 +31,7 @@
   <!-- Agent Actions -->
   <button mat-button [matMenuTriggerFor]="agentactions">Menu</button>
   <mat-menu #agentactions="matMenu">
-    <button *ngFor="let item of task.queue.agentActions" mat-menu-item
-      (click)="onAction(item.id)">{{item.name}}</button>
+    <button *ngFor="let item of task.queue.agentActions" mat-menu-item (click)="onAction(item)">{{item.name}}</button>
   </mat-menu>
 
 </div>

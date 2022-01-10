@@ -191,8 +191,34 @@ export class DispositionToolsComponent implements OnInit {
 
   // agent actions
 
-  onAction(id): void {
-    this.bus.executeAction(id);
+  onAction(action): void {
+    console.log(action);
+    switch (action.type) {
+      case 'TransferToPhoneAction':
+        this.onTransferToPhoneAction(action);
+        break;
+    }
+  }
+
+  onTransferToPhoneAction(action): void {
+    if (!action.promptAgent) {
+      this.bus.executeAction(action.id);
+    } else {
+      Swal.fire({
+        title: 'Phone Number',
+        input: 'text',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Transfer',
+        showLoaderOnConfirm: true,
+        preConfirm: (phoneId) => {
+          this.bus.executeAction(action.id, phoneId);
+        },
+      });
+
+    }
   }
 
   callBack(): void {
