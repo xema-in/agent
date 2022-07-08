@@ -29,7 +29,7 @@
     "@xema/team-monitor-table-panel": "0.0.28",
     "jema": "0.0.70",
     "material-design-icons": "^3.0.1",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "ngx-timeago": "^2.0.0",
     "rxjs": "~6.6.0",
     "sweetalert2": "^10.15.5",
