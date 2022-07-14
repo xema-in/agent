@@ -15,11 +15,11 @@ export class TaskInfoCardComponent implements OnInit {
   bus: ServerConnection;
   task: any;
   startTime;
-  values = [];
+  values: any[]=[];
 
-  color: string;
+  color!: string;
   completed: any;
-  ahtTarget: number;
+  ahtTarget!: number;
   currentprogress: any;
 
   constructor(private service: BackendService) {

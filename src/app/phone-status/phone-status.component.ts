@@ -12,9 +12,9 @@ import { PhoneState } from 'jema/lib/_interfaces/phone-state';
 })
 export class PhoneStatusComponent implements OnInit {
   bus: ServerConnection;
-  phoneState: PhoneState;
-  onHook: boolean;
-  color: string;
+  phoneState!: PhoneState;
+  onHook!: boolean;
+  color!: string;
 
   constructor(private service: BackendService, private router: Router) {
     this.bus = service.getServerConnection();

@@ -12,9 +12,9 @@ import { ServerConnection } from 'jema';
 })
 export class CallManagementComponent implements OnInit {
   bus: ServerConnection;
-  ongoingCallsList: Array<ActiveCall>;
-  parkedChannelsList: Array<Channel>;
-  conferenceCall: Conference;
+  ongoingCallsList!: Array<ActiveCall>;
+  parkedChannelsList!: Array<Channel>;
+  conferenceCall!: Conference;
   unknown = '<unknown>';
 
   constructor(private service: BackendService) {
@@ -30,7 +30,7 @@ export class CallManagementComponent implements OnInit {
       this.parkedChannelsList = list;
     });
 
-    this.bus.conferenceCall.subscribe((call) => {
+    this.bus.conferenceCall.subscribe((call: any) => {
       this.conferenceCall = call;
     });
   }

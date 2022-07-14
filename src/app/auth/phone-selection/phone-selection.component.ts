@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BackendService } from 'src/app/_shared/backend.service';
 import Swal from 'sweetalert2';
 import { DeviceMapParameters } from 'src/app/_interfaces/device.map';
@@ -15,12 +15,12 @@ export class PhoneSelectionComponent implements OnInit {
 
   bus: ServerConnection;
 
-  manager: string;
+  manager!: string;
   isLoading = false;
-  disable: boolean;
+  disable!: boolean;
 
-  public phoneSelectionForm: FormGroup = this.fb.group({
-    deviceName: ['', Validators.compose([Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]*')])]
+  phoneSelectionForm = this.fb.group({
+    deviceName: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(4), Validators.pattern('[0-9]*')])),
   });
 
   constructor(private service: BackendService, private fb: FormBuilder) {
@@ -52,7 +52,7 @@ export class PhoneSelectionComponent implements OnInit {
   }
 
   mapDevice(): void {
-    this.mapPhone(this.phoneSelectionForm.value);
+    this.mapPhone({ deviceName: this.phoneSelectionForm.value.deviceName ?? '' });
   }
 
   reconnectDevice(phone: string): void {

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,8 +12,8 @@ import { BackendService } from '../_shared/backend.service';
   styleUrls: ['./call-history.component.scss']
 })
 export class CallHistoryComponent implements OnInit {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
   bus: any;
   info: any;
@@ -31,15 +31,15 @@ export class CallHistoryComponent implements OnInit {
   ];
 
   searchForm = this.fb.group({
-    agentId: null,
-    fromDate: [null],
+    agentId: new FormControl(null),
+    fromDate: new FormControl<Date | undefined>(undefined),
   });
 
   constructor(private service: BackendService, private fb: FormBuilder) {
     this.bus = service.getServerConnection();
     let defaultFromDate = new Date();
     defaultFromDate.setHours(0, 0, 0);
-    this.searchForm.controls['fromDate'].setValue(defaultFromDate);
+    this.searchForm.controls.fromDate.setValue(defaultFromDate);
   }
 
   ngOnInit(): void {

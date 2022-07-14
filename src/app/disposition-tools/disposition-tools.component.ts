@@ -30,27 +30,27 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class DispositionToolsComponent implements OnInit {
   bus: ServerConnection;
-  ongoingCallsList: Array<ActiveCall>;
-  parkedCallsList: Array<Channel>;
-  conferenceCall: Conference;
-  callerOnline: boolean;
+  ongoingCallsList!: Array<ActiveCall>;
+  parkedCallsList!: Array<Channel>;
+  conferenceCall!: Conference;
+  callerOnline!: boolean;
   task: any;
-  taskAssigned: boolean;
+  taskAssigned!: boolean;
   selectedvalue: any;
   selectedtext: any;
   parked: any;
   cdate = new Date();
   calldetails: any;
-  disable: boolean;
+  disable!: boolean;
   number = new FormControl('', [
     // Validators.required
   ]);
   queueCall: any;
-  isCallBack: boolean;
-  isNewCall: boolean;
-  isMerge: boolean;
-  isEndCall: boolean;
-  isDispose: boolean;
+  isCallBack!: boolean;
+  isNewCall!: boolean;
+  isMerge!: boolean;
+  isEndCall!: boolean;
+  isDispose!: boolean;
   phoneState: any;
 
   matcher = new MyErrorStateMatcher();
@@ -116,9 +116,9 @@ export class DispositionToolsComponent implements OnInit {
     });
 
     // track conference calls
-    this.bus.conferenceCall.subscribe((call) => {
+    this.bus.conferenceCall.subscribe((call: any) => {
       this.conferenceCall = call;
-      if (this.conferenceCall?.members.length > 0) {
+      if (this.conferenceCall.members.length > 0) {
         this.isNewCall = true;
         this.isDispose = false;
       } else {
@@ -287,7 +287,7 @@ export class DispositionToolsComponent implements OnInit {
     }
     this.bus.call(
       this.task.queue.callbackTrunkName,
-      this.number.value,
+      this.number.value ?? '',
       this.task.call.attributes.linkedid
     );
     this.isMerge = true;

@@ -14,9 +14,9 @@ import { ElementRef } from '@angular/core';
   styleUrls: ['./missed-calls.component.scss']
 })
 export class MissedCallsComponent implements OnInit {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild('TABLE') table: ElementRef;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
+  @ViewChild('TABLE') table!: ElementRef;
   bus: any;
 
   dataSource: any;

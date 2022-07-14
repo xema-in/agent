@@ -13,8 +13,8 @@ import Swal from 'sweetalert2';
 })
 export class ConnectComponent implements OnInit {
 
-  server: ServerConnection;
-  reconnect: boolean;
+  server!: ServerConnection;
+  reconnect!: boolean;
 
   constructor(private route: ActivatedRoute, private service: BackendService) {
     this.route.params.subscribe(params => {
