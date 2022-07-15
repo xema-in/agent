@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { BackendService } from 'src/app/_shared/backend.service';
 import { NetworkTester } from 'jema';
 
@@ -10,16 +10,15 @@ import { NetworkTester } from 'jema';
 })
 export class ServerSelectionComponent implements OnInit {
 
-  public serverSelectionForm: FormGroup;
+  serverSelectionForm = this.fb.group({
+    serverIp: new FormControl('', [Validators.required, Validators.maxLength(100)]),
+  });
+
   tester = new NetworkTester();
 
-  constructor(private service: BackendService) { }
+  constructor(private service: BackendService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.serverSelectionForm = new FormGroup({
-      serverIp: new FormControl('', [Validators.required, Validators.maxLength(100)]),
-    });
-
     if (this.service.getBackendUrl() !== null) {
       this.service.setAppState({ state: 'ServerFound', connected: false });
     } else {
@@ -39,7 +38,7 @@ export class ServerSelectionComponent implements OnInit {
   }
 
   saveIpAddress(): void {
-    let url = this.serverSelectionForm.value.serverIp;
+    let url = this.serverSelectionForm.value.serverIp ?? '';
 
     if (!url.startsWith('http:') && !url.startsWith('https:')) {
       url = location.protocol + '//' + url;

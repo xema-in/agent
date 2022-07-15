@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { BackendService } from "../_shared/backend.service";
 import { ServerConnection } from "jema";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { FormBuilder, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "break-request-dialog",
@@ -13,8 +13,8 @@ export class BreakRequestDialogComponent implements OnInit {
   bus: ServerConnection;
 
   breakRequestForm = this.fb.group({
-    breaktype: [null, Validators.required],
-    reason: [{ value: null, disabled: true }, Validators.required],
+    breaktype: new FormControl<any>(null, Validators.required),
+    reason: new FormControl<any>({ value: null, disabled: true }, Validators.required),
   });
 
   constructor(

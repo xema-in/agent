@@ -1,4 +1,4 @@
-export class LoginParameters {
+export interface LoginParameters {
   username: string;
   password: string;
 }

@@ -15,8 +15,8 @@ export class AgentInfoCardComponent implements OnInit {
 
   bus: any;
   info: any;
-  breakState: BreakState;
-  values = [];
+  breakState!: BreakState;
+  values: any[] = [];
 
   constructor(service: BackendService) {
     this.bus = service.getServerConnection();

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerConnection } from 'jema';
-import { BackendService } from '../_shared/backend.service';
 import * as Collections from 'typescript-collections';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { BackendService } from '../_shared/backend.service';
 
 @UntilDestroy({ checkProperties: true })
 @Component({
@@ -18,7 +18,7 @@ export class VariablesCardComponent implements OnInit {
 
   filteredvariables: {
     key: string;
-    value: string;
+    value: string | undefined;
   }[] = [];
 
   constructor(service: BackendService) {
@@ -39,7 +39,7 @@ export class VariablesCardComponent implements OnInit {
   transformVariables() {
     this.filteredvariables = [];
 
-    var vars = new Collections.Dictionary<string, string>();
+    var vars = new Collections.Dictionary<string, string | undefined>();
 
     for (let key of Object.keys(this.task.variables)) {
       vars.setValue(key, this.task.variables[key]);

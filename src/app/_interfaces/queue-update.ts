@@ -1,4 +1,4 @@
-export class QueueUpdate {
-    queue: string;
-    size: number;
+export interface QueueUpdate {
+  queue: string;
+  size: number;
 }

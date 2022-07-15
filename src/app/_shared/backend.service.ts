@@ -11,8 +11,8 @@ import { GuiType } from 'jema/lib/_interfaces/gui-type';
 })
 export class BackendService {
 
-  private token: string;
-  private serverConnection: ServerConnection;
+  private token!: string;
+  private serverConnection!: ServerConnection;
   private secondsTimer$ = interval(1000);
 
   public appState = new BehaviorSubject<ConnectionState>({ state: 'Unknown', connected: false });
@@ -20,7 +20,7 @@ export class BackendService {
   public secondsClock = new Subject<number>();
 
   callinfolist: Array<CallInfo> = [];
-  calllog: CallLog;
+  calllog!: CallLog;
 
   constructor() {
     this.secondsTimer$.subscribe((tick) => {
@@ -67,7 +67,7 @@ export class BackendService {
       }
     }
 
-    return null;
+    return '';
   }
 
   saveBackendIpAddress(ip: string): void {

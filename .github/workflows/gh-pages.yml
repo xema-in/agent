@@ -20,12 +20,12 @@ jobs:
         run: npm run publish
 
       - name: list files
-        run: find ./dist/Agent
+        run: find ./dist/agent
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: ./dist/Agent
+          FOLDER: ./dist/agent
           CLEAN: true

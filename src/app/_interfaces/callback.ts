@@ -1,14 +1,14 @@
-export class Callback {
-    Disposition: number;
-    Cli: string;
-    Channel: string;
-    Id: string;
+export interface Callback {
+  Disposition: number;
+  Cli: string;
+  Channel: string;
+  Id: string;
 }
 
-export class Calldispositions {
-    CallId: string;
+export interface Calldispositions {
+  CallId: string;
 }
 
-export class EndCall {
-    Channel: string;
+export interface EndCall {
+  Channel: string;
 }

@@ -1,7 +1,15 @@
-Merge
-=====
+Env Setup
+=========
 
-git pull https://github.com/xema-in/agent.git main
+1. install nvm for windows
+https://github.com/coreybutler/nvm-windows/releases
+
+2. switch to npm version set in .npmrc
+nvm use
+
+3. install dependencies
+run npm install
+
 
 
 
@@ -11,3 +19,14 @@ npm install jema@latest
 npm install @xema/queue-monitor-panel@latest
 npm install @xema/queue-monitor-table-panel@latest
 npm install @xema/team-monitor-table-panel@latest
+
+
+
+
+Merge Code from Master
+======================
+
+git pull https://github.com/xema-in/agent.git main
+
+
+

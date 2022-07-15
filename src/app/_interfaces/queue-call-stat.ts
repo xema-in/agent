@@ -1,12 +1,12 @@
-export class CallStat {
-    queue: string;
-    holdTime: number;
+export interface CallStat {
+  queue: string;
+  holdTime: number;
 }
 
-export class QueueCallStat {
-    device: string;
-    cli: string;
-    id: string;
-    queue: string;
-    stats: CallStat;
+export interface QueueCallStat {
+  device: string;
+  cli: string;
+  id: string;
+  queue: string;
+  stats: CallStat;
 }
