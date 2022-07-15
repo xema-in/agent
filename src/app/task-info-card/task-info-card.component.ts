@@ -15,7 +15,7 @@ export class TaskInfoCardComponent implements OnInit {
   bus: ServerConnection;
   task: any;
   startTime;
-  values: any[]=[];
+  values: any[] = [];
 
   color!: string;
   completed: any;
