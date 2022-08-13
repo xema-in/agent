@@ -13,7 +13,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <textarea rows="4" matInput placeholder="{{breakRequestForm.value?.breaktype?.description}}"
+    <textarea rows="4" matInput placeholder="{{breakRequestForm.value.breaktype?.description}}"
       formControlName="reason"></textarea>
     <mat-error *ngIf="breakRequestForm.controls['reason'].hasError('required')">
       Reason <strong>required</strong>

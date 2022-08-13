@@ -20,6 +20,7 @@ npm install @xema/queue-monitor-panel@latest
 npm install @xema/queue-monitor-table-panel@latest
 npm install @xema/team-monitor-table-panel@latest
 
+npm install jema@latest @xema/queue-monitor-panel@latest @xema/queue-monitor-table-panel@latest @xema/team-monitor-table-panel@latest
 
 
 
