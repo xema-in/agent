@@ -19,7 +19,7 @@ export class ServerSelectionComponent implements OnInit {
   constructor(private service: BackendService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    if (this.service.getBackendUrl() !== null) {
+    if (this.service.getBackendUrl() !== '') {
       this.service.setAppState({ state: 'ServerFound', connected: false });
     } else {
       const detectedServerName = location.hostname + (location.port ? ':' + location.port : '');
